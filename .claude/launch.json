@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "miss-moneypenny",
+      "runtimeExecutable": "/Users/dominiktheis/.local/node-v24.17.0-darwin-arm64/bin/node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "start", "-p", "4318"],
+      "port": 4318
+    }
+  ]
+}
