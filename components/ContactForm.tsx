@@ -6,6 +6,8 @@ import { ArrowRight, Check } from "./Icons";
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -19,24 +21,23 @@ export default function ContactForm() {
   const update = (k: keyof typeof form) => (e: { target: { value: string } }) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Der Buchungsfunnel folgt – vorerst öffnet die Anfrage eine vorbereitete E-Mail.
-    const body = [
-      `Name: ${form.name}`,
-      `E-Mail: ${form.email}`,
-      `Telefon: ${form.phone}`,
-      `Wunschzeitraum: ${form.period}`,
-      `Personen: ${form.guests}`,
-      `Skipper: ${form.skipper}`,
-      "",
-      form.message,
-    ].join("\n");
-    const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
-      "Charter-Anfrage Miss Moneypenny"
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Versand fehlgeschlagen");
+      setSent(true);
+    } catch {
+      setError("Die Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (sent) {
@@ -45,10 +46,7 @@ export default function ContactForm() {
         <span className="ic mx-auto" style={{ marginInline: "auto" }}><Check /></span>
         <h3 style={{ marginTop: "1rem" }}>Vielen Dank für Ihre Anfrage!</h3>
         <p style={{ marginTop: "0.6rem" }}>
-          Wir haben eine vorbereitete E-Mail in Ihrem Mailprogramm geöffnet. Sollte das
-          nicht funktioniert haben, schreiben Sie uns direkt an{" "}
-          <a href={`mailto:${site.email}`} style={{ color: "var(--brass-600)", textDecoration: "underline" }}>{site.email}</a>.
-          Wir melden uns innerhalb von 24 Stunden.
+          Ihre Nachricht ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.
         </p>
       </div>
     );
@@ -92,9 +90,17 @@ export default function ContactForm() {
         <label htmlFor="message">Ihre Nachricht</label>
         <textarea id="message" value={form.message} onChange={update("message")} placeholder="Erzählen Sie uns von Ihren Plänen …" />
       </div>
+      {error && (
+        <div className="field full" style={{ color: "var(--error, #c0392b)", fontSize: "0.9rem" }}>
+          {error}{" "}
+          <a href={`mailto:${site.email}`} style={{ textDecoration: "underline" }}>{site.email}</a>
+        </div>
+      )}
       <div className="field full" style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
         <span className="form-note">{site.responseTime} · unverbindlich</span>
-        <button type="submit" className="btn btn-primary">Anfrage senden <ArrowRight /></button>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? "Wird gesendet …" : <><span>Anfrage senden</span> <ArrowRight /></>}
+        </button>
       </div>
     </form>
   );
