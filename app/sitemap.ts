@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/segeltorn-packliste",
     "/packliste-segeln-kroatien",
     "/winde-kroatien",
+    "/apps-fuer-segler",
     "/ankern-kroatien",
     "/einkaufsliste-segeltorn",
     "/speiseplan-segeltorn",

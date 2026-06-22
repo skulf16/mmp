@@ -39,6 +39,7 @@ export const nav: NavItem[] = [
       { label: "Packliste", href: "/segeltorn-packliste", desc: "Was wirklich an Bord gehört" },
       { label: "Winde & Reisezeit", href: "/winde-kroatien", desc: "Maestral, Bora & beste Monate" },
       { label: "Segeln mit Skipper", href: "/segeltorn-kroatien-skipper", desc: "Ohne Führerschein entspannt segeln" },
+      { label: "Apps für Segler", href: "/apps-fuer-segler", desc: "Navigation, Wetter & Ankerwache" },
     ],
   },
   { label: "Kontakt", href: "/kontakt" },

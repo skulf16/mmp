@@ -798,6 +798,23 @@ p { color: var(--text-soft); }
 .price-card li svg { width: 16px; color: var(--brass-600); flex: none; margin-top: 4px; }
 .price-card.featured li svg { color: var(--brass-300); }
 
+/* ---------------- App cards (Apps für Segler) -------------- */
+.app-card { display: flex; flex-direction: column; padding: 2.2rem 2rem; background: rgba(255,255,255,0.6); border: 1px solid var(--sand-line); border-radius: var(--radius); transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease), border-color 0.5s var(--ease); }
+.app-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); border-color: var(--brass-300); }
+.app-card-head { display: flex; align-items: center; gap: 1rem; }
+.app-card .ic { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--brass); border-radius: 50%; color: var(--brass-600); flex: none; }
+.app-card .ic svg { width: 22px; height: 22px; }
+.app-card h3 { font-size: 1.3rem; font-weight: 440; line-height: 1.15; }
+.app-card .app-cat { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-600); margin-top: 0.3rem; }
+.app-card p { margin-top: 1.1rem; font-size: 0.95rem; color: var(--text-soft); flex: 1; }
+.store-row { display: flex; gap: 0.7rem; margin-top: 1.7rem; flex-wrap: wrap; }
+.store-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.05rem; border: 1px solid var(--navy-800); border-radius: var(--radius); color: var(--navy-900); transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease); }
+.store-btn:hover { background: var(--navy-900); color: var(--paper); border-color: var(--navy-900); }
+.store-btn svg { width: 18px; height: 18px; flex: none; }
+.store-btn .lbl { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+.store-btn .lbl small { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+.store-btn .lbl b { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.01em; }
+
 /* ---------------- FAQ -------------------------------------- */
 .faq { border-top: 1px solid var(--sand-line); }
 .faq-item { border-bottom: 1px solid var(--sand-line); }
