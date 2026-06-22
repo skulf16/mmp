@@ -19,12 +19,11 @@ export const metadata: Metadata = {
 
 const ldService = {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": "Product",
   "@id": "https://chartern-in-kroatien.de/#charter-service",
   "name": "Katamaran-Charter Miss Moneypenny",
   "description": "Autarker Katamaran-Charter ab Šibenik, Kroatien: Lagoon 400 S2 mit Wassermacher und Solaranlage für 2–8 Personen. Bareboat oder mit Skipper.",
-  "provider": { "@id": "https://chartern-in-kroatien.de/#organization" },
-  "areaServed": { "@type": "Place", "name": "Adria, Kroatien" },
+  "brand": { "@type": "Brand", "name": "Bond Yachting" },
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "EUR",
@@ -32,6 +31,8 @@ const ldService = {
     "highPrice": "5200",
     "offerCount": "1",
     "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@id": "https://chartern-in-kroatien.de/#organization" },
   },
   "aggregateRating": {
     "@type": "AggregateRating",
