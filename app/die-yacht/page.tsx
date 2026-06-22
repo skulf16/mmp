@@ -32,7 +32,7 @@ const ldProduct = {
     "lowPrice": "2500",
     "highPrice": "5200",
     "priceValidUntil": "2026-12-31",
-    "seller": { "@id": "https://bond-yachting.de/#organization" },
+    "seller": { "@id": "https://chartern-in-kroatien.de/#organization" },
     "availability": "https://schema.org/InStock",
   },
 };

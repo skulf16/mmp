@@ -20,9 +20,9 @@ const ldContactPage = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Kontakt – Miss Moneypenny Katamaran-Charter",
-  "url": "https://bond-yachting.de/kontakt",
+  "url": "https://chartern-in-kroatien.de/kontakt",
   "description": "Anfrage zur Verfügbarkeit der Miss Moneypenny – Antwort innerhalb von 24 Stunden.",
-  "publisher": { "@id": "https://bond-yachting.de/#organization" },
+  "publisher": { "@id": "https://chartern-in-kroatien.de/#organization" },
 };
 
 export default function KontaktPage() {

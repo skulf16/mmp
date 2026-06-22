@@ -6,8 +6,8 @@ export const site = {
   tagline: "Autarkes Segelabenteuer auf der Adria",
   yacht: "Lagoon 400 S2",
   base: "Marina Mandalina, Šibenik · Kroatien",
-  email: "ahoi@bond-yachting.de",
-  phone: "+49 (0) 30 1234 567",
+  email: "anfrage@chartern-in-kroatien.de",
+  phone: "0176 81125761",
   responseTime: "Antwort innerhalb von 24 Stunden",
 };
 

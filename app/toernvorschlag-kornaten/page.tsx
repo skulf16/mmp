@@ -21,7 +21,7 @@ const ldTrip = {
   "@type": "TouristTrip",
   "name": "1 Woche Kornaten ab Šibenik – Törnvorschlag mit Miss Moneypenny",
   "description": "Tag-für-Tag-Route durch den Kornati-Nationalpark: 7 Tage, ca. 130 Seemeilen, einsame Ankerbuchten – autark unterwegs mit Wassermacher und Solaranlage.",
-  "url": "https://bond-yachting.de/toernvorschlag-kornaten",
+  "url": "https://chartern-in-kroatien.de/toernvorschlag-kornaten",
   "touristType": "Segler",
   "itinerary": [
     { "@type": "City", "name": "Šibenik – Prvić Luka" },
@@ -32,7 +32,7 @@ const ldTrip = {
     { "@type": "City", "name": "Murter – Žirje oder Kaprije" },
     { "@type": "City", "name": "Žirje – Šibenik" },
   ],
-  "provider": { "@id": "https://bond-yachting.de/#organization" },
+  "provider": { "@id": "https://chartern-in-kroatien.de/#organization" },
 };
 
 const days = [

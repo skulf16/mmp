@@ -21,7 +21,7 @@ const ldDestination = {
   "@type": "TouristDestination",
   "name": "Kornati-Nationalpark – Segeln in den Kornaten",
   "description": "89 Inseln, steile Klippen und kristallklares Wasser – der Kornati-Nationalpark ist das nautische Paradies der Adria.",
-  "url": "https://bond-yachting.de/segeln-in-den-kornaten",
+  "url": "https://chartern-in-kroatien.de/segeln-in-den-kornaten",
   "touristType": "Segler und Natur-Enthusiasten",
   "containedInPlace": { "@type": "Country", "name": "Kroatien" },
 };

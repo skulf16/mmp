@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const base = "https://bond-yachting.de";
+const base = "https://chartern-in-kroatien.de";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const high: string[] = [

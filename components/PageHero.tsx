@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 
-const BASE_URL = "https://bond-yachting.de";
+const BASE_URL = "https://chartern-in-kroatien.de";
 
 type Crumb = { label: string; href?: string };
 

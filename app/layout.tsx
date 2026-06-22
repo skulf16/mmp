@@ -9,11 +9,11 @@ const ldOrganization = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://bond-yachting.de/#organization",
+      "@id": "https://chartern-in-kroatien.de/#organization",
       "name": "Bond Yachting",
-      "url": "https://bond-yachting.de",
-      "email": "ahoi@bond-yachting.de",
-      "telephone": "+4930123456",
+      "url": "https://chartern-in-kroatien.de",
+      "email": "anfrage@chartern-in-kroatien.de",
+      "telephone": "+4917681125761",
       "description": "Autarker Katamaran-Charter ab Šibenik – Lagoon 400 S2 Miss Moneypenny mit Wassermacher und Solaranlage für tagelange Freiheit in den Kornaten.",
       "address": {
         "@type": "PostalAddress",
@@ -23,15 +23,15 @@ const ldOrganization = {
       },
       "logo": {
         "@type": "ImageObject",
-        "url": "https://bond-yachting.de/images/logo-dark.png",
+        "url": "https://chartern-in-kroatien.de/images/logo-dark.png",
       },
     },
     {
       "@type": "WebSite",
-      "@id": "https://bond-yachting.de/#website",
+      "@id": "https://chartern-in-kroatien.de/#website",
       "name": "Miss Moneypenny – Bond Yachting",
-      "url": "https://bond-yachting.de",
-      "publisher": { "@id": "https://bond-yachting.de/#organization" },
+      "url": "https://chartern-in-kroatien.de",
+      "publisher": { "@id": "https://chartern-in-kroatien.de/#organization" },
     },
   ],
 };
@@ -52,7 +52,7 @@ const mulish = Mulish({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bond-yachting.de"),
+  metadataBase: new URL("https://chartern-in-kroatien.de"),
   title: {
     default: "Katamaran mieten ab Šibenik | Miss Moneypenny (Lagoon 400)",
     template: "%s | Miss Moneypenny – Bond Yachting",

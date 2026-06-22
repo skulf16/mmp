@@ -21,7 +21,7 @@ const ldPlace = {
   "@type": "TouristDestination",
   "name": "Segelrevier Šibenik",
   "description": "Šibenik ist der ideale Ausgangspunkt für Katamaran-Törns in Kroatien: geschützte Gewässer, UNESCO-Kathedrale, Krka-Nationalpark und die Kornaten in Reichweite.",
-  "url": "https://bond-yachting.de/revier-sibenik",
+  "url": "https://chartern-in-kroatien.de/revier-sibenik",
   "touristType": "Segler und Wassersport-Begeisterte",
   "containedInPlace": {
     "@type": "Country",
