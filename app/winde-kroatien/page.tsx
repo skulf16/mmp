@@ -232,6 +232,25 @@ export default function WindeKroatienPage() {
         </div>
       </section>
 
+      {/* Vertiefende Seiten */}
+      <section className="section surface-sand">
+        <div className="container container-narrow center">
+          <Reveal as="div">
+            <span className="eyebrow centered">Mehr erfahren</span>
+            <h2 className="section-title" style={{ textAlign: "center", marginTop: "1rem" }}>Jeden Wind im Detail.</h2>
+            <p className="lede" style={{ textAlign: "center", marginTop: "1.2rem" }}>
+              Maestral, Bora und Jugo haben jeweils eigene Seiten mit Entstehung,
+              Steckbrief, Warnsignalen und Seglertipps.
+            </p>
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: "2rem", flexWrap: "wrap" }}>
+              <Link href="/maestral-wind" className="btn btn-primary">Maestral</Link>
+              <Link href="/bora-kroatien" className="btn btn-outline">Bora</Link>
+              <Link href="/jugo-wind-kroatien" className="btn btn-outline">Jugo</Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Link zu Charter */}
       <section className="section">
         <div className="container container-narrow center">

@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/staedte-dalmatiens",
     "/toernvorschlag-kornaten",
     "/segeltorn-kroatien-skipper",
+    "/maestral-wind",
+    "/bora-kroatien",
+    "/jugo-wind-kroatien",
   ];
 
   const low: string[] = [
