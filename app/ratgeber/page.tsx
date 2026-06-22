@@ -7,29 +7,25 @@ import CtaBand from "@/components/CtaBand";
 export const metadata: Metadata = {
   title: "Ratgeber Segeln Kroatien – Tipps, Routen & Wetter | Miss Moneypenny",
   description:
-    "Alles für den Segeltörn in Kroatien: Törnplanung, Winde der Adria, Ankerplätze, Packlisten und Bordtipps – gesammelt aus der Praxis auf der Miss Moneypenny.",
+    "Alles für den Segeltörn in Kroatien: Törnplanung, die Winde der Adria und alles an Bord – von Packliste bis Bordküche. Praxiswissen von der Miss Moneypenny.",
   openGraph: {
-    title: "Ratgeber Segeln Kroatien – Törnplanung, Winde & Ankerplätze",
-    description: "Praktische Ratgeber für den Kroatien-Törn: Winde, Routen, Packlisten und Bordtipps aus erster Hand.",
+    title: "Ratgeber Segeln Kroatien – Törnplanung, Winde & Bordwissen",
+    description: "Praktische Ratgeber für den Kroatien-Törn: Planung, Winde, Packlisten und Bordtipps aus erster Hand.",
     images: [{ url: "/images/yacht-sailing-genoa.jpg", width: 1200, height: 630, alt: "Katamaran unter vollen Segeln auf der Adria" }],
   },
 };
 
 type Artikel = { href: string; title: string; text: string };
 
-const kategorien: { label: string; artikel: Artikel[] }[] = [
+const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
   {
     label: "Törnplanung",
+    slug: "toernplanung",
     artikel: [
       {
         href: "/segeltorn-planen",
         title: "Segeltörn planen",
         text: "In 8 Schritten von der Idee zum gebuchten Törn – Crew, Reisezeit, Route, Skipper und Packliste.",
-      },
-      {
-        href: "/toernvorschlag-kornaten",
-        title: "Törnvorschlag: 1 Woche Kornaten",
-        text: "Tag-für-Tag-Route durch die Kornaten ab Šibenik – 130 Seemeilen, einsame Buchten, konkrete Tagesziele.",
       },
       {
         href: "/kroatien-inselhopping",
@@ -45,6 +41,7 @@ const kategorien: { label: string; artikel: Artikel[] }[] = [
   },
   {
     label: "Wetter & Winde",
+    slug: "wetter-und-winde",
     artikel: [
       {
         href: "/winde-kroatien",
@@ -69,33 +66,14 @@ const kategorien: { label: string; artikel: Artikel[] }[] = [
     ],
   },
   {
-    label: "Revier & Ankerplätze",
+    label: "An Bord & Proviant",
+    slug: "an-bord",
     artikel: [
-      {
-        href: "/revier-sibenik",
-        title: "Segelrevier Šibenik",
-        text: "Warum Šibenik der ideale Ausgangshafen ist – UNESCO-Altstadt, Kornaten und Krka-Nationalpark.",
-      },
-      {
-        href: "/segeln-in-den-kornaten",
-        title: "Segeln in den Kornaten",
-        text: "89 Inseln, steile Klippen, einsame Bojenfelder – alles zum Nationalpark-Törn vor der Haustür.",
-      },
-      {
-        href: "/staedte-dalmatiens",
-        title: "Städte Dalmatiens",
-        text: "Trogir, Split, Hvar und Korčula direkt per Katamaran entdecken – Hafenstädte auf dem Törn.",
-      },
       {
         href: "/ankern-kroatien",
         title: "Ankern in Kroatien",
         text: "Regeln, Nationalpark-Vignetten, Bojenpflicht und die schönsten Ankerbuchten ab Šibenik.",
       },
-    ],
-  },
-  {
-    label: "An Bord",
-    artikel: [
       {
         href: "/packliste-segeln-kroatien",
         title: "Packliste Segeln Kroatien",
@@ -128,16 +106,6 @@ const kategorien: { label: string; artikel: Artikel[] }[] = [
       },
     ],
   },
-  {
-    label: "Charter & Boot",
-    artikel: [
-      {
-        href: "/katamaran-mieten-kroatien",
-        title: "Katamaran mieten Kroatien",
-        text: "Worauf es beim Katamaran-Charter ankommt – Revier, Ausstattung und was die Miss Moneypenny bietet.",
-      },
-    ],
-  },
 ];
 
 export default function RatgeberPage() {
@@ -146,14 +114,14 @@ export default function RatgeberPage() {
       <PageHero
         eyebrow="Ratgeber"
         title="Alles für den Kroatien-Törn"
-        lede="Praktische Guides aus der Bordrealität: Törnplanung, Winde, Ankerplätze, Packlisten und Bordküche – gesammelt auf der Miss Moneypenny."
+        lede="Praktische Guides aus der Bordrealität – von der Törnplanung über die Winde der Adria bis zur Bordküche. Konkrete Reviere und Routen findet ihr im Menü unter „Reviere“."
         image="/images/yacht-sailing-genoa.jpg"
         imageAlt="Katamaran unter vollen Segeln auf der Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }]}
       />
 
       {kategorien.map((kat) => (
-        <section key={kat.label} className="section">
+        <section key={kat.slug} id={kat.slug} className="section" style={{ scrollMarginTop: "96px" }}>
           <div className="container">
             <Reveal as="div">
               <span className="eyebrow">{kat.label}</span>

@@ -33,13 +33,12 @@ export const nav: NavItem[] = [
   },
   {
     label: "Ratgeber",
-    href: "/segeltorn-planen",
+    href: "/ratgeber",
     sub: [
-      { label: "Segeltörn planen", href: "/segeltorn-planen", desc: "Der komplette Planungs-Guide" },
-      { label: "Packliste", href: "/segeltorn-packliste", desc: "Was wirklich an Bord gehört" },
-      { label: "Winde & Reisezeit", href: "/winde-kroatien", desc: "Maestral, Bora & beste Monate" },
-      { label: "Segeln mit Skipper", href: "/segeltorn-kroatien-skipper", desc: "Ohne Führerschein entspannt segeln" },
-      { label: "Apps für Segler", href: "/apps-fuer-segler", desc: "Navigation, Wetter & Ankerwache" },
+      { label: "Törnplanung", href: "/ratgeber#toernplanung", desc: "Planen, Inselhopping & Skipper" },
+      { label: "Wetter & Winde", href: "/ratgeber#wetter-und-winde", desc: "Maestral, Bora, Jugo & Reisezeit" },
+      { label: "An Bord & Proviant", href: "/ratgeber#an-bord", desc: "Packen, Einkauf, Apps & Sicherheit" },
+      { label: "Alle Ratgeber ansehen", href: "/ratgeber", desc: "Komplette Übersicht" },
     ],
   },
   { label: "Kontakt", href: "/kontakt" },
