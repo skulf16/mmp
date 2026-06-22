@@ -80,7 +80,7 @@ export default function MaestralWindPage() {
         lede="Jeden Tag pünktlich, selten zu stark, nie langweilig: Der Maestral ist der Nordwestwind, der Kroatien zu einem der schönsten Segelreviere der Welt macht."
         image="/images/yacht-sailing-side.jpg"
         imageAlt="Katamaran segelt bei Maestral auf der Adria"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Maestral Wind" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Maestral Wind" }]}
       />
 
       {/* Entstehung */}

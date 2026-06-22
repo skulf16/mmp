@@ -105,7 +105,7 @@ export default function BoraKroatienPage() {
         lede="Kalt, böig und unberechenbar: Die Bora stürzt über das Dinarische Gebirge und trifft die Adria mit Böen bis 10 Beaufort. Was Segler wissen müssen."
         image="/images/yacht-sailing-coast.jpg"
         imageAlt="Dramatische Küstenlandschaft bei aufkommender Bora in Kroatien"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Bora Kroatien" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Bora Kroatien" }]}
       />
 
       {/* Entstehung */}

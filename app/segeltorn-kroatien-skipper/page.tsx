@@ -116,7 +116,7 @@ export default function SegeltornKroatienSkipperPage() {
         lede="Entspannt segeln, nichts verpassen, sicher ankommen – mit einem erfahrenen Skipper an Bord genießt ihr die Adria ohne Stress."
         image="/images/yacht-helm.jpg"
         imageAlt="Skipper am Steuer der Miss Moneypenny auf der Adria"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Mit Skipper" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Mit Skipper" }]}
       />
 
       {/* Intro */}

@@ -57,7 +57,7 @@ export default function WindeKroatienPage() {
         lede="Maestral, Bora und Jugo: Die drei wichtigsten Winde der Adria – was sie bedeuten, wann sie wehen und was ihr daraus macht."
         image="/images/yacht-sailing-genoa.jpg"
         imageAlt="Katamaran unter vollen Segeln auf der Adria"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Winde Kroatien" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Winde Kroatien" }]}
       />
 
       {/* Maestral */}

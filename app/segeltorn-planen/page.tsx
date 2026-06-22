@@ -87,7 +87,7 @@ export default function SegeltornPlanenPage() {
         lede="In acht Schritten von der Idee zum Törn: Was ihr wann klären müsst, welche Entscheidungen zuerst fallen und wo die Miss Moneypenny ins Bild kommt."
         image="/images/croatia-map.png"
         imageAlt="Karte der dalmatinischen Küste – Segelrevier ab Šibenik"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Segeltörn planen" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Segeltörn planen" }]}
       />
 
       {/* Schritte */}

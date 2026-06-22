@@ -113,7 +113,7 @@ export default function AppsFuerSeglerPage() {
         lede="Navigation, Wetter, Reviere und Ankerwache: Diese fünf Apps gehören auf jedes Smartphone an Bord – kostenlos bzw. mit kostenloser Basisversion und direkt zum Download."
         image="/images/yacht-nav-station.jpg"
         imageAlt="Navigationsstation mit Kartenplotter an Bord der Miss Moneypenny"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Apps für Segler" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Apps für Segler" }]}
       />
 
       {/* Intro */}

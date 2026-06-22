@@ -70,7 +70,7 @@ export default function KroatienInselhoppingPage() {
         lede="Von Insel zu Insel, Bucht zu Bucht: Kroatien ist das perfekte Revier für Inselhopping – und ein Katamaran ist das perfekte Boot dafür."
         image="/images/yacht-aerial-village.jpg"
         imageAlt="Katamaran ankert vor einer dalmatinischen Insel"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Inselhopping Kroatien" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Inselhopping Kroatien" }]}
       />
 
       {/* Warum Katamaran */}

@@ -82,7 +82,7 @@ export default function JugoWindKroatienPage() {
         lede="Warm, feucht und hartnäckig: Der Jugo kommt langsam, bleibt tagelang und baut Seegang auf, der noch rollt, wenn der Wind längst nachgelassen hat."
         image="/images/yacht-sailing-coast.jpg"
         imageAlt="Segelboot an der kroatischen Küste bei aufkommendem Jugo"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Jugo Wind Kroatien" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Jugo Wind Kroatien" }]}
       />
 
       {/* Entstehung & Charakter */}

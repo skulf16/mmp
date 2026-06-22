@@ -75,7 +75,7 @@ export default function AnkernKroatienPage() {
         lede="Die schönsten Momente eines Törns passieren vor Anker. Was ihr über Regeln, Nationalparks und die besten Buchten ab Šibenik wissen müsst."
         image="/images/yacht-hero-anchored.jpg"
         imageAlt="Miss Moneypenny liegt ruhig vor Anker in einer dalmatinischen Bucht"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber" }, { label: "Ankern Kroatien" }]}
+        crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Ankern Kroatien" }]}
       />
 
       {/* Intro */}

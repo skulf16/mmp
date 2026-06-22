@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const medium: string[] = [
+    "/ratgeber",
     "/revier-sibenik",
     "/segeln-in-den-kornaten",
     "/katamaran-mieten-kroatien",
