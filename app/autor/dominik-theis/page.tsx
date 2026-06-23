@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Dominik Theis – Co-Eigner & Autor der Miss Moneypenny",
     description:
       "Segler seit dem 14. Lebensjahr, Co-Eigner der Lagoon 400 S2 und Autor der Kroatien-Ratgeber – mehrere Wochen im Jahr auf der Adria unterwegs.",
-    images: [{ url: author.image, width: 1200, height: 630, alt: "Dominik Theis an Bord der Miss Moneypenny" }],
+    images: [{ url: author.image, width: 640, height: 642, alt: "Dominik Theis an Bord der Miss Moneypenny" }],
   },
 };
 
