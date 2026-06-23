@@ -19,18 +19,13 @@ export default function ImpressumPage() {
 
       <section className="section">
         <div className="container container-narrow prose">
-          <p style={{ padding: "1rem 1.2rem", background: "var(--paper-2)", borderLeft: "3px solid var(--brass)", borderRadius: "2px" }}>
-            <strong>Hinweis:</strong> Dies ist ein Platzhalter. Bitte ergänzen Sie die
-            rechtlich verpflichtenden Angaben gemäß § 5 DDG / § 18 MStV mit Ihren echten Daten.
-          </p>
-
-          <h2 style={{ marginTop: "2.5rem" }}>Angaben gemäß § 5 DDG</h2>
+          <h2 style={{ marginTop: "0" }}>Angaben gemäß § 5 DDG</h2>
           <p>
-            {site.brand}<br />
-            [Inhaber / Geschäftsführung]<br />
-            [Straße und Hausnummer]<br />
-            [PLZ Ort]<br />
-            [Land]
+            Bond Yachting d.o.o.<br />
+            Geschäftsführer: Michael Steffens<br />
+            Trtarska 75A<br />
+            22000 Šibenik<br />
+            Kroatien
           </p>
 
           <h2 style={{ marginTop: "2rem" }}>Kontakt</h2>
@@ -39,11 +34,23 @@ export default function ImpressumPage() {
             E-Mail: <a href={`mailto:${site.email}`} style={{ color: "var(--brass-600)" }}>{site.email}</a>
           </p>
 
+          <h2 style={{ marginTop: "2rem" }}>Registereintrag</h2>
+          <p>
+            Eingetragen beim Handelsgericht in Zadar, ständiger Sitz in Šibenik<br />
+            Registernummer (MBS): 110110643<br />
+            OIB: 45138215944
+          </p>
+
           <h2 style={{ marginTop: "2rem" }}>Umsatzsteuer-ID</h2>
-          <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: [USt-IdNr.]</p>
+          <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: HR451388215944</p>
 
           <h2 style={{ marginTop: "2rem" }}>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-          <p>[Name]<br />[Anschrift]</p>
+          <p>
+            Michael Steffens<br />
+            Bond Yachting d.o.o.<br />
+            Trtarska 75A<br />
+            22000 Šibenik, Kroatien
+          </p>
 
           <h2 style={{ marginTop: "2rem" }}>Streitschlichtung</h2>
           <p>
