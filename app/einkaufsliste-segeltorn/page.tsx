@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { Icon } from "@/components/Icons";
@@ -124,6 +125,8 @@ export default function EinkaufslisteSegeltornPage() {
         imageAlt="Gut ausgestattete Pantry der Miss Moneypenny mit Lebensmitteln"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/segeltorn-planen" }, { label: "Einkaufsliste" }]}
       />
+
+      <ArticleByline slug="einkaufsliste-segeltorn" />
 
       {/* Intro */}
       <section className="section">

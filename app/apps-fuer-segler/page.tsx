@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { Icon, Apple, GooglePlay, type IconName } from "@/components/Icons";
@@ -115,6 +116,8 @@ export default function AppsFuerSeglerPage() {
         imageAlt="Navigationsstation mit Kartenplotter an Bord der Miss Moneypenny"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Apps für Segler" }]}
       />
+
+      <ArticleByline slug="apps-fuer-segler" />
 
       {/* Intro */}
       <section className="section">

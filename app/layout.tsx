@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { author } from "@/lib/site";
 
 const ldOrganization = {
   "@context": "https://schema.org",
@@ -26,6 +27,30 @@ const ldOrganization = {
         "@type": "ImageObject",
         "url": "https://chartern-in-kroatien.de/images/logo-dark.png",
       },
+      "founder": { "@id": author.id },
+      "knowsAbout": [
+        "Katamaran-Charter in Kroatien",
+        "Yachtcharter ab Šibenik",
+        "Segeln in den Kornaten",
+        "Winde der Adria (Maestral, Bora, Jugo)",
+        "Törnplanung und Routen in Dalmatien",
+        "Autarkes Segeln mit Wassermacher und Solaranlage",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": author.id,
+      "name": author.name,
+      "jobTitle": author.jobTitle,
+      "description": author.bio,
+      "sameAs": author.sameAs,
+      "worksFor": { "@id": "https://chartern-in-kroatien.de/#organization" },
+      "knowsAbout": [
+        "Segeln in Kroatien",
+        "Katamaran-Törns in den Kornaten",
+        "Winde der Adria",
+        "Törnplanung ab Šibenik",
+      ],
     },
     {
       "@type": "WebSite",

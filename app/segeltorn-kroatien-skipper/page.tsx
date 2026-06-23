@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { Icon } from "@/components/Icons";
@@ -118,6 +119,8 @@ export default function SegeltornKroatienSkipperPage() {
         imageAlt="Skipper am Steuer der Miss Moneypenny auf der Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Mit Skipper" }]}
       />
+
+      <ArticleByline slug="segeltorn-kroatien-skipper" />
 
       {/* Intro */}
       <section className="section">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { Icon } from "@/components/Icons";
@@ -77,6 +78,8 @@ export default function AnkernKroatienPage() {
         imageAlt="Miss Moneypenny liegt ruhig vor Anker in einer dalmatinischen Bucht"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Ankern Kroatien" }]}
       />
+
+      <ArticleByline slug="ankern-kroatien" />
 
       {/* Intro */}
       <section className="section">

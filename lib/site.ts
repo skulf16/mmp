@@ -11,6 +11,124 @@ export const site = {
   responseTime: "Antwort innerhalb von 24 Stunden",
 };
 
+export const siteUrl = "https://chartern-in-kroatien.de";
+
+/* ---- Autor der Ratgeber (Experten-Entität für E-E-A-T & KI-Zitate) ---- */
+export const author = {
+  /** Voller Name – für die Schema-Entität (Person), damit KI sie sauber identifiziert */
+  name: "Dominik Theis",
+  /** Anzeigename in der sichtbaren Byline */
+  displayName: "Dominik",
+  jobTitle: "Co-Eigner der Miss Moneypenny",
+  /** Stabile @id der Person im JSON-LD @graph (siehe app/layout.tsx) */
+  id: `${siteUrl}/#person-dominik-theis`,
+  bio:
+    "Dominik Theis ist Co-Eigner der Miss Moneypenny und segelt die kroatische Adria " +
+    "seit seinem 14. Lebensjahr – zunächst als Chartergast, heute als Eigner. Mehrere " +
+    "Wochen im Jahr ist er in den Kornaten und rund um Šibenik unterwegs.",
+  bioShort:
+    "Segler seit dem 14. Lebensjahr – mehrere Wochen im Jahr auf der kroatischen Adria.",
+  sameAs: [
+    "https://www.instagram.com/dominik.theis",
+    "https://www.linkedin.com/in/dominik-theis-33417514a/",
+  ],
+};
+
+/* ---- Einheitliches Veröffentlichungsdatum aller Ratgeber ---- */
+export const articlePublished = "2026-06-01";
+export const articlePublishedLabel = "Juni 2026";
+
+/* ---- Ratgeber-Registry: Single Source of Truth für Article-Schema & Byline ---- */
+export const ratgeberArticles: Record<
+  string,
+  { headline: string; description: string; image: string }
+> = {
+  "segeltorn-planen": {
+    headline: "Segeltörn planen – Schritt-für-Schritt-Anleitung für Kroatien",
+    description:
+      "In 8 Schritten von der Idee zum Törn: Crew, Reisezeit, Route, Skipper, Packliste und Buchung für Kroatien.",
+    image: "/images/croatia-map.png",
+  },
+  "kroatien-inselhopping": {
+    headline: "Kroatien Inselhopping mit dem Katamaran ab Šibenik",
+    description:
+      "Inselhopping Kroatien per Katamaran: Kornaten, Hvar, Brač und mehr – warum der Katamaran das ideale Boot ist und wie eine Woche ab Šibenik aussieht.",
+    image: "/images/region-kornati-aerial.png",
+  },
+  "segeltorn-kroatien-skipper": {
+    headline: "Segeltörn Kroatien mit Skipper – ohne Segelschein ab Šibenik",
+    description:
+      "Mit erfahrenem Skipper an Bord der Miss Moneypenny: Kroatien segeln ohne Führerschein – entspannt, sicher, unvergesslich.",
+    image: "/images/yacht-helm.jpg",
+  },
+  "winde-kroatien": {
+    headline: "Winde Kroatien: Maestral, Bora & Jugo erklärt",
+    description:
+      "Maestral, Bora und Jugo erklärt: Stärke, Richtung, beste Reisezeit zum Segeln in Kroatien.",
+    image: "/images/yacht-sailing-genoa.jpg",
+  },
+  "maestral-wind": {
+    headline: "Maestral Wind – Entstehung, Rhythmus & Seglertipps für Kroatien",
+    description:
+      "Der Maestral ist der verlässlichste Segelwind der Adria. Alles über Entstehung, Stärke, Tagesrhythmus und wie ihr ihn auf dem Törn nutzt.",
+    image: "/images/yacht-sailing-side.jpg",
+  },
+  "bora-kroatien": {
+    headline: "Bora in Kroatien – Entstehung, Stärke & sichere Häfen für Segler",
+    description:
+      "Die Bora ist Kroatiens wildester Wind. Was hinter dem katabatischen Fallwind steckt, wann er kommt und wie Segler sicher durch ihn kommen.",
+    image: "/images/yacht-sailing-coast.jpg",
+  },
+  "jugo-wind-kroatien": {
+    headline: "Jugo Wind Kroatien – Warnsignale, Dauer & Seglertipps",
+    description:
+      "Jugo in Kroatien erklärt: Entstehung, typische Dauer, Warnsignale und was Segler beim Südwind der Adria beachten müssen.",
+    image: "/images/yacht-sailing-coast.jpg",
+  },
+  "ankern-kroatien": {
+    headline: "Ankern in Kroatien – Regeln, beste Buchten & Tipps",
+    description:
+      "Ankern in Kroatien: Nationalpark-Regeln, Bojenpflicht und die schönsten Ankerbuchten ab Šibenik.",
+    image: "/images/yacht-hero-anchored.jpg",
+  },
+  "packliste-segeln-kroatien": {
+    headline: "Packliste Segeln Kroatien – was ihr speziell für das Revier braucht",
+    description:
+      "Packliste für einen Segeltörn in Kroatien: Nationalpark-Vignette, Dokumente, Währung, Sonnenschutz und alles, was für das Revier um Šibenik besonders wichtig ist.",
+    image: "/images/region-sibenik.png",
+  },
+  "segeltorn-packliste": {
+    headline: "Segeltörn Packliste – was wirklich an Bord gehört",
+    description:
+      "Kleidung, Schuhe, Elektronik, Dokumente – die vollständige Packliste für eine Woche Segelurlaub auf dem Katamaran.",
+    image: "/images/yacht-cabin.jpg",
+  },
+  "einkaufsliste-segeltorn": {
+    headline: "Einkaufsliste Segeltörn – Proviant für eine Woche",
+    description:
+      "Einkaufsliste für einen Segeltörn: Was ihr vor Abfahrt besorgen solltet, was ihr in kroatischen Supermärkten findet und wie ihr Proviant für 8 Personen eine Woche plant.",
+    image: "/images/yacht-galley.jpg",
+  },
+  "speiseplan-segeltorn": {
+    headline: "Speiseplan Segeltörn – 7 Tage Bordküche",
+    description:
+      "Speiseplan für einen Segeltörn: Was kocht man auf einem Katamaran? 7 Tage Menüplanung für die Bordküche – einfach, lecker und mit wenig Aufwand.",
+    image: "/images/yacht-galley.jpg",
+  },
+  "apps-fuer-segler": {
+    headline: "Apps für Segler – die wichtigsten Törn-Apps für Kroatien",
+    description:
+      "Navigation, Wetter, Ankerwache und Bojenreservierung – die besten Apps für den Kroatien-Törn.",
+    image: "/images/yacht-nav-station.jpg",
+  },
+  "sicherheitseinweisung-yacht": {
+    headline: "Sicherheitseinweisung Yacht – Checkliste für die Crew",
+    description:
+      "Checkliste Sicherheitseinweisung Yacht: Was beim Check-in erklärt wird, was jede Person an Bord wissen muss – Rettungsmittel, Notfall, Manöver und Brandschutz.",
+    image: "/images/yacht-nav-station.jpg",
+  },
+};
+
 export type NavItem = {
   label: string;
   href: string;

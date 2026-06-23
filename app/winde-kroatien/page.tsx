@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import { Icon, Wind } from "@/components/Icons";
@@ -59,6 +60,8 @@ export default function WindeKroatienPage() {
         imageAlt="Katamaran unter vollen Segeln auf der Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Winde Kroatien" }]}
       />
+
+      <ArticleByline slug="winde-kroatien" />
 
       {/* Maestral */}
       <section className="section">
