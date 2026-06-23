@@ -82,22 +82,27 @@ export default function AutorDominikPage() {
                 <p>
                   Auf dem Wasser bin ich seit meinem 14. Lebensjahr unterwegs –
                   zuerst als Chartergast, später mit eigener Crew und schließlich
-                  als Co-Eigner der Miss Moneypenny, einer Lagoon 400 S2, die heute
-                  in der Marina Mandalina bei Šibenik liegt.
+                  als einer von drei Eignern der Miss Moneypenny, einer Lagoon 400 S2,
+                  die heute in der Marina Mandalina bei Šibenik liegt.
                 </p>
                 <p>
-                  Mehrere Wochen im Jahr segle ich die kroatischen Gewässer: durch
-                  die Kornaten, entlang der dalmatinischen Küste und auf den
-                  Hausrevieren rund um Šibenik. Mein Wissen über die Adria stammt
-                  aus genau diesen Seemeilen – aus Tagen, an denen der Maestral
-                  pünktlich auffrischt, aus Nächten vor Anker in einsamen Buchten
-                  und aus der Routine, einen Katamaran über Solar und Wassermacher
-                  tagelang autark zu segeln.
+                  Mehrere Wochen im Jahr segeln wir drei Eigner gemeinsam an der
+                  kroatischen Küste – mein Vater, Micha und ich. Mal geht es hoch in
+                  die Kornaten bis in die Telašćica, zuletzt sind wir bis nach
+                  Dubrovnik hinuntergefahren.
+                </p>
+                <p>
+                  Im Laufe der Jahre haben wir dabei vieles erlebt: plötzliche
+                  Wetterumschwünge, eine Bora, die über Nacht in die Ankerbucht
+                  fällt – aber auch unzählige unvergessliche Abende voller Gespräche
+                  und Spaß an Bord. Genau aus diesen Trips stammt mein Wissen. Als
+                  Dreiergespann haben wir jeden Tag aufs Neue die Törnplanung
+                  abgestimmt: nach Wind, Wetter und den Wünschen der Crew.
                 </p>
                 <p>
                   Die Ratgeber auf dieser Seite gebe ich aus dieser Praxis weiter –
-                  damit euer Törn in Kroatien genauso entspannt wird, wie ich ihn
-                  selbst jedes Jahr erlebe.
+                  damit euer Törn in Kroatien genauso entspannt wird, wie wir ihn
+                  selbst jedes Jahr erleben.
                 </p>
               </Reveal>
 
