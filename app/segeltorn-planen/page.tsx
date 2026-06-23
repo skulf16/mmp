@@ -79,9 +79,28 @@ const ratgeber = [
   { titel: "Ankern in Kroatien", beschr: "Regeln & beste Buchten", href: "/ankern-kroatien", icon: "waves" as const },
 ];
 
+const ldHowTo = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Segeltörn in Kroatien planen",
+  description:
+    "In acht Schritten von der Idee zum gebuchten Katamaran-Törn ab Šibenik: Crew, Reisezeit, Route, Skipper, Packliste, Proviant, Nationalpark-Vignette und Buchung.",
+  image: "https://chartern-in-kroatien.de/images/croatia-map.png",
+  step: schritte.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    name: s.titel,
+    text: s.text,
+  })),
+};
+
 export default function SegeltornPlanenPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldHowTo) }}
+      />
       <PageHero
         eyebrow="Planung"
         title="Segeltörn planen"
