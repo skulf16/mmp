@@ -89,6 +89,23 @@ const checkliste = [
 export default function SicherheitseinweisungYachtPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": checkliste.map((kat) => ({
+              "@type": "ItemList",
+              name: kat.kategorie,
+              itemListElement: kat.punkte.map((punkt, idx) => ({
+                "@type": "ListItem",
+                position: idx + 1,
+                name: punkt,
+              })),
+            })),
+          }),
+        }}
+      />
       <PageHero
         eyebrow="Sicherheit"
         title="Sicherheitseinweisung Yacht"

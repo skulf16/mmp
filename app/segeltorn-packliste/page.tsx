@@ -87,6 +87,23 @@ const kategorien = [
 export default function SegeltornPacklistePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": kategorien.map((kat) => ({
+              "@type": "ItemList",
+              name: kat.titel,
+              itemListElement: kat.items.map((item, idx) => ({
+                "@type": "ListItem",
+                position: idx + 1,
+                name: item,
+              })),
+            })),
+          }),
+        }}
+      />
       <PageHero
         eyebrow="Packliste"
         title="Segeltörn Packliste"
