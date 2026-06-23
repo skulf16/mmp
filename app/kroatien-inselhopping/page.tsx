@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kroatien Inselhopping mit Katamaran ab Šibenik | Miss Moneypenny",
@@ -62,6 +65,38 @@ const warum = [
   },
 ];
 
+const facts = [
+  "Beim Inselhopping ab Šibenik sind die Kornaten in rund 2 Stunden erreichbar, Brač in etwa 4, Hvar in rund 5 und Korčula in etwa 7 Stunden.",
+  "Mit nur 1,30 m Tiefgang fährt der Katamaran näher an die flachen Strände heran als viele Einrumpfyachten.",
+  "Weil ein Katamaran kaum krängt, sind die langen Passagen zwischen den Inseln auch für weniger seeerfahrene Crews angenehm.",
+  "Wassermacher und Solaranlage machen die Miss Moneypenny autark – die Crew wechselt die Insel, wann sie will, nicht wann sie muss.",
+  "Vier Doppelkabinen mit eigenem Bad geben nach langen Seetagen jeder Zweiergruppe ihre Privatsphäre.",
+  "Eine Woche reicht gut für eine Richtung: die Nordroute durch die Kornaten oder die Südroute über Trogir, Hvar, Brač und Split.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie viele Inseln schafft man beim Inselhopping in einer Woche?",
+    a: "Eine Woche reicht gut für eine Richtung. Entweder die Nordroute mit Schwerpunkt Kornaten (viel Anker, wenig Hafen) oder die Südroute über Trogir, Hvar, Brač/Milna und Split. Eine Kombination aus drei Nächten Kornaten und anschließend Hvar ist knapp, aber möglich.",
+  },
+  {
+    q: "Wie weit sind die Inseln ab Šibenik entfernt?",
+    a: "Die Kornaten erreicht ihr in rund zwei Stunden, Brač in etwa vier, Hvar in rund fünf und Korčula in etwa sieben Stunden – je nach Route, Wind und Tempo.",
+  },
+  {
+    q: "Warum eignet sich ein Katamaran besonders fürs Inselhopping?",
+    a: "Er krängt kaum, was die langen Passagen zwischen den Inseln komfortabel macht, und sein flacher Tiefgang von 1,30 m öffnet flache Buchten. Dazu kommen die Autarkie durch Wassermacher und Solar sowie vier Kabinen mit eigenem Bad – Privatsphäre für jede Zweiergruppe.",
+  },
+  {
+    q: "Natur oder Städte – welche Route passt zu uns?",
+    a: "Die Nordroute durch die Kornaten ist für alle, die Einsamkeit und Nationalpark suchen: wenig Hafen, viel Anker. Die Südroute über Trogir, Hvar, Brač und Split ist für Crews, die neben dem Wasser auch Architektur, Restaurants und Nightlife wollen.",
+  },
+  {
+    q: "Muss man in der Hochsaison früh einen Liegeplatz ansteuern?",
+    a: "Auf den beliebten Inseln ja. In Hvar etwa ist der Liegeplatz in der Hochsaison rar – wer dort übernachten will, sollte früh ankommen. Alternativ bleibt ihr autark vor Anker in einer der ruhigeren Buchten.",
+  },
+];
+
 export default function KroatienInselhoppingPage() {
   return (
     <>
@@ -75,6 +110,13 @@ export default function KroatienInselhoppingPage() {
       />
 
       <ArticleByline slug="kroatien-inselhopping" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Warum Katamaran */}
       <section className="section">
@@ -204,6 +246,19 @@ export default function KroatienInselhoppingPage() {
                 </div>
               </Link>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Inselhopping – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/kroatien-inselhopping#faq`} />
           </div>
         </div>
       </section>

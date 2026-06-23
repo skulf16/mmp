@@ -40,98 +40,140 @@ export const author = {
   ],
 };
 
-/* ---- Einheitliches Veröffentlichungsdatum aller Ratgeber ---- */
-export const articlePublished = "2026-06-01";
-export const articlePublishedLabel = "Juni 2026";
+/* ---- Datums-Default (Fallback, falls ein Artikel kein eigenes Datum trägt) ---- */
+export const articlePublished = "2026-06-20";
+
+/** Formatiert ein ISO-Datum (YYYY-MM-DD) als deutsches „Monat Jahr" für die Byline. */
+export function formatArticleDate(iso: string): string {
+  return new Date(`${iso}T12:00:00`).toLocaleDateString("de-DE", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export type RatgeberArticle = {
+  headline: string;
+  description: string;
+  image: string;
+  /** Erstveröffentlichung (ISO, YYYY-MM-DD) – speist datePublished */
+  published: string;
+  /** Letzte inhaltliche Überarbeitung (ISO, YYYY-MM-DD) – speist dateModified */
+  updated: string;
+};
 
 /* ---- Ratgeber-Registry: Single Source of Truth für Article-Schema & Byline ---- */
-export const ratgeberArticles: Record<
-  string,
-  { headline: string; description: string; image: string }
-> = {
+export const ratgeberArticles: Record<string, RatgeberArticle> = {
   "segeltorn-planen": {
     headline: "Segeltörn planen – Schritt-für-Schritt-Anleitung für Kroatien",
     description:
       "In 8 Schritten von der Idee zum Törn: Crew, Reisezeit, Route, Skipper, Packliste und Buchung für Kroatien.",
     image: "/images/croatia-map.png",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "kroatien-inselhopping": {
     headline: "Kroatien Inselhopping mit dem Katamaran ab Šibenik",
     description:
       "Inselhopping Kroatien per Katamaran: Kornaten, Hvar, Brač und mehr – warum der Katamaran das ideale Boot ist und wie eine Woche ab Šibenik aussieht.",
     image: "/images/region-kornati-aerial.png",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "segeltorn-kroatien-skipper": {
     headline: "Segeltörn Kroatien mit Skipper – ohne Segelschein ab Šibenik",
     description:
       "Mit erfahrenem Skipper an Bord der Miss Moneypenny: Kroatien segeln ohne Führerschein – entspannt, sicher, unvergesslich.",
     image: "/images/yacht-helm.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "winde-kroatien": {
     headline: "Winde Kroatien: Maestral, Bora & Jugo erklärt",
     description:
       "Maestral, Bora und Jugo erklärt: Stärke, Richtung, beste Reisezeit zum Segeln in Kroatien.",
     image: "/images/yacht-sailing-genoa.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "maestral-wind": {
     headline: "Maestral Wind – Entstehung, Rhythmus & Seglertipps für Kroatien",
     description:
       "Der Maestral ist der verlässlichste Segelwind der Adria. Alles über Entstehung, Stärke, Tagesrhythmus und wie ihr ihn auf dem Törn nutzt.",
     image: "/images/yacht-sailing-side.jpg",
+    published: "2026-06-22",
+    updated: "2026-06-23",
   },
   "bora-kroatien": {
     headline: "Bora in Kroatien – Entstehung, Stärke & sichere Häfen für Segler",
     description:
       "Die Bora ist Kroatiens wildester Wind. Was hinter dem katabatischen Fallwind steckt, wann er kommt und wie Segler sicher durch ihn kommen.",
     image: "/images/yacht-sailing-coast.jpg",
+    published: "2026-06-22",
+    updated: "2026-06-23",
   },
   "jugo-wind-kroatien": {
     headline: "Jugo Wind Kroatien – Warnsignale, Dauer & Seglertipps",
     description:
       "Jugo in Kroatien erklärt: Entstehung, typische Dauer, Warnsignale und was Segler beim Südwind der Adria beachten müssen.",
     image: "/images/yacht-sailing-coast.jpg",
+    published: "2026-06-22",
+    updated: "2026-06-23",
   },
   "ankern-kroatien": {
     headline: "Ankern in Kroatien – Regeln, beste Buchten & Tipps",
     description:
       "Ankern in Kroatien: Nationalpark-Regeln, Bojenpflicht und die schönsten Ankerbuchten ab Šibenik.",
     image: "/images/yacht-hero-anchored.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "packliste-segeln-kroatien": {
     headline: "Packliste Segeln Kroatien – was ihr speziell für das Revier braucht",
     description:
       "Packliste für einen Segeltörn in Kroatien: Nationalpark-Vignette, Dokumente, Währung, Sonnenschutz und alles, was für das Revier um Šibenik besonders wichtig ist.",
     image: "/images/region-sibenik.png",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "segeltorn-packliste": {
     headline: "Segeltörn Packliste – was wirklich an Bord gehört",
     description:
       "Kleidung, Schuhe, Elektronik, Dokumente – die vollständige Packliste für eine Woche Segelurlaub auf dem Katamaran.",
     image: "/images/yacht-cabin.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "einkaufsliste-segeltorn": {
     headline: "Einkaufsliste Segeltörn – Proviant für eine Woche",
     description:
       "Einkaufsliste für einen Segeltörn: Was ihr vor Abfahrt besorgen solltet, was ihr in kroatischen Supermärkten findet und wie ihr Proviant für 8 Personen eine Woche plant.",
     image: "/images/yacht-galley.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "speiseplan-segeltorn": {
     headline: "Speiseplan Segeltörn – 7 Tage Bordküche",
     description:
       "Speiseplan für einen Segeltörn: Was kocht man auf einem Katamaran? 7 Tage Menüplanung für die Bordküche – einfach, lecker und mit wenig Aufwand.",
     image: "/images/yacht-galley.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
   "apps-fuer-segler": {
     headline: "Apps für Segler – die wichtigsten Törn-Apps für Kroatien",
     description:
       "Navigation, Wetter, Ankerwache und Bojenreservierung – die besten Apps für den Kroatien-Törn.",
     image: "/images/yacht-nav-station.jpg",
+    published: "2026-06-22",
+    updated: "2026-06-23",
   },
   "sicherheitseinweisung-yacht": {
     headline: "Sicherheitseinweisung Yacht – Checkliste für die Crew",
     description:
       "Checkliste Sicherheitseinweisung Yacht: Was beim Check-in erklärt wird, was jede Person an Bord wissen muss – Rettungsmittel, Notfall, Manöver und Brandschutz.",
     image: "/images/yacht-nav-station.jpg",
+    published: "2026-06-20",
+    updated: "2026-06-23",
   },
 };
 

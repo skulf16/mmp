@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, Wind } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Winde Kroatien: Maestral & Bora erklärt | Miss Moneypenny",
@@ -49,6 +52,38 @@ const tipps = [
   },
 ];
 
+const facts = [
+  "Der Maestral ist ein thermischer Nordwestwind und der verlässlichste Segelwind der kroatischen Adria.",
+  "Der Maestral baut sich typischerweise zwischen 10 und 12 Uhr auf, erreicht nachmittags 3–5 Beaufort und legt sich nach Sonnenuntergang wieder.",
+  "Die Bora ist ein katabatischer Fallwind aus Nordost, der in Böen 8–10 Beaufort erreichen kann und im Winter häufiger weht als im Sommer.",
+  "Der Jugo kommt aus Süd-Südost, kündigt sich langsam an und baut über die Zeit langen Seegang auf.",
+  "Hauptsaison zum Segeln in Kroatien ist Mai bis Oktober, mit verlässlichem Maestral von Mai bis September.",
+  "Geschützte Buchten wie Telašćica und der Šibeniker Kanal bieten bei Bora guten Schutz.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Was ist der Maestral und warum ist er für Segler so angenehm?",
+    a: "Der Maestral ist der thermische Nordwestwind, der in der Hauptsaison von Mai bis September das Segeln an der kroatischen Küste prägt. Er entsteht, weil sich das Festland tagsüber stärker aufheizt als das Meer und kühlere Meeresluft nachzieht. Er baut sich zwischen 10 und 12 Uhr auf und erreicht nachmittags verlässliche 3–5 Beaufort.",
+  },
+  {
+    q: "Wie gefährlich ist die Bora und wie kündigt sie sich an?",
+    a: "Die Bora ist ein katabatischer Fallwind aus Nordost, der in Böen 8–10 Beaufort und in Extremfällen noch mehr erreicht. Im Sommer tritt sie seltener und schwächer auf als im Winter und kündigt sich durch Schleierwolken über den Bergkämmen an, setzt dann aber oft plötzlich ein. In geschützten Buchten wie Telašćica oder dem Šibeniker Kanal lässt sie sich gut aussitzen.",
+  },
+  {
+    q: "Was unterscheidet den Jugo von Maestral und Bora?",
+    a: "Der Jugo kommt aus Süd-Südost und trägt warme, feuchte Luft über das Mittelmeer. Anders als die plötzliche Bora kündigt er sich langsam an – durch fallendes Barometer, zunehmende Bewölkung und Dünung aus Süden. Einmal etabliert, kann er tagelang anhalten und baut langen Seegang auf.",
+  },
+  {
+    q: "Wann ist die beste Reisezeit zum Segeln in Kroatien?",
+    a: "Die Hauptsaison liegt zwischen Mai und Oktober. Mai, Juni und September verbinden milde bis warme Temperaturen mit verlässlichem Maestral und ruhigeren Buchten, während Juli und August heiß und stark frequentiert sind. Verlässlichen Maestral mit 3–5 Beaufort am Nachmittag gibt es vor allem von Mai bis September.",
+  },
+  {
+    q: "Wie behalte ich das Wetter auf dem Törn im Blick?",
+    a: "Vor einer Bora warnt der Wetterdienst oft mit Fallböen-Warnungen für die Küstenregionen; die Meteo-Alarm-App und Windy liefern zuverlässige kurzfristige Vorhersagen. Beim Jugo hilft ein Blick aufs Barometer: Fällt es, solltet ihr früh reagieren und einen Hafen mit guter Abdeckung aus Süden suchen.",
+  },
+];
+
 export default function WindeKroatienPage() {
   return (
     <>
@@ -62,6 +97,13 @@ export default function WindeKroatienPage() {
       />
 
       <ArticleByline slug="winde-kroatien" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Maestral */}
       <section className="section">
@@ -269,6 +311,19 @@ export default function WindeKroatienPage() {
               <Link href="/charter-infos" className="btn btn-outline">Charter-Infos</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Winde der Adria – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/winde-kroatien#faq`} />
+          </div>
         </div>
       </section>
 

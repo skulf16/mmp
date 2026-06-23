@@ -589,6 +589,29 @@ p { color: var(--text-soft); }
 .surface-dark .feature-min, .surface-navy .feature-min { border-color: rgba(255,255,255,0.12); }
 .surface-dark .feature-min .ic, .surface-navy .feature-min .ic { color: var(--brass-300); }
 
+/* ---------------- "Auf einen Blick"-Faktenbox -------------- */
+.factbox {
+  border: 1px solid var(--sand-line);
+  border-left: 3px solid var(--brass);
+  border-radius: var(--radius, 4px);
+  background: var(--paper-2);
+  padding: 1.7rem 1.9rem;
+}
+.factbox > .eyebrow { margin-bottom: 1rem; }
+.factbox ul { list-style: none; display: grid; gap: 0.7rem; }
+.factbox li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--navy-900);
+}
+.factbox li svg { flex: none; color: var(--brass-600); margin-top: 3px; }
+.surface-dark .factbox, .surface-navy .factbox { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); }
+.surface-dark .factbox li, .surface-navy .factbox li { color: var(--on-dark); }
+.surface-dark .factbox li svg, .surface-navy .factbox li svg { color: var(--brass-300); }
+
 /* ---------------- Spec table ------------------------------- */
 .specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.14); }
 .spec-row {

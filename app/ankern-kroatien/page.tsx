@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ankern in Kroatien – Regeln, Buchten & Tipps | Miss Moneypenny",
@@ -67,6 +70,38 @@ const regeln = [
   },
 ];
 
+const facts = [
+  "In den Kornaten und im Naturpark Telašćica gilt Bojenpflicht – freies Ankern ist dort zum Schutz des Meeresbodens nicht erlaubt.",
+  "Für die Einfahrt in den Kornati-Nationalpark und den Naturpark Telašćica wird eine Vignette benötigt, erhältlich online oder an Ranger-Stationen.",
+  "Außerhalb der Nationalparks – etwa um Murter, Kaprije und Žirje – ist freies Ankern erlaubt, solange Fahrrinnen und Mindestabstände eingehalten werden.",
+  "Telašćica auf Dugi Otok ist eine rund 7 km lange, geschützte Bucht, die auch bei Bora sicheren Ankergrund bietet.",
+  "Innerhalb der Nationalparks ist das Einleiten von Schwarzwasser verboten; die Miss Moneypenny fährt dafür mit geschlossenem Tank.",
+  "In Juli und August sind die Bojenfelder der Kornaten oft schon nachmittags ausgebucht – frühes Ansteuern vor 13 Uhr und Reservierung per App helfen.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Darf man in Kroatien frei ankern?",
+    a: "Außerhalb der Nationalparks ist freies Ankern erlaubt, solange ihr Fahrrinnen und Mindestabstände einhaltet – etwa um Murter, Kaprije und Žirje. In den Kornaten und im Naturpark Telašćica gilt dagegen meist Bojenpflicht, um den Meeresboden zu schützen.",
+  },
+  {
+    q: "Braucht man für den Kornati-Nationalpark eine Vignette?",
+    a: "Ja. Für die Einfahrt in den Kornati-Nationalpark und den Naturpark Telašćica ist eine Vignette nötig. Ihr bekommt sie online oder an den Ranger-Stationen vor Ort.",
+  },
+  {
+    q: "Welche Ankerbuchten ab Šibenik lohnen sich am meisten?",
+    a: "Zu den schönsten zählen die Bucht Lavsa und Telašćica in den Kornaten sowie – außerhalb des Nationalparks und frei beankerbar – die Bucht Hramina auf Murter und die ruhigen Buchten von Kaprije und Žirje.",
+  },
+  {
+    q: "Muss ich Bojen vorab reservieren?",
+    a: "In der Hauptsaison ja: In Juli und August sind die Bojenfelder in den Kornaten und in Telašćica oft schon nachmittags ausgebucht. Über die Apps mySea und Anchor lässt sich reservieren – am besten morgens, sobald das Tagesziel feststeht, oder die Bucht vor 13 Uhr ansteuern.",
+  },
+  {
+    q: "Was gilt beim Ankern für Abwasser und Umwelt?",
+    a: "Innerhalb der Nationalparks ist das Einleiten von Schwarzwasser absolut verboten. Die Toilette darf dort nur mit geschlossenem Tank betrieben werden – die Miss Moneypenny ist entsprechend ausgestattet.",
+  },
+];
+
 export default function AnkernKroatienPage() {
   return (
     <>
@@ -80,6 +115,13 @@ export default function AnkernKroatienPage() {
       />
 
       <ArticleByline slug="ankern-kroatien" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -216,6 +258,19 @@ export default function AnkernKroatienPage() {
               <Link href="/kontakt" className="btn btn-outline">Verfügbarkeit anfragen</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Ankern in Kroatien – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/ankern-kroatien#faq`} />
+          </div>
         </div>
       </section>
 

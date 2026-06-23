@@ -2,8 +2,7 @@ import Link from "next/link";
 import {
   siteUrl,
   author,
-  articlePublished,
-  articlePublishedLabel,
+  formatArticleDate,
   ratgeberArticles,
 } from "@/lib/site";
 
@@ -29,8 +28,8 @@ export default function ArticleByline({ slug }: { slug: string }) {
     description: article.description,
     image: `${siteUrl}${article.image}`,
     inLanguage: "de-DE",
-    datePublished: articlePublished,
-    dateModified: articlePublished,
+    datePublished: article.published,
+    dateModified: article.updated,
     author: { "@id": author.id },
     publisher: { "@id": `${siteUrl}/#organization` },
   };
@@ -94,7 +93,7 @@ export default function ArticleByline({ slug }: { slug: string }) {
                 lineHeight: 1.5,
               }}
             >
-              Aktualisiert {articlePublishedLabel} · {author.bioShort}
+              Aktualisiert {formatArticleDate(article.updated)} · {author.bioShort}
             </div>
           </div>
 

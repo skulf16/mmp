@@ -4,7 +4,9 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Bora in Kroatien: Entstehung, Stärke & sichere Häfen | Miss Moneypenny",
@@ -94,6 +96,29 @@ const bord = [
     icon: "sun" as const,
     title: "Schnelles Abklingen nutzen",
     text: "Die Bora klingt oft schnell ab. Wenn die Wettervorhersage das Ende ankündigt und Böen nachlassen, ist der Seegang binnen 3–6 Stunden oft deutlich beruhigt. Flexibel auf das Ende warten.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Wie stark wird die Bora in Kroatien?",
+    a: "Die Bora erreicht in Böen 4 bis über 10 Beaufort. Am stärksten ist sie im Winter, wenn Spitzen von 10 Beaufort keine Seltenheit sind; im Sommer ist sie seltener und schwächer, kann aber kurzfristig 6 bis 7 Beaufort erreichen. Charakteristisch ist die Böigkeit: Zwischen zwei Böen kann das Meer täuschend ruhig wirken.",
+  },
+  {
+    q: "Wie kündigt sich eine Bora an?",
+    a: "Typische Warnsignale sind linsenförmige Wolkenmützen auf den Kämmen des Dinarischen Gebirges, eine plötzlich kristallklare Sicht (das „Bora-Licht“), ein schnell steigendes Barometer sowie ein Kälteschub aus Nordost. Binnen Minuten kann der Wind von 2 auf 8 Beaufort springen.",
+  },
+  {
+    q: "Welche Häfen und Buchten sind bei Bora sicher?",
+    a: "Als besonders bora-sicher gelten die weitläufige Bucht Telašćica auf Dugi Otok, der Šibeniker Kanal mit Marina Mandalina und der Stadtmarina sowie die Häfen Primošten und Rogoznica südlich von Šibenik. Generell schützen Buchten auf der Süd- und Westseite von Inseln; die Nordostseiten sind zu meiden.",
+  },
+  {
+    q: "Wie lange dauert eine Bora?",
+    a: "Eine Bora hält typischerweise 1 bis 5 Tage an. Sie klingt oft schnell ab: Lassen die Böen nach, beruhigt sich der kurze, steile Seegang meist schon innerhalb von 3 bis 6 Stunden – anders als beim Jugo, dessen Seegang noch stundenlang rollt.",
+  },
+  {
+    q: "Was sollten Segler bei angekündigter Bora tun?",
+    a: "Frühzeitig einen Liegeplatz sichern, denn bei starker Bora suchen alle gleichzeitig Schutz. Im Hafen die Festmacher prüfen und verdoppeln. Bei Böen über 7 bis 8 Beaufort nicht auf offene See auslaufen – und das schnelle Abklingen nach dem Ende für die Weiterfahrt nutzen.",
   },
 ];
 
@@ -285,6 +310,19 @@ export default function BoraKroatienPage() {
                 </article>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Bora – kurz beantwortet.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/bora-kroatien#faq`} />
           </div>
         </div>
       </section>

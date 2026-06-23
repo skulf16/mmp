@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Jugo Wind Kroatien: Entstehung, Warnsignale & Tipps | Miss Moneypenny",
@@ -74,6 +77,38 @@ const tipps = [
   },
 ];
 
+const facts = [
+  "Der Jugo ist ein warmer, feuchter Südwind aus Süd-Südost, der die warme, staubbeladene Luft über einen langen Weg aus Nordafrika auf die Adria trägt.",
+  "Anders als die Bora baut sich der Jugo langsam auf und kündigt sich an: In der Regel bleiben 12 bis 24 Stunden Zeit, um eine sichere Position zu finden.",
+  "Ein ausgewachsener Jugo dauert typischerweise 1 bis 5 Tage und weht meist mit 3 bis 7 Beaufort.",
+  "Das erste sichere Warnzeichen ist eine lange Dünung aus Süden, gefolgt von langsam fallendem Barometer und diesiger, milchiger Luft.",
+  "Der Jugo trifft die gesamte Adria gleichzeitig und baut langen Seegang auf, der noch rollt, wenn der Wind längst nachgelassen hat.",
+  "Beim Jugo bieten Häfen und Ankerbuchten mit Schutz aus Norden oder Westen Sicherheit – etwa Šibenik-Stadt, Tribunj oder die Nordseiten größerer Inseln.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie erkenne ich, dass ein Jugo aufzieht?",
+    a: "Das erste sichere Zeichen ist eine lange, ruhige Dünung aus Süden, noch bevor der Wind spürbar wird. Dazu fällt das Barometer langsam, aber kontinuierlich, und die Luft wird diesig und milchig, weil der Jugo Staub und Feuchtigkeit aus Nordafrika mitträgt.",
+  },
+  {
+    q: "Wie lange dauert ein Jugo?",
+    a: "Ein ausgewachsener Jugo hält meist 1 bis 5 Tage an. Weil er sich über 12 bis 24 Stunden langsam aufbaut, bleibt euch genug Zeit zum Reagieren, wenn ihr die Warnsignale kennt.",
+  },
+  {
+    q: "Wo finde ich beim Jugo einen sicheren Hafen?",
+    a: "Alle Buchten, die nach Süden offen liegen, sind beim Jugo gefährdet. Sucht euch stattdessen Häfen oder Ankerbuchten mit Schutz aus Norden oder Westen – zum Beispiel Šibenik-Stadt, Tribunj oder die Nordseite größerer Inseln.",
+  },
+  {
+    q: "Warum bleibt der Seegang nach dem Jugo so lange?",
+    a: "Der Jugo baut über Stunden und Tage hinweg langen Seegang auf, weil die Luft einen weiten Weg über offenes Wasser zurücklegt. Dieser Seegang kann noch rund 24 Stunden weiterrollen, nachdem der Wind schon deutlich nachgelassen hat – das macht Hafenabfahrten nach einem Jugo manchmal unangenehmer als erwartet.",
+  },
+  {
+    q: "Wie unterscheidet sich der Jugo von der Bora?",
+    a: "Die Bora ist ein kalter, böiger Fallwind, der plötzlich aus dem Gebirge stürzt, während der Jugo warm, feucht und gleichmäßig aus dem Meer kommt. Die Bora trifft vor allem die Nordseiten der Inseln, der Jugo dagegen die ganze Adria gleichzeitig – einer Insel im Rücken entkommt man ihm nicht.",
+  },
+];
+
 export default function JugoWindKroatienPage() {
   return (
     <>
@@ -87,6 +122,13 @@ export default function JugoWindKroatienPage() {
       />
 
       <ArticleByline slug="jugo-wind-kroatien" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Entstehung & Charakter */}
       <section className="section">
@@ -270,6 +312,19 @@ export default function JugoWindKroatienPage() {
               <Link href="/charter-infos" className="btn btn-outline">Charter-Infos</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Jugo – kurz beantwortet.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/jugo-wind-kroatien#faq`} />
+          </div>
         </div>
       </section>
 

@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Segeltörn planen – Die komplette Schritt-für-Schritt-Anleitung | Miss Moneypenny",
@@ -94,6 +97,38 @@ const ldHowTo = {
   })),
 };
 
+const facts = [
+  "Die Miss Moneypenny ist ein Lagoon-400-S2-Katamaran mit vier Doppelkabinen und Platz für bis zu acht Gäste.",
+  "Heimathafen ist die Marina Mandalina in Šibenik, Kroatien – von dort startet der Törn in die Kornaten oder entlang der dalmatinischen Küste.",
+  "Die Segelsaison reicht von Mai bis Oktober; Juni und September gelten als die goldenen Monate mit warmem Wetter, verlässlichem Maestral und weniger Betrieb.",
+  "Wer keinen Segelschein hat, kann einen Skipper dazubuchen – er kostet rund 1.000 bis 1.500 € pro Woche zusätzlich.",
+  "Eine Woche reicht gut für eine Richtung: entweder die Natur der Kornaten oder die Städte Dalmatiens.",
+  "Auf eine Anfrage mit Wunschtermin und Crewgröße meldet sich das Team innerhalb von 24 Stunden.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wann sollten wir unseren Törn buchen?",
+    a: "Die Saison läuft von Mai bis Oktober. Für die Hochsaison im Juli und August solltet ihr früh buchen, da diese Wochen schnell vergeben sind. Juni und September sind ruhiger und lassen sich entspannter planen.",
+  },
+  {
+    q: "Brauchen wir einen Segelschein für die Miss Moneypenny?",
+    a: "Nein, nicht zwingend. Auch ohne Segelschein ist die Miss Moneypenny buchbar – ihr nehmt dann einfach einen Skipper an Bord. Mit Skipper ist der Katamaran auch für Einsteiger geeignet; er kostet etwa 1.000 bis 1.500 € pro Woche extra.",
+  },
+  {
+    q: "Wohin kann eine Woche Törn ab Šibenik führen?",
+    a: "Eine Woche reicht gut für eine Richtung. Ihr könnt euch entweder auf die Natur der Kornaten konzentrieren oder die Städte Dalmatiens ansteuern. Als Ausgangspunkt für die Planung dient unser Törnvorschlag für die Kornaten.",
+  },
+  {
+    q: "Was müssen wir für die Kornaten an Vorbereitung erledigen?",
+    a: "Für die Kornaten und Telašćica wird eine Nationalpark-Vignette benötigt. Diese bestellt ihr am besten frühzeitig online vor – das ist einfacher, als sie vor Ort zu kaufen.",
+  },
+  {
+    q: "Wie läuft die Verpflegung an Bord?",
+    a: "Den Großeinkauf erledigt ihr am Anreisetag in Šibenik. Frischen Fisch und Brot bekommt ihr unterwegs täglich im Hafen. Plant ruhig zwei bis drei Konoba-Abende ein – das gehört zum Erlebnis dazu.",
+  },
+];
+
 export default function SegeltornPlanenPage() {
   return (
     <>
@@ -111,6 +146,13 @@ export default function SegeltornPlanenPage() {
       />
 
       <ArticleByline slug="segeltorn-planen" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Schritte */}
       <section className="section">
@@ -175,6 +217,19 @@ export default function SegeltornPlanenPage() {
               <Link href="/charter-infos" className="btn btn-ghost">Charter-Infos & Preise</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Törnplanung – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/segeltorn-planen#faq`} />
+          </div>
         </div>
       </section>
 

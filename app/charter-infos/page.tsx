@@ -3,9 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import Faq from "@/components/Faq";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight, Check } from "@/components/Icons";
-import { extras, faqs, included, steps } from "@/lib/site";
+import { extras, faqs, included, steps, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Katamaran-Charter ab Šibenik – Preise & Leistungen",
@@ -16,61 +16,6 @@ export const metadata: Metadata = {
     description: "Saison-Richtwerte, inklusive Leistungen, Skipper & Extras für den Katamaran-Törn ab Šibenik.",
     images: [{ url: "/images/yacht-cockpit-dining.jpg", width: 1200, height: 630, alt: "Gedeckter Tisch im Cockpit der Miss Moneypenny" }],
   },
-};
-
-const ldFaq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Brauche ich einen Segelschein?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Für das Bareboat-Chartern in Kroatien benötigen Sie einen anerkannten Sportbootführerschein (mind. SBF See bzw. eine gleichwertige Lizenz) sowie ein Funkzeugnis (SRC/UBI). Wer ohne Schein oder ohne Erfahrung unterwegs sein möchte, bucht einfach einen erfahrenen Skipper dazu.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Was macht den Wassermacher und die Solaranlage so wertvoll?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Beides zusammen macht die Miss Moneypenny weitgehend autark. Der Wassermacher erzeugt Süßwasser aus Meerwasser, die Solaranlage lädt die Batterien. So können Sie tagelang in einsamen Buchten ankern, ohne Wasser bunkern oder eine Marina ansteuern zu müssen – mehr Freiheit, weniger Kosten.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Für wie viele Personen ist die Yacht geeignet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Die Lagoon 400 S2 bietet vier Doppelkabinen plus zwei Bugkabinen und damit komfortabel Platz für bis zu acht Gäste zum Übernachten. Jede der vier Doppelkabinen verfügt über ein eigenes Bad.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Wo startet der Törn?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Heimathafen ist die Marina Mandalina in Šibenik. Von dort erreichen Sie die Kornaten, den Krka-Nationalpark und die schönsten Städte Dalmatiens bequem innerhalb einer Woche.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Ist ein Katamaran auch für Einsteiger geeignet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sehr gut sogar. Katamarane liegen stabil im Wasser und krängen kaum – das senkt das Risiko von Seekrankheit deutlich und sorgt für ein entspanntes Raumgefühl. Mit Skipper an Bord ist der Einstieg besonders einfach.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Wann ist die beste Reisezeit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Die Hauptsaison von Mai bis September bietet warmes Wetter und verlässlichen Maestral (3–5 Beaufort) am Nachmittag. Juni und September verbinden angenehme Temperaturen mit etwas mehr Ruhe in den Buchten.",
-      },
-    },
-  ],
 };
 
 const prices = [
@@ -103,10 +48,6 @@ const prices = [
 export default function CharterInfosPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldFaq) }}
-      />
       <PageHero
         eyebrow="Charter-Infos"
         title="Transparent chartern, entspannt segeln."
@@ -237,7 +178,7 @@ export default function CharterInfosPage() {
             <h2 className="section-title">Gut zu wissen.</h2>
           </Reveal>
           <Reveal as="div" style={{ marginTop: "2.5rem" }}>
-            <Faq items={faqs} />
+            <FaqSection items={faqs} id={`${siteUrl}/charter-infos#faq`} />
           </Reveal>
         </div>
       </section>

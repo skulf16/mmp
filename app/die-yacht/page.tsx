@@ -4,8 +4,10 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 import Gallery, { type GalleryImage } from "@/components/Gallery";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight, Droplet, Sun } from "@/components/Icons";
-import { cabins, equipment, specs } from "@/lib/site";
+import { cabins, equipment, specs, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Lagoon 400 S2 mieten – autarker Katamaran | Miss Moneypenny",
@@ -21,11 +23,22 @@ export const metadata: Metadata = {
 const ldProduct = {
   "@context": "https://schema.org",
   "@type": "Product",
+  "@id": `${siteUrl}/die-yacht#product`,
   "name": "Lagoon 400 S2 Miss Moneypenny – Katamaran-Charter ab Šibenik",
   "description": "Lagoon 400 S2 Katamaran, Baujahr 2016, mit Wassermacher (60 l/h), Solaranlage, Teakdeck, 4 Doppelkabinen mit eigenem Bad + 2 Bugkabinen. Ab Marina Mandalina, Šibenik.",
+  "category": "Segelkatamaran / Yachtcharter",
   "brand": { "@type": "Brand", "name": "Lagoon Catamarans" },
   "manufacturer": { "@type": "Organization", "name": "Lagoon Catamarans" },
   "model": "Lagoon 400 S2",
+  "productionDate": "2016",
+  "image": `${siteUrl}/images/yacht-sailing-coast.jpg`,
+  // Harte technische Daten als strukturierte Eigenschaften – genau das,
+  // was KI-Modelle für "Welcher Katamaran …?"-Antworten extrahieren.
+  "additionalProperty": specs.map((s) => ({
+    "@type": "PropertyValue",
+    "name": s.label,
+    "value": s.value,
+  })),
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "EUR",
@@ -36,6 +49,37 @@ const ldProduct = {
     "availability": "https://schema.org/InStock",
   },
 };
+
+const yachtFacts = [
+  "Die Miss Moneypenny ist ein Segelkatamaran vom Typ Lagoon 400 S2, Baujahr 2016.",
+  "Mit 12 m Länge, 7,25 m Breite und nur 1,30 m Tiefgang erreicht sie auch flache Buchten.",
+  "Vier Doppelkabinen mit eigenem Bad plus zwei Bugkabinen bieten Platz für bis zu 8 Gäste.",
+  "Wassermacher und Solaranlage machen sie weitgehend wasser- und energieautark.",
+  "Heimathafen ist die Marina Mandalina in Šibenik, Kroatien.",
+];
+
+const yachtFaqs = [
+  {
+    q: "Für wie viele Personen ist die Miss Moneypenny ausgelegt?",
+    a: "Die Lagoon 400 S2 bietet vier Doppelkabinen plus zwei Bugkabinen und damit komfortabel Platz für bis zu acht Gäste zum Übernachten (tagsüber bis zu zehn Personen). Jede der vier Doppelkabinen hat ein eigenes Bad, insgesamt vier Nasszellen.",
+  },
+  {
+    q: "Was bedeutet „autark“ bei der Miss Moneypenny?",
+    a: "An Bord erzeugt ein Wassermacher per Umkehrosmose Süßwasser aus Meerwasser, und eine Solaranlage lädt die Batterien lautlos. Dadurch lässt sich tagelang in einsamen Buchten ankern, ohne Wasser bunkern oder eine Marina ansteuern zu müssen.",
+  },
+  {
+    q: "Welchen Tiefgang hat die Lagoon 400 S2?",
+    a: "Der Tiefgang beträgt nur 1,30 Meter. Zusammen mit den zwei Rümpfen erlaubt das, flache Buchten anzulaufen, die für Einrumpfyachten mit tieferem Kiel unzugänglich sind.",
+  },
+  {
+    q: "Ist ein Katamaran auch für Einsteiger und Familien geeignet?",
+    a: "Sehr gut sogar. Ein Katamaran liegt stabil im Wasser und krängt kaum – das senkt das Risiko von Seekrankheit deutlich und schafft ein ruhiges Raumgefühl. Auf Wunsch ist ein erfahrener Skipper an Bord, dann ist kein eigener Segelschein nötig.",
+  },
+  {
+    q: "Wo liegt die Yacht und wo startet der Törn?",
+    a: "Heimathafen ist die Marina Mandalina in Šibenik. Von dort sind die Kornaten, der Krka-Nationalpark und die Städte Dalmatiens bequem innerhalb einer Woche erreichbar.",
+  },
+];
 
 const gallery: GalleryImage[] = [
   { src: "/images/yacht-sailing-coast.jpg", alt: "Miss Moneypenny unter Segeln vor der dalmatinischen Küste", span: "wide" },
@@ -68,6 +112,13 @@ export default function YachtPage() {
         imageAlt="Miss Moneypenny unter vollen Segeln auf der Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Die Yacht" }]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={yachtFacts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -210,6 +261,19 @@ export default function YachtPage() {
           <Reveal as="div">
             <Gallery images={gallery} />
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Gut zu wissen vor dem Törn.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={yachtFaqs} id={`${siteUrl}/die-yacht#faq`} />
+          </div>
         </div>
       </section>
 

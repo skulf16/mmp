@@ -4,7 +4,9 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Segeltörn Kroatien mit Skipper – 7 Tage ab Šibenik | Miss Moneypenny",
@@ -15,45 +17,6 @@ export const metadata: Metadata = {
     description: "Mit erfahrenem Skipper an Bord der Miss Moneypenny: Kroatien segeln ohne Führerschein – entspannt, sicher, unvergesslich.",
     images: [{ url: "/images/yacht-helm.jpg", width: 1200, height: 630, alt: "Skipper am Steuer der Miss Moneypenny auf der Adria" }],
   },
-};
-
-const ldSkipperFaq = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Was kostet ein Skipper?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ein erfahrener Skipper kostet typischerweise 1.000–1.500 € pro Woche zuzüglich Tagegeld (ca. 35–50 €/Tag für Verpflegung). Die Miss Moneypenny nennt euch auf Anfrage aktuelle Konditionen.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Schläft der Skipper auch an Bord?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja – der Skipper übernachtet in einer der Bugkabinen. Die vier Doppelkabinen der Miss Moneypenny bleiben ausschließlich für eure Crew.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Kann ich trotzdem selbst steuern?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Selbstverständlich. Der Skipper übernimmt nur, wenn es nötig oder gewünscht ist. Viele Crews wechseln sich am Steuer ab und nutzen ihn als Lehrer.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "Brauche ich mit Skipper gar keinen Ausweis?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Für Kroatien gilt: Mit einem zertifizierten Skipper an Bord entfällt das Erfordernis eines Sportbootführerscheins für die Charterer. Wir klären das vorab verlässlich mit euch.",
-      },
-    },
-  ],
 };
 
 const vorteile = [
@@ -107,10 +70,6 @@ const faqs = [
 export default function SegeltornKroatienSkipperPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSkipperFaq) }}
-      />
       <PageHero
         eyebrow="Mit Skipper"
         title="Segeltörn Kroatien mit Skipper"
@@ -238,15 +197,8 @@ export default function SegeltornKroatienSkipperPage() {
             <span className="eyebrow">Häufige Fragen</span>
             <h2 className="section-title">Alles zum Skipper-Charter.</h2>
           </Reveal>
-          <div className="faq" style={{ marginTop: "3rem" }}>
-            {faqs.map((f) => (
-              <Reveal key={f.q} as="div" className="faq-item">
-                <div style={{ padding: "1.4rem 0" }}>
-                  <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--navy-900)", marginBottom: "0.6rem" }}>{f.q}</h3>
-                  <p style={{ color: "var(--text-soft)", fontSize: "0.95rem", lineHeight: 1.65 }}>{f.a}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div style={{ marginTop: "3rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/segeltorn-kroatien-skipper#faq`} />
           </div>
           <Reveal as="div" style={{ marginTop: "3rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <Link href="/kontakt" className="btn btn-primary">Skipper-Anfrage stellen</Link>

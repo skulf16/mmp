@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Maestral Wind: Der verlässliche Segelwind der Adria | Miss Moneypenny",
@@ -72,6 +75,38 @@ const routentipps = [
   },
 ];
 
+const facts = [
+  "Der Maestral ist ein thermischer Nordwestwind und gilt als verlässlichster Segelwind der Adria.",
+  "Der Maestral baut sich von Mai bis September fast täglich auf und folgt einem festen Tagesrhythmus: Ruhe am Morgen, Aufbau bis etwa 11 Uhr, Höhepunkt am frühen Nachmittag, Abflauen nach Sonnenuntergang.",
+  "Typischerweise erreicht der Maestral 3 bis 5 Beaufort – an heißen Hochsommertagen auch 5 bis 6 Beaufort.",
+  "Weil der Maestral von der Küste aufs Meer weht, bleibt der Seegang kurz und übersichtlich.",
+  "Sobald sich das Land abends abkühlt, schläft der Maestral ein – Ankerplätze liegen nachts oft spiegelglatt.",
+  "Die Miss Moneypenny, ein Lagoon-400-S2-Katamaran, liegt in der Marina Mandalina bei Šibenik – genau dort, wo der Maestral jeden Sommer zuverlässig aufbaut.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie stark weht der Maestral typischerweise?",
+    a: "Meist erreicht der Maestral 3 bis 5 Beaufort – der Traumbereich für einen Segelkatamaran. An heißen Hochsommertagen kann er auch 5 bis 6 Beaufort erreichen, an bewölkten Tagen mit schwachem Wärmegradienten bleibt er schwach oder bleibt ganz aus.",
+  },
+  {
+    q: "Wann am Tag weht der Maestral?",
+    a: "Der Maestral folgt der Sonne: Am Morgen herrscht Windstille, ab etwa 9 Uhr baut er sich auf, voll entwickelt ist er ab Mittag und erreicht seinen Höhepunkt am frühen Nachmittag. Nach Sonnenuntergang flaut er wieder ab.",
+  },
+  {
+    q: "Wann ist die beste Zeit, um mit dem Maestral zu segeln?",
+    a: "Der Maestral weht von Mai bis September fast täglich. In der Nebensaison wie Mai und September ist er etwas moderater (3–4 Bft) und die Häfen sind leerer, während Juli und August zuverlässigere Winde, aber mehr Verkehr auf dem Wasser bringen.",
+  },
+  {
+    q: "Wie plane ich meinen Törn nach dem Maestral?",
+    a: "Klassisch legt ihr früh am Morgen bei Windstille ab, nehmt mit dem aufbauenden Maestral Kurs auf und steuert früh am Nachmittag die Zielbucht an, bevor es zu lebhaft wird. Da der Wind aus Nordwesten kommt, ist ein Kurs von Nord nach Süd – etwa von Šibenik Richtung Kornaten – angenehmes Halbwindsegeln.",
+  },
+  {
+    q: "Wie unterscheidet sich der Maestral von Bora und Jugo?",
+    a: "Der Maestral ist der angenehmste der drei Hauptwinde: thermisch, tagsüber begrenzt und verlässlich. Die Bora ist ein katabatischer, böiger Fallwind, der ohne viel Vorwarnung mit Sturmstärke einsetzen kann; der Jugo ist warm und ausdauernd und bringt einen langen Seegang, der noch stundenlang nachrollt.",
+  },
+];
+
 export default function MaestralWindPage() {
   return (
     <>
@@ -85,6 +120,13 @@ export default function MaestralWindPage() {
       />
 
       <ArticleByline slug="maestral-wind" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Entstehung */}
       <section className="section">
@@ -277,6 +319,19 @@ export default function MaestralWindPage() {
               <Link href="/charter-infos" className="btn btn-outline">Charter-Infos</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Maestral – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/maestral-wind#faq`} />
+          </div>
         </div>
       </section>
 
