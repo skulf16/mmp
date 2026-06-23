@@ -43,8 +43,16 @@ const ldOrganization = {
       "name": author.name,
       "jobTitle": author.jobTitle,
       "description": author.bio,
+      "url": author.url,
+      "mainEntityOfPage": author.url,
+      "image": `https://chartern-in-kroatien.de${author.image}`,
       "sameAs": author.sameAs,
       "worksFor": { "@id": "https://chartern-in-kroatien.de/#organization" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "license",
+        "name": author.credentialName,
+      },
       "knowsAbout": [
         "Segeln in Kroatien",
         "Katamaran-Törns in den Kornaten",

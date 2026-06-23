@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   siteUrl,
   author,
@@ -79,7 +80,10 @@ export default function ArticleByline({ slug }: { slug: string }) {
 
           <div style={{ minWidth: 0, flex: "1 1 280px" }}>
             <div style={{ color: "var(--navy-900)", lineHeight: 1.35 }}>
-              <span style={{ fontWeight: 700 }}>Von {author.displayName}</span>
+              Von{" "}
+              <Link href={author.page} style={{ fontWeight: 700, color: "var(--navy-900)" }}>
+                {author.displayName}
+              </Link>
               <span style={{ color: "var(--text-soft)" }}> · {author.jobTitle}</span>
             </div>
             <div

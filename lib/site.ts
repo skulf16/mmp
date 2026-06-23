@@ -22,6 +22,12 @@ export const author = {
   jobTitle: "Co-Eigner der Miss Moneypenny",
   /** Stabile @id der Person im JSON-LD @graph (siehe app/layout.tsx) */
   id: `${siteUrl}/#person-dominik-theis`,
+  /** Interner Pfad der kanonischen Autorenseite */
+  page: "/autor/dominik-theis",
+  /** Absolute URL der Autorenseite (für Person.url & mainEntityOfPage) */
+  url: `${siteUrl}/autor/dominik-theis`,
+  image: "/images/dominik-theis.jpg",
+  credentialName: "Sportbootführerschein See (SBF See)",
   bio:
     "Dominik Theis ist Co-Eigner der Miss Moneypenny und segelt die kroatische Adria " +
     "seit seinem 14. Lebensjahr – zunächst als Chartergast, heute als Eigner. Mehrere " +

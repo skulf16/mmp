@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/speiseplan-segeltorn",
     "/sicherheitseinweisung-yacht",
     "/kroatien-inselhopping",
+    "/autor/dominik-theis",
   ];
 
   return [
