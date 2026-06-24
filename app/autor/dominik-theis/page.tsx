@@ -7,7 +7,7 @@ import { Icon } from "@/components/Icons";
 import { author } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Dominik Theis – Co-Eigner & Autor | Miss Moneypenny",
+  title: "Dominik Theis – Co-Eigner & Autor",
   description:
     "Dominik Theis, Co-Eigner der Miss Moneypenny und Segler seit dem 14. Lebensjahr, schreibt die Ratgeber dieser Seite aus eigener Praxis auf der kroatischen Adria.",
   alternates: { canonical: author.url },

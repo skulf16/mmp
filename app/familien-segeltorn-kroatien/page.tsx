@@ -10,7 +10,7 @@ import { Icon, ArrowRight } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Familien-Segeltörn Kroatien: Segeln mit Kindern auf dem Katamaran | Miss Moneypenny",
+  title: "Familien-Segeltörn Kroatien: Segeln mit Kindern auf dem Katamaran",
   description:
     "Familien-Segeltörn in Kroatien: Warum ein Katamaran das ideale Familienboot ist, das familienfreundliche Revier um Šibenik, beste Reisezeit und Tipps fürs Segeln mit Kindern.",
   openGraph: {

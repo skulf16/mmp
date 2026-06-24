@@ -9,7 +9,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Segeltörn Kroatien mit Skipper – 7 Tage ab Šibenik | Miss Moneypenny",
+  title: "Segeltörn Kroatien mit Skipper – 7 Tage ab Šibenik",
   description:
     "Kroatien segeln ohne Segelschein: Mit einem erfahrenen Skipper an Bord der Miss Moneypenny entspannt die Adria genießen – Lagoon 400 S2, 7 Tage ab Šibenik.",
   openGraph: {

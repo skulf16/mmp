@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sicherheitseinweisung Yacht – Checkliste für die Crew | Miss Moneypenny",
+  title: "Sicherheitseinweisung Yacht – Checkliste für die Crew",
   description:
     "Checkliste Sicherheitseinweisung Yacht: Was beim Check-in erklärt wird, was jede Person an Bord wissen muss – Rettungsmittel, Notfall, Manöver und Brandschutz.",
 };

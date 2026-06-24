@@ -9,7 +9,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Bora in Kroatien: Entstehung, Stärke & sichere Häfen | Miss Moneypenny",
+  title: "Bora in Kroatien: Entstehung, Stärke & sichere Häfen",
   description:
     "Bora in Kroatien erklärt: Wie entsteht der Fallwind, wann kommt er, welche Häfen sind sicher? Warnsignale, Stärken bis 10 Bft und was Segler bei Bora tun.",
   openGraph: {

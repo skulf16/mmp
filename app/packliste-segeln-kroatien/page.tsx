@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Packliste Segeln Kroatien – Was ihr speziell braucht | Miss Moneypenny",
+  title: "Packliste Segeln Kroatien – Was ihr speziell braucht",
   description:
     "Packliste für einen Segeltörn in Kroatien: Nationalpark-Vignette, Dokumente, Währung, Sonnenschutz und alles, was für das Revier um Šibenik besonders wichtig ist.",
 };

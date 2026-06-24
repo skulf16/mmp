@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Einkaufsliste Segeltörn – Proviant für eine Woche | Miss Moneypenny",
+  title: "Einkaufsliste Segeltörn – Proviant für eine Woche",
   description:
     "Einkaufsliste für einen Segeltörn: Was ihr vor Abfahrt besorgen solltet, was ihr in kroatischen Supermärkten findet und wie ihr Proviant für 8 Personen eine Woche plant.",
 };

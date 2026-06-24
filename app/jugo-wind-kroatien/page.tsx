@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Jugo Wind Kroatien: Entstehung, Warnsignale & Tipps | Miss Moneypenny",
+  title: "Jugo Wind Kroatien: Entstehung, Warnsignale & Tipps",
   description:
     "Jugo Wind in Kroatien: Wie entsteht er, wann kommt er, wie lange dauert er? Warnsignale, sichere Häfen und Seglertipps für den warmen Südwind auf der Adria.",
   openGraph: {

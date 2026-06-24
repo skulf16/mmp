@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Maestral Wind: Der verlässliche Segelwind der Adria | Miss Moneypenny",
+  title: "Maestral Wind: Der verlässliche Segelwind der Adria",
   description:
     "Maestral Wind erklärt: Entstehung, Tagesrhythmus, typische Stärke und wie Segler diesen nordwestlichen Thermikwind in Kroatien optimal nutzen.",
   openGraph: {

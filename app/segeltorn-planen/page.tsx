@@ -10,7 +10,7 @@ import { Icon, ArrowRight } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Segeltörn planen – Die komplette Schritt-für-Schritt-Anleitung | Miss Moneypenny",
+  title: "Segeltörn planen – Die komplette Schritt-für-Schritt-Anleitung",
   description:
     "Segeltörn planen leicht gemacht: Von der Crew-Zusammenstellung über Reisezeit und Ausrüstung bis zur Buchung – alles, was ihr für einen Kroatien-Törn wissen müsst.",
   openGraph: {

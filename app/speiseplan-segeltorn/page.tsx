@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Speiseplan Segeltörn – 7 Tage Bordküche | Miss Moneypenny",
+  title: "Speiseplan Segeltörn – 7 Tage Bordküche",
   description:
     "Speiseplan für einen Segeltörn: Was kocht man auf einem Katamaran? 7 Tage Menüplanung für die Bordküche – einfach, lecker und mit wenig Aufwand.",
 };

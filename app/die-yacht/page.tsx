@@ -10,7 +10,7 @@ import { Icon, ArrowRight, Droplet, Sun } from "@/components/Icons";
 import { cabins, equipment, specs, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Lagoon 400 S2 mieten – autarker Katamaran | Miss Moneypenny",
+  title: "Lagoon 400 S2 mieten – autarker Katamaran",
   description:
     "Die Miss Moneypenny: Lagoon 400 S2 mit 4+2 Kabinen, Wassermacher & Solar. Alle technischen Daten, Ausstattung und Bilder des autarken Katamarans im Überblick.",
   openGraph: {

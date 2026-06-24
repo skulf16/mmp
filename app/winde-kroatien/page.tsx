@@ -10,7 +10,7 @@ import { Icon, Wind } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Winde Kroatien: Maestral & Bora erklärt | Miss Moneypenny",
+  title: "Winde Kroatien: Maestral & Bora erklärt",
   description:
     "Maestral, Bora und Jugo – die Winde Kroatiens für Segler erklärt: Stärke, Richtung, Jahreszeit und was ihr an Bord der Miss Moneypenny beachten solltet.",
   openGraph: {

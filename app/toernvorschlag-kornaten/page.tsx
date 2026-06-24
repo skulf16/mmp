@@ -9,7 +9,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Törnvorschlag: 1 Woche Kornaten ab Šibenik | Miss Moneypenny",
+  title: "Törnvorschlag: 1 Woche Kornaten ab Šibenik",
   description:
     "Tag-für-Tag-Route durch den Kornati-Nationalpark: Ankerbuchten, Abstände, Konobas und Insider-Tipps für eine Woche Katamaran ab Šibenik – mit der Miss Moneypenny autark unterwegs.",
   openGraph: {

@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Ankern in Kroatien – Regeln, Buchten & Tipps | Miss Moneypenny",
+  title: "Ankern in Kroatien – Regeln, Buchten & Tipps",
   description:
     "Ankern in Kroatien: Was ist erlaubt, was kostet es, welche Buchten sind die schönsten? Regeln für Nationalparks, Bojenpflicht und die besten Ankerspots ab Šibenik.",
   openGraph: {

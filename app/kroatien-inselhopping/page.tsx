@@ -10,7 +10,7 @@ import { Icon, ArrowRight } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Kroatien Inselhopping mit Katamaran ab Šibenik | Miss Moneypenny",
+  title: "Kroatien Inselhopping mit Katamaran ab Šibenik",
   description:
     "Inselhopping Kroatien per Katamaran: Kornaten, Hvar, Brač und mehr – warum der Katamaran das ideale Boot ist und wie eine Woche ab Šibenik aussieht.",
 };

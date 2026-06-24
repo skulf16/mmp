@@ -6,7 +6,7 @@ import { MapPin, Mail, Phone, Calendar } from "@/components/Icons";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Verfügbarkeit anfragen – Miss Moneypenny ab Šibenik",
+  title: "Verfügbarkeit anfragen – Katamaran-Charter ab Šibenik",
   description:
     "Wunschtermin nennen, Angebot erhalten: Fragt die Verfügbarkeit der Miss Moneypenny (Lagoon 400 S2) ab Šibenik an – Antwort innerhalb von 24 Stunden.",
   openGraph: {

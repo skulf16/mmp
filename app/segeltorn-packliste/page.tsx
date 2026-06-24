@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Segeltörn Packliste – Was wirklich an Bord gehört | Miss Moneypenny",
+  title: "Segeltörn Packliste – Was wirklich an Bord gehört",
   description:
     "Die vollständige Segeltörn Packliste: Kleidung, Ausrüstung, Dokumente und Bordleben – was ihr für eine Woche auf dem Katamaran wirklich braucht und was ihr getrost zuhause lasst.",
   openGraph: {

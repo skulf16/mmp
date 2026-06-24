@@ -9,7 +9,7 @@ import { Icon, ArrowRight } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Segelrevier Šibenik & Marina Mandalina | Miss Moneypenny",
+  title: "Segelrevier Šibenik & Marina Mandalina",
   description:
     "Šibenik als Ausgangshafen: geschützte Buchten, Kornaten in 2–3 h, Krka-Nationalpark und UNESCO-Altstadt. Das Segelrevier rund um die Marina Mandalina.",
   openGraph: {

@@ -7,7 +7,7 @@ import { Icon, ArrowRight, Check, Droplet, Sun } from "@/components/Icons";
 import { advantages, heroStats, included, regions, site, testimonials } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Katamaran mieten ab Šibenik | Miss Moneypenny (Lagoon 400)",
+  title: { absolute: "Katamaran mieten ab Šibenik | Miss Moneypenny (Lagoon 400)" },
   description:
     "Autarker Segelkatamaran ab Šibenik: Lagoon 400 S2 mit Wassermacher & Solaranlage. Tagelang frei vor Anker in den Kornaten. Jetzt Verfügbarkeit anfragen.",
   openGraph: {

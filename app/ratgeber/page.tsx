@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
 
 export const metadata: Metadata = {
-  title: "Ratgeber Segeln Kroatien – Tipps, Routen & Wetter | Miss Moneypenny",
+  title: "Ratgeber Segeln Kroatien – Tipps, Routen & Wetter",
   description:
     "Alles für den Segeltörn in Kroatien: Törnplanung, die Winde der Adria und alles an Bord – von Packliste bis Bordküche. Praxiswissen von der Miss Moneypenny.",
   openGraph: {
