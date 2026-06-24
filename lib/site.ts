@@ -63,6 +63,14 @@ export type RatgeberArticle = {
 
 /* ---- Ratgeber-Registry: Single Source of Truth für Article-Schema & Byline ---- */
 export const ratgeberArticles: Record<string, RatgeberArticle> = {
+  "familien-segeltorn-kroatien": {
+    headline: "Familien-Segeltörn Kroatien – Segeln mit Kindern auf dem Katamaran",
+    description:
+      "Familien-Segeltörn in Kroatien: Warum der Katamaran das ideale Familienboot ist, das geschützte Revier um Šibenik, beste Reisezeit und Tipps fürs Segeln mit Kindern.",
+    image: "/images/yacht-swim-platform.jpg",
+    published: "2026-06-24",
+    updated: "2026-06-24",
+  },
   "segeltorn-planen": {
     headline: "Segeltörn planen – Schritt-für-Schritt-Anleitung für Kroatien",
     description:

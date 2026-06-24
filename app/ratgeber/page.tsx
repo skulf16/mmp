@@ -28,6 +28,11 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
         text: "In 8 Schritten von der Idee zum gebuchten Törn – Crew, Reisezeit, Route, Skipper und Packliste.",
       },
       {
+        href: "/familien-segeltorn-kroatien",
+        title: "Familien-Segeltörn Kroatien",
+        text: "Segeln mit Kindern auf dem Katamaran: warum das geschützte Revier um Šibenik ideal für Familien ist.",
+      },
+      {
         href: "/kroatien-inselhopping",
         title: "Kroatien Inselhopping",
         text: "Von Insel zu Insel mit dem Katamaran: Warum das Revier zwischen Šibenik und Korčula ideal dafür ist.",
