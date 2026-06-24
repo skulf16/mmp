@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, Apple, GooglePlay, type IconName } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Apps für Segler: Navigation, Wetter & Ankerwache",
@@ -101,6 +104,38 @@ function StoreButtons({ app }: { app: App }) {
   );
 }
 
+const facts = [
+  "Die Seite stellt fünf Apps für den Segeltörn in Kroatien vor: Navionics, Windy.com, MySea, Anchor Alarm und Navily.",
+  "Navionics liefert detaillierte Seekarten für die gesamte Adria mit Tiefenlinien, Hafenplänen, Ankerplätzen und Routenplanung – als Ergänzung zum festen Kartenplotter an Bord.",
+  "Windy.com zeigt animierte Wind-, Wellen- und Böen-Vorhersagen aus mehreren Modellen (ECMWF, GFS), um Maestral, Bora und Jugo rechtzeitig einzuschätzen.",
+  "MySea ist ein Cruising-Guide für Kroatien, Griechenland und die Türkei mit Buchten, Marinas und Community-Tipps; Navily ist ein Community-Guide für Ankerplätze und Häfen inklusive Liegeplatz-Reservierung.",
+  "Anchor Alarm dient als digitale Ankerwache und schlägt Alarm, sobald die Yacht ihren Schwojkreis verlässt.",
+  "Alle genannten Apps sind in einer kostenlosen Version nutzbar und für iOS wie Android verfügbar.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Welche Apps werden für den Segeltörn in Kroatien empfohlen?",
+    a: "Die Seite stellt fünf Apps vor: Navionics für Seekarten und Navigation, Windy.com für Wetter und Wind, MySea für Reviere und Buchten, Anchor Alarm als digitale Ankerwache und Navily für Ankerplätze und Marinas. Sie decken zusammen Navigation, Wetter, Tagesplanung und die Nacht vor Anker ab.",
+  },
+  {
+    q: "Sind die vorgestellten Apps kostenlos?",
+    a: "Alle genannten Apps sind in einer kostenlosen Version nutzbar und sowohl für iOS als auch für Android verfügbar. Funktionsumfang und Preise der Premium-Versionen können sich allerdings ändern. Die Download-Links auf der Seite führen jeweils zum offiziellen App Store bzw. zu Google Play.",
+  },
+  {
+    q: "Welche App eignet sich für die Wettervorhersage an Bord?",
+    a: "Für die Wettervorhersage empfiehlt die Seite Windy.com. Die App zeigt animierte Wind-, Wellen- und Böen-Vorhersagen aus mehreren Modellen wie ECMWF und GFS. Damit lassen sich Maestral, Bora und Jugo rechtzeitig einschätzen und der Tag entsprechend planen.",
+  },
+  {
+    q: "Welche App hilft bei der Suche nach Ankerplätzen und Buchten?",
+    a: "Für Buchten, Marinas und Geheimtipps eignet sich MySea, ein Cruising-Guide für Kroatien, Griechenland und die Türkei mit Fotos und Bewertungen aus der Community. Navily ergänzt das um einen Community-Guide für Ankerplätze und Häfen mit Angaben zu Untergrund und Windschutz – inklusive Liegeplatz-Reservierung.",
+  },
+  {
+    q: "Wozu dient eine Ankerwache-App wie Anchor Alarm?",
+    a: "Anchor Alarm ist eine digitale Ankerwache, die Alarm schlägt, sobald die Yacht ihren Schwojkreis verlässt. So kann die Crew auch in einer einsamen Bucht entspannt schlafen, ohne ständig die Position kontrollieren zu müssen. Sie ergänzt die Bordelektronik des Katamarans für die ruhige Nacht vor Anker.",
+  },
+];
+
 export default function AppsFuerSeglerPage() {
   return (
     <>
@@ -118,6 +153,13 @@ export default function AppsFuerSeglerPage() {
       />
 
       <ArticleByline slug="apps-fuer-segler" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -188,6 +230,19 @@ export default function AppsFuerSeglerPage() {
               <Link href="/segeltorn-planen" className="btn btn-outline">Törn planen</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Apps für Segler – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/apps-fuer-segler#faq`} />
+          </div>
         </div>
       </section>
 

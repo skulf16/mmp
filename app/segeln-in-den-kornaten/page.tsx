@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import Link from "next/link";
 import { Icon, Wind, ArrowRight } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Segeltörn Kornaten – Katamaran-Törn ab Šibenik",
@@ -39,6 +42,38 @@ const konobas = [
   { name: "Restoran Festa", text: "Gehobene Küche zwischen Olivenhainen – ideal für einen besonderen Abend an Land." },
 ];
 
+const facts = [
+  "Der Kornati-Nationalpark ist ein Archipel aus 89 Inseln und Riffen – größtenteils unbewohnt, ohne Straßen und nur mit wenigen Häusern.",
+  "Statt großer Marinas prägen Bojenfelder und Ankerbuchten das Revier; viele Liegeplätze lassen sich vorab über das Portal mySea reservieren.",
+  "Versorgungspunkte im und am Revier sind die ACI Marina Piškera mitten im Park sowie die Marina Kornati am Rand des Reviers.",
+  "Der angrenzende Naturpark Telašćica bietet mit Steilküste, Salzsee und geschützter Bucht einen idealen Tagesankerplatz.",
+  "Im Sommer sorgt der thermische Maestral aus Nordwest für nachmittags rund 20 Knoten (3–5 Bft), während die böige Bora aus Nordost meist eine Sache der kühleren Monate bleibt.",
+  "Dank Wassermacher und Solaranlage kann die Miss Moneypenny tagelang abseits der Marina in den schönsten Buchten bleiben.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Was macht die Kornaten als Segelrevier besonders?",
+    a: "Die Kornaten sind ein Archipel aus 89 Inseln und Riffen – karg, schroff und größtenteils unbewohnt, ohne Straßen und mit kaum Häusern. Die berühmten „Kronen” stürzen senkrecht ins tiefblaue Meer, eine Kulisse, die man nur vom Wasser aus erlebt. Abseits der Routen finden sich Ankerplätze, an denen man abends ganz allein vor Anker liegt.",
+  },
+  {
+    q: "Wo kann man in den Kornaten anlegen?",
+    a: "Im Nationalpark ersetzen Bojenfelder und Ankerbuchten die großen Marinas. Viele Plätze lassen sich vorab über das Portal mySea reservieren. Als Versorgungspunkte dienen die zentral gelegene ACI Marina Piškera sowie die Marina Kornati am Rand des Reviers.",
+  },
+  {
+    q: "Wie sind die Windbedingungen in den Kornaten?",
+    a: "Im Sommer sorgt der thermische Maestral aus Nordwest für ideale Segelnachmittage mit rund 20 Knoten (3–5 Bft) – angenehm und planbar. Die böige Bora aus Nordost weht im Winter über 40 Knoten und bleibt meist eine Sache der kühleren Monate. Vor dem Auslaufen sollte man den Wetterbericht beachten.",
+  },
+  {
+    q: "Wo kann man in den Kornaten einkehren?",
+    a: "Nach einem Tag auf dem Wasser locken urige Tavernen mit dalmatinischer Küche. Die Konoba Smokvica serviert fangfrischen Fisch in entspannter Bucht, die Konoba Ante traditionelle Kornaten-Küche mit eigenem Bojenfeld für Gäste, und das Restoran Festa gehobene Küche zwischen Olivenhainen.",
+  },
+  {
+    q: "Warum eignet sich ein Katamaran mit Wassermacher für die Kornaten?",
+    a: "Im Nationalpark gibt es keine Straßen, kaum Häuser und kaum Marinas. Dank Wassermacher und Solaranlage kann die Miss Moneypenny tagelang dort bleiben, wo es am schönsten ist – ganz ohne Marina. So lässt sich genau das auskosten, was die Kornaten ausmacht.",
+  },
+];
+
 export default function KornatenPage() {
   return (
     <>
@@ -54,6 +89,13 @@ export default function KornatenPage() {
         imageAlt="Luftaufnahme des Kornati-Nationalparks mit zahlreichen Inseln im türkisen Meer"
         crumbs={[{ label: "Start", href: "/" }, { label: "Reviere", href: "/revier-sibenik" }, { label: "Kornaten" }]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -218,6 +260,19 @@ export default function KornatenPage() {
                 <img src="/images/yacht-aerial-wide.jpg" alt="Miss Moneypenny auf dem Weg in die Kornaten" />
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Segeln in den Kornaten – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/segeln-in-den-kornaten#faq`} />
           </div>
         </div>
       </section>

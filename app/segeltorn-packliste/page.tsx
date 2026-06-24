@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Segeltörn Packliste – Was wirklich an Bord gehört | Miss Moneypenny",
@@ -84,6 +87,38 @@ const kategorien = [
   },
 ];
 
+const facts = [
+  "Auf dem Katamaran ist der Stauraum begrenzt, weshalb pro Person eine weiche Reisetasche oder ein Rollkoffer mit etwa 60–70 Litern und keine Hartschale empfohlen wird.",
+  "Die Packliste gliedert sich in Kleidung und Schutzausrüstung, Schuhe, Persönliches und Hygiene, Elektronik, Dokumente sowie optionale Extras.",
+  "Auf der Miss Moneypenny sind Bettwäsche und Handtücher gestellt, WLAN ist an Bord und auch Schnorchelausrüstung steht bereit, was beim Packen Volumen spart.",
+  "Zu den wichtigen Dokumenten gehören Reisepass beziehungsweise Personalausweis, der Sportbootführerschein See im Original, ein Funkzeugnis und die Krankenversicherungskarte.",
+  "Statt Hartschalenkoffer eignen sich weiche Reisetaschen oder Duffelbags, da diese in die Kojenablagen passen und sich leer zusammenfalten lassen.",
+  "Die vollständige Packliste steht zusätzlich als PDF zum Ausdrucken und Abhaken bereit.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Welche Tasche eignet sich für einen Segeltörn auf dem Katamaran?",
+    a: "Empfohlen wird pro Person eine weiche Reisetasche oder ein Duffelbag mit etwa 60–70 Litern, kein Hartschalenkoffer. Hartschalen passen nicht in die Kojenablagen und blockieren Gangways, während sich weiche Taschen leer zusammenfalten lassen. Was nicht in eine Tasche passt, bleibt besser an Land im Auto oder Hotel.",
+  },
+  {
+    q: "Was muss ich an Bord der Miss Moneypenny nicht selbst mitbringen?",
+    a: "Bettwäsche und Handtücher sind an Bord gestellt, ebenso steht WLAN zur Verfügung. Auch Schnorchelausrüstung ist vorhanden, sodass ihr eigenes Schnorchelzeug zuhause lassen könnt. Das spart beim Packen spürbar Volumen.",
+  },
+  {
+    q: "Welche Dokumente brauche ich für den Segeltörn?",
+    a: "Mitzunehmen sind Reisepass oder in Kroatien auch der Personalausweis, der Sportbootführerschein See im Original sowie ein Funkzeugnis wie SRC oder UBI. Hinzu kommt die Krankenversicherungskarte, für EU-Bürger die EHIC. Originale gehören in eine wasserdichte Hülle, Kopien werden am besten separat aufbewahrt.",
+  },
+  {
+    q: "Welche Schuhe und Kleidung sollte ich einpacken?",
+    a: "An Schuhen sind Bootsschuhe mit abriebfester Sohle, Flip-Flops, sportliche Sandalen für Landgänge und warme Socken für kühle Abende sinnvoll. Bei der Kleidung empfehlen sich leichte Hosen und Shorts, T-Shirts und Longsleeves, Badekleidung sowie eine winddichte Softshell-Jacke. Eine Kopfbedeckung und Handschuhe runden die Schutzausrüstung ab.",
+  },
+  {
+    q: "Brauche ich Powerbank und Sonnenschutz an Bord?",
+    a: "Eine große Powerbank ist sinnvoll, auch wenn WLAN an Bord verfügbar ist, dazu Ladeadapter und Kabel im europäischen Standard. Beim Sonnenschutz wird reichlich Sonnencreme mit SPF 50+ sowie Lippenpflege mit Lichtschutzfaktor empfohlen. Eine kleine Reiseapotheke und Insektenschutzmittel gehören ebenfalls ins Gepäck.",
+  },
+];
+
 export default function SegeltornPacklistePage() {
   return (
     <>
@@ -114,6 +149,13 @@ export default function SegeltornPacklistePage() {
       />
 
       <ArticleByline slug="segeltorn-packliste" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -272,6 +314,19 @@ export default function SegeltornPacklistePage() {
               <Link href="/einkaufsliste-segeltorn" className="btn btn-outline">Einkaufsliste & Speiseplan</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Packliste für den Segeltörn – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/segeltorn-packliste#faq`} />
+          </div>
         </div>
       </section>
 

@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Einkaufsliste Segeltörn – Proviant für eine Woche | Miss Moneypenny",
@@ -114,6 +117,38 @@ const tipps = [
   },
 ];
 
+const facts = [
+  "Die erste große Einkaufsrunde für den Törn macht ihr am Anreisetag in Šibenik, das gut sortierte Supermärkte und einen Wochenmarkt hat.",
+  "Im Nationalpark und auf den Kornaten gibt es kaum Versorgung, deshalb solltet ihr euch vor Abfahrt vollständig eindecken.",
+  "Der Kühlschrank der Miss Moneypenny läuft dank Solar dauerhaft, sodass Frisches lange gut bleibt.",
+  "Der Wassermacher an Bord versorgt euch mit Wasser zum Kochen und Trinken, sodass ihr keine Wasserflaschen schleppen müsst.",
+  "Frischen Fisch und Brot kauft ihr am besten täglich vor Ort, Fisch direkt von Fischern am Kai am frühen Morgen.",
+  "Die Einkaufsliste ist auf Proviant für 6–8 Personen und sieben Tage ausgelegt und in Frühstück, Mittag, Abendessen, Getränke sowie Küche und Hygiene gegliedert.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wo macht man auf einem Kroatien-Törn am besten den großen Einkauf?",
+    a: "Die erste große Einkaufsrunde macht ihr am Anreisetag in Šibenik. Die Stadt hat gut sortierte Supermärkte – etwa Konzum – und einen Wochenmarkt. Weitere Ketten in Dalmatien sind Tommy und Plodine. Was ihr danach in Häfen und auf Inseln kauft, ergänzt nur noch den Grundstock.",
+  },
+  {
+    q: "Für wie viele Personen und Tage ist die Einkaufsliste gedacht?",
+    a: "Die Liste ist auf 6–8 Personen für eine Woche an Bord ausgelegt. Sie ist nach Mahlzeiten und Kategorien gegliedert: Frühstück, Mittag und Snacks, Abendessen, Fleisch und Fisch, Getränke sowie Küche und Hygiene. Fisch und Brot solltet ihr immer frisch vor Ort kaufen.",
+  },
+  {
+    q: "Muss ich für den Törn viel Trinkwasser an Bord nehmen?",
+    a: "Nein, denn die Miss Moneypenny hat einen Wassermacher an Bord, mit dem ihr Wasser zum Kochen und Trinken erzeugt. So müsst ihr keine Wasserflaschen schleppen. Eine Reserve an Flaschenwasser einzuplanen, schadet trotzdem nicht.",
+  },
+  {
+    q: "Wie bleiben Lebensmittel auf dem Törn frisch?",
+    a: "Der Kühlschrank der Miss Moneypenny läuft dank Solar dauerhaft, sodass Frisches lange gut bleibt. Sinnvoll ist trotzdem, haltbare Lebensmittel für die hinteren Tage einzuplanen und Frisches zuerst zu verbrauchen. Fisch solltet ihr immer am selben Tag zubereiten.",
+  },
+  {
+    q: "Wo kaufe ich frischen Fisch, Obst und Gemüse am besten ein?",
+    a: "Frisches Obst, Gemüse, Oliven und Käse kauft ihr am besten auf den Wochenmärkten der Hafenstädte – Qualität und Preis sind dort oft besser als im Supermarkt. Frischen Fisch bekommt ihr früh morgens direkt von Fischern am Kai. In den Kornaten gibt es zudem Konobas mit fangfrischer Küche.",
+  },
+];
+
 export default function EinkaufslisteSegeltornPage() {
   return (
     <>
@@ -144,6 +179,13 @@ export default function EinkaufslisteSegeltornPage() {
       />
 
       <ArticleByline slug="einkaufsliste-segeltorn" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -243,6 +285,19 @@ export default function EinkaufslisteSegeltornPage() {
               <Link href="/segeltorn-packliste" className="btn btn-outline">Zur Packliste</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Einkaufen für den Segeltörn – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/einkaufsliste-segeltorn#faq`} />
+          </div>
         </div>
       </section>
 

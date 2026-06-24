@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sicherheitseinweisung Yacht – Checkliste für die Crew | Miss Moneypenny",
@@ -86,6 +89,38 @@ const checkliste = [
   },
 ];
 
+const facts = [
+  "Die Sicherheitseinweisung findet beim Check-in am ersten Tag statt und dauert rund 45 Minuten.",
+  "Der Skipper oder der Chartergeber geht dabei systematisch mit der Crew durch das gesamte Boot.",
+  "Zur Einweisung gehören die Rettungsmittel an Bord, der Notfall- und Mayday-Ablauf, der Brandschutz, Motormanöver sowie das richtige Verhalten an Bord.",
+  "Der internationale maritime Notruf- und Anrufkanal ist VHF-Kanal 16.",
+  "Wichtige Notrufnummern in Kroatien sind die Küstenwache unter 9155 und der europäische Notruf 112.",
+  "Jede Person an Bord sollte den Standort der Rettungswesten und den Mayday-Ablauf kennen, bevor die Leinen losgehen.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie lange dauert die Sicherheitseinweisung und wer macht sie?",
+    a: "Die Einweisung findet beim Check-in am ersten Tag statt und dauert rund 45 Minuten. Der Skipper oder der Chartergeber geht dabei systematisch mit der Crew durch das gesamte Boot. Wer die Inhalte vorab kennt, kann gezielte Fragen stellen.",
+  },
+  {
+    q: "Was wird bei der Sicherheitseinweisung besprochen?",
+    a: "Behandelt werden die Rettungsmittel, der Notfall- und Mayday-Ablauf, der Brandschutz, die Motormanöver und Bordtechnik sowie das richtige Verhalten an Bord. Dazu gehören unter anderem Standort und Anlegen der Rettungswesten, die Bedienung von Funk und Motoren sowie die Lage der Feuerlöscher.",
+  },
+  {
+    q: "Welcher Funkkanal ist für den Notruf auf See vorgesehen?",
+    a: "Der internationale maritime Notruf- und Anrufkanal ist VHF-Kanal 16. Über ihn wird auch der Mayday-Ruf abgesetzt. Der Mayday-Ablauf folgt dem Schema: Mayday dreimal, Schiffsname, Position und Personenzahl.",
+  },
+  {
+    q: "Welche Notrufnummern sollte die Crew in Kroatien kennen?",
+    a: "Die kroatische Küstenwache ist unter 9155 für Seenot und Unfälle auf See erreichbar. Der europäische Notruf 112 funktioniert auch auf See per Handy. Zusätzlich dient VHF-Kanal 16 als internationaler maritimer Notruf- und Anrufkanal.",
+  },
+  {
+    q: "Was gehört zum richtigen Verhalten an Bord?",
+    a: "Es gilt der Grundsatz, sich immer festzuhalten – eine Hand fürs Schiff. Nachts im Cockpit sollten Rettungsweste und Lifeline angelegt werden, und Alkohol gehört nur in den Hafen oder vor Anker, nie ans Steuer. Kinder an Deck tragen immer eine Schwimmweste.",
+  },
+];
+
 export default function SicherheitseinweisungYachtPage() {
   return (
     <>
@@ -116,6 +151,13 @@ export default function SicherheitseinweisungYachtPage() {
       />
 
       <ArticleByline slug="sicherheitseinweisung-yacht" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -214,6 +256,19 @@ export default function SicherheitseinweisungYachtPage() {
               <Link href="/segeltorn-packliste" className="btn btn-outline">Zur Packliste</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Sicherheitseinweisung an Bord – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/sicherheitseinweisung-yacht#faq`} />
+          </div>
         </div>
       </section>
 

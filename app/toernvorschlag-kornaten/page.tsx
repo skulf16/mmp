@@ -3,7 +3,10 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Törnvorschlag: 1 Woche Kornaten ab Šibenik | Miss Moneypenny",
@@ -110,6 +113,38 @@ const tipps = [
   },
 ];
 
+const facts = [
+  "Der Törnvorschlag führt in 7 Tagen mit 6 Nächten über rund 130 Seemeilen durch den Kornati-Nationalpark und startet ab der Marina Mandalina in Šibenik.",
+  "Die Route verbindet die Highlights des Nationalparks mit Zwischenstopps in Prvić, Piškera, Lavsa, Telašćica, Murter und Žirje oder Kaprije.",
+  "Die Etappenlängen sind bewusst kurz gehalten, damit nach jedem Segeltag noch Zeit zum Ankern, Schwimmen und Einkehren bleibt.",
+  "Die Bucht von Lavsa gilt als eine der schönsten der Adria und lädt zum Schwimmen, Schnorcheln und zwei Nächten vor Anker ein.",
+  "Im Naturpark Telašćica auf Dugi Otok bietet die über 7 km lange Bucht auch bei Bora Schutz, dazu den Salzsee Mir und eine 160 m hohe Steilküste.",
+  "Dank Wassermacher mit 60 Litern pro Stunde und Solaranlage bleibt die Miss Moneypenny im infrastrukturarmen Nationalpark tagelang autark vor Anker.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie lang ist der Kornaten-Törn ab Šibenik und wie viele Seemeilen sind es?",
+    a: "Der Törnvorschlag ist auf eine Woche ausgelegt – 7 Tage mit 6 Nächten und rund 130 Seemeilen insgesamt. Start und Ziel ist die Marina Mandalina in Šibenik. Die Etappen sind so gewählt, dass nach jedem Segeltag noch Zeit zum Ankern und Einkehren bleibt.",
+  },
+  {
+    q: "Welche Stationen liegen auf der Route durch die Kornaten?",
+    a: "Von Šibenik geht es über Prvić Luka in den Kornati-Nationalpark zur ACI Marina Piškera und weiter in die Bucht von Lavsa. Danach folgen der Naturpark Telašćica auf Dugi Otok, ein Proviant-Stopp in Betina auf Murter und eine letzte Nacht bei Žirje oder Kaprije, bevor es zurück nach Šibenik geht.",
+  },
+  {
+    q: "Brauche ich eine Nationalpark-Vignette für die Kornaten?",
+    a: "Ja, die Einfahrt in den Kornati-Nationalpark ist kostenpflichtig. Die Vignette lässt sich online vorbuchen oder an der Ranger-Station kaufen – die Vorbuchung erspart Wartezeit. In den Kornaten gilt zudem vielerorts Bojenpflicht, daher sind Reservierungen über Apps wie mySea oder Anchor besonders in der Hauptsaison sinnvoll.",
+  },
+  {
+    q: "Warum ist ein autarkes Boot in den Kornaten von Vorteil?",
+    a: "Der Nationalpark hat kaum Infrastruktur: Wasser gibt es nur an wenigen ACI-Stegen, Strom selten. Boote ohne Wassermacher müssen regelmäßig Marina-Stopps einplanen und verlieren so Flexibilität und Budget. Die Miss Moneypenny erzeugt mit dem Wassermacher 60 Liter Frischwasser pro Stunde und versorgt sich über die Solaranlage selbst – so bleibt ihr, wo es schön ist.",
+  },
+  {
+    q: "Wann ist die beste Reisezeit für den Kornaten-Törn?",
+    a: "Juni und September gelten als ideal: angenehme Temperaturen, verlässlicher Maestral und deutlich weniger Boote als im Juli und August. So lassen sich die einsamen Buchten des Nationalparks am entspanntesten genießen.",
+  },
+];
+
 export default function ToernvorschlagKornatenPage() {
   return (
     <>
@@ -130,6 +165,13 @@ export default function ToernvorschlagKornatenPage() {
           { label: "Törnvorschlag" },
         ]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -295,6 +337,19 @@ export default function ToernvorschlagKornatenPage() {
                 </div>
               </Link>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Törn durch die Kornaten – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/toernvorschlag-kornaten#faq`} />
           </div>
         </div>
       </section>

@@ -3,7 +3,10 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight, Wind } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Katamaran mieten Kroatien – Revier-Guide ab Šibenik",
@@ -28,6 +31,38 @@ const regionsGuide = [
   { kicker: "Süddalmatien", title: "Hvar bis Dubrovnik", imageAlt: "Hafenstadt Korčula – Katamaran mieten Süddalmatien Kroatien", text: "Exklusiv und mondän, mit Weingütern, Inseln und glamourösen Städten.", image: "/images/city-korcula.png" },
 ];
 
+const facts = [
+  "Ein Katamaran segelt dank zweier Rümpfe nahezu krängungsfrei und liegt damit besonders stabil und ruhig im Wasser.",
+  "An Bord bieten ein großer Salon, ein breites Cockpit sowie getrennte Kabinen mit eigenem Bad viel Raum und Privatsphäre.",
+  "Der flache Tiefgang von gut einem Meter erlaubt das Ankern in flachen Buchten, die Einrumpfern verschlossen bleiben.",
+  "Šibenik in Mitteldalmatien ist ein idealer Ausgangspunkt – mit den Kornaten als beliebtestem Revier und einsamen Buchten in Reichweite.",
+  "Im Sommer dominiert der angenehme Maestral, ein thermischer Nordwest mit nachmittags 3–5 Beaufort, während Bora und Jugo vor allem die kühleren Monate prägen.",
+  "Die Charterpreise variieren stark nach Bootsgröße, Ausstattung und Saison – von rund 2.500 € pro Woche in der Nebensaison bis zu Luxus-Katamaranen im fünfstelligen Bereich.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Warum einen Katamaran statt einer Einrumpfyacht mieten?",
+    a: "Ein Katamaran liegt dank seiner zwei Rümpfe nahezu krängungsfrei und damit besonders stabil im Wasser – ein Segen gegen Seekrankheit. Dazu kommen ein großer Salon, ein breites Cockpit und getrennte Kabinen mit eigenem Bad, die viel Raum und Privatsphäre bieten. Der flache Tiefgang von gut einem Meter ermöglicht zudem das Ankern in flachen Buchten, die Einrumpfern verschlossen bleiben.",
+  },
+  {
+    q: "Welches Segelrevier in Kroatien eignet sich für einen Katamaran?",
+    a: "Von Istrien und der Kvarner Bucht in der Nordadria über Šibenik und die Kornaten in Mitteldalmatien bis nach Hvar und Dubrovnik in Süddalmatien hat jede Region ihren eigenen Charakter. Šibenik liegt zentral und gilt als idealer Ausgangspunkt, die Kornaten sind das beliebteste Revier mit Nationalparks und einsamen Buchten.",
+  },
+  {
+    q: "Wie sind die Windbedingungen zum Segeln in der Adria?",
+    a: "Im Sommer dominiert der angenehme Maestral, ein thermischer Nordwestwind, der nachmittags 3–5 Beaufort erreicht und damit gut planbar ist. Die kräftigeren Winde Bora und Jugo mit 6–10 Beaufort prägen vor allem die kühleren Monate und treten in der Hauptsaison selten auf. Den Wetterbericht sollte man dennoch stets im Blick behalten.",
+  },
+  {
+    q: "Was kostet es, einen Katamaran in Kroatien zu chartern?",
+    a: "Die Preise variieren stark nach Bootsgröße, Ausstattung und Saison. Sie reichen von rund 2.500 € pro Woche in der Nebensaison bis zu Luxus-Katamaranen im fünfstelligen Bereich. Die Miss Moneypenny liegt im komfortablen Mittelfeld; konkrete Richtwerte finden sich auf der Charter-Seite.",
+  },
+  {
+    q: "Wann ist die beste Reisezeit für einen Katamaran-Törn in Kroatien?",
+    a: "Der Sommer ist ideal, weil dann der verlässliche Maestral weht und Bora und Jugo selten auftreten. Die kräftigen Winde mit 6–10 Beaufort prägen dagegen vor allem die kühleren Monate. So lässt sich der Törn komfortabel und gut planbar gestalten.",
+  },
+];
+
 export default function KatamaranMietenPage() {
   return (
     <>
@@ -39,6 +74,13 @@ export default function KatamaranMietenPage() {
         imageAlt="Katamaran Miss Moneypenny segelt über die kroatische Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Reviere", href: "/revier-sibenik" }, { label: "Katamaran mieten Kroatien" }]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -164,6 +206,19 @@ export default function KatamaranMietenPage() {
                 <img src="/images/yacht-aerial-village.jpg" alt="Katamaran vor Anker an einem dalmatinischen Dorf" />
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Katamaran mieten in Kroatien – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/katamaran-mieten-kroatien#faq`} />
           </div>
         </div>
       </section>

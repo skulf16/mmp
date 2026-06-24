@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
-import { cities } from "@/lib/site";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
+import { cities, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Dalmatien per Katamaran: Trogir, Split, Hvar, Korčula",
@@ -15,6 +17,37 @@ export const metadata: Metadata = {
   },
 };
 
+const facts = [
+  "Trogir liegt auf einer kleinen, über Brücken verbundenen Insel und ist mit seinen venezianischen Palästen, der Festung Kamerlengo und engen Gassen UNESCO-Welterbe.",
+  "Split ist die zweitgrößte Stadt Kroatiens; in ihrem Herzen steht der rund 1.700 Jahre alte Diokletianpalast, der heute voller Shops, Cafés und Leben ist.",
+  "Hvar verbindet Glamour und Geschichte: Über der Stadt thront die Festung Španjola, darunter liegt das älteste öffentliche Theater Europas.",
+  "Korčula gilt als „Klein-Dubrovnik“, besitzt eine ummauerte Altstadt mit der Kathedrale des Heiligen Markus und ist angeblich die Geburtsstadt Marco Polos.",
+  "Mit der Miss Moneypenny gehen Gäste direkt im Herzen dieser Hafenstädte an Land – dort, wo Kreuzfahrtschiffe nicht hinkommen.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Welche Hafenstädte Dalmatiens lassen sich per Katamaran ansteuern?",
+    a: "Diese Seite stellt vier Hafenstädte vor: Trogir, Split, Hvar und Korčula. Jede ist ein eigenes Kapitel der Adria und lohnt einen Landgang. Mit der Miss Moneypenny machen Sie direkt im Herzen der jahrhundertealten Städte fest.",
+  },
+  {
+    q: "Was macht Trogir besonders?",
+    a: "Trogir liegt auf einer kleinen Insel und ist über Brücken mit dem Festland verbunden. Venezianische Paläste, die Festung Kamerlengo und enge Gassen voller Cafés prägen das Bild. Die Stadt ist UNESCO-Welterbe und lädt zum Flanieren ein.",
+  },
+  {
+    q: "Was kann ich in Split sehen?",
+    a: "Split ist die zweitgrößte Stadt Kroatiens. In ihrem Herzen steht der rund 1.700 Jahre alte Diokletianpalast, der heute voller Shops, Cafés und Leben ist. Die Uferpromenade Riva lädt zusätzlich zum Promenieren ein.",
+  },
+  {
+    q: "Wofür sind Hvar und Korčula bekannt?",
+    a: "Auf Hvar thront die Festung Španjola über der Stadt, darunter liegt das älteste öffentliche Theater Europas; dazu kommen Eleganz, Lavendelduft und eine mondäne Hafenpromenade. Korčula gilt als „Klein-Dubrovnik“ mit ummauerter Altstadt, der Kathedrale des Heiligen Markus, Schwerttänzen und Weingütern und ist angeblich die Geburtsstadt Marco Polos.",
+  },
+  {
+    q: "Warum lohnt sich der Landgang gerade per Katamaran?",
+    a: "Mit der Miss Moneypenny gehen Sie dort an Land, wo Kreuzfahrtschiffe nicht hinkommen: direkt im Herzen der jahrhundertealten Hafenstädte. Festmachen, aussteigen, eintauchen – statt langer Wege vom Großschiffhafen ins Zentrum.",
+  },
+];
+
 export default function StaedteDalmatiensPage() {
   return (
     <>
@@ -26,6 +59,13 @@ export default function StaedteDalmatiensPage() {
         imageAlt="Blick über die Hafenstadt Hvar von der Festung aus"
         crumbs={[{ label: "Start", href: "/" }, { label: "Reviere", href: "/revier-sibenik" }, { label: "Städte Dalmatiens" }]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section-tight section">
@@ -79,6 +119,19 @@ export default function StaedteDalmatiensPage() {
           </section>
         );
       })}
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Dalmatiens Städte – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/staedte-dalmatiens#faq`} />
+          </div>
+        </div>
+      </section>
 
       <CtaBand image="/images/region-cavtat.png" eyebrow="Auf den Spuren Dalmatiens" title="Entdecken Sie diese Städte vom Wasser aus." />
     </>

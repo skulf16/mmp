@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Speiseplan Segeltörn – 7 Tage Bordküche | Miss Moneypenny",
@@ -87,6 +90,38 @@ const bordkuechenTipps = [
   },
 ];
 
+const facts = [
+  "Die Pantry der Lagoon 400 S2 ist mit zwei Herdplatten, Backofen, Kühlschrank und Gefrierfach sowie Vollgeschirr ausgestattet.",
+  "Der Speiseplan deckt sieben Tage mit jeweils Frühstück, Mittag- und Abendessen ab und ist auf Genuss mit minimalem Aufwand ausgelegt.",
+  "Frühstück und Mittagessen bleiben bewusst einfach – etwa Brot, Käse, Rührei, Müsli, Salate oder Cracker.",
+  "Abends wechseln sich unkomplizierte Bordgerichte wie Pasta, Risotto, Chili sin Carne oder Couscous-Salat mit Konoba- und Restaurantbesuchen ab.",
+  "Zwei bis drei Konoba-Abende pro Woche sind realistisch und entlasten die Bordküche.",
+  "Der Wochenplan ist nur ein Rahmen und lässt sich flexibel nach Konoba-Abenden und Marktfunden anpassen.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wie gut ist die Bordküche der Miss Moneypenny ausgestattet?",
+    a: "Die Pantry der Lagoon 400 S2 ist kein Campingkocher-Kompromiss. Sie verfügt über zwei Herdplatten, einen Backofen, einen Kühlschrank mit Gefrierfach und Vollgeschirr. Ihr könnt damit alles kochen, was zuhause auch auf den Tisch kommt.",
+  },
+  {
+    q: "Was kocht man auf einem Segeltörn am besten?",
+    a: "An Bord schlägt einfach aufwändig. Bewährt haben sich Pasta, Risotto, Eintöpfe und Salate, die sich schnell zubereiten lassen. Wer auf See stundenlang kocht, verbringt weniger Zeit auf der Badeplattform – deshalb ist der Speiseplan auf Genuss mit minimalem Aufwand ausgerichtet.",
+  },
+  {
+    q: "Muss man jeden Abend an Bord kochen?",
+    a: "Nein. Zwei bis drei Konoba-Abende pro Woche sind realistisch und Teil des Erlebnisses. Sie entlasten die Bordküche und zeigen, wie gut die dalmatinische Küche wirklich ist. Beim Speiseplan sind solche Konoba- und Restaurantbesuche bereits eingeplant.",
+  },
+  {
+    q: "Wie spart man sich auf dem Törn Kochaufwand?",
+    a: "An Segeltagen mit Welle kocht niemand gerne, deshalb lohnt es sich, Eintöpfe, Suppen oder Pasta am Vorabend vorzubereiten – vieles schmeckt kalt oder lauwarm genauso gut. Wer einmal eine große Portion kocht, hat am nächsten Mittag gleich die Reste, was Aufwand und Spülzeit spart.",
+  },
+  {
+    q: "Ist der Speiseplan verbindlich?",
+    a: "Nein, der Sieben-Tage-Plan ist nur ein Rahmen. Er lässt sich flexibel nach Konoba-Abenden und Marktfunden anpassen. Am letzten Tag werden bewusst die Reste verbraucht, bevor es zum Abschlussessen ins Restaurant geht.",
+  },
+];
+
 export default function SpeiseplanSegeltornPage() {
   return (
     <>
@@ -100,6 +135,13 @@ export default function SpeiseplanSegeltornPage() {
       />
 
       <ArticleByline slug="speiseplan-segeltorn" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -203,6 +245,19 @@ export default function SpeiseplanSegeltornPage() {
               <Link href="/einkaufsliste-segeltorn" className="btn btn-outline">Zur Einkaufsliste</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Essen an Bord – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/speiseplan-segeltorn#faq`} />
+          </div>
         </div>
       </section>
 

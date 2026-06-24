@@ -3,7 +3,10 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon, ArrowRight } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Segelrevier Šibenik & Marina Mandalina | Miss Moneypenny",
@@ -36,6 +39,38 @@ const highlights = [
   { icon: "anchor" as const, title: "Inseln Zlarin & Prvić", text: "Autofreie Inseln vor der Haustür: authentisches Dalmatien, ruhige Häfen und Konobas mit fangfrischem Fisch." },
 ];
 
+const facts = [
+  "Šibenik liegt im Herzen Dalmatiens und ist von der Marina Mandalina aus Ausgangshafen für Katamaran-Törns in Kroatien.",
+  "Šibenik bietet ein geschütztes Segelrevier aus Kanälen und gut erreichbaren Buchten – ideal für Familien und Einsteiger.",
+  "Von Šibenik aus sind die Kornaten in 2–3 Stunden erreichbar, im Süden lassen sich die Städte Dalmatiens innerhalb einer Woche ansegeln.",
+  "Die Kathedrale des Heiligen Jakob in Šibenik ist komplett aus Stein erbaut und zählt zum UNESCO-Welterbe; über der Altstadt thronen vier Festungen.",
+  "Der Krka-Nationalpark mit seinen Wasserfällen und smaragdgrünen Becken liegt an der Mündung des Krka-Flusses bei Šibenik und ist teils per Beiboot erreichbar.",
+  "Vor Šibenik liegen die autofreien Inseln Zlarin und Prvić mit ruhigen Häfen und Konobas mit fangfrischem Fisch.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Warum eignet sich Šibenik als Ausgangshafen für einen Törn?",
+    a: "Šibenik liegt im Herzen Dalmatiens und ist damit zentral gelegen. Von der Marina Mandalina aus erreichen Sie sowohl die Kornaten im Norden als auch die Städte Dalmatiens im Süden bequem innerhalb einer Woche. Davor liegt ein geschütztes Revier aus Kanälen und gut erreichbaren Buchten.",
+  },
+  {
+    q: "Ist das Revier um Šibenik für Familien und Einsteiger geeignet?",
+    a: "Ja. Der Kanal von St. Anton und die vorgelagerten Inseln schaffen ein sicheres, entspanntes Segelrevier. Die geschützten Gewässer machen das Segeln vom ersten Tag an entspannt – ideal für Familien und Einsteiger.",
+  },
+  {
+    q: "Wie schnell sind die Kornaten von Šibenik aus erreichbar?",
+    a: "Die Kornaten liegen nördlich von Šibenik und sind in etwa 2–3 Stunden erreichbar. Das Inselarchipel bietet einsame Buchten und Nationalpark pur.",
+  },
+  {
+    q: "Was kann ich in der Stadt Šibenik selbst entdecken?",
+    a: "Šibenik ist ein Juwel mit engen Gassen und vier Festungen. Das Wahrzeichen ist die Kathedrale des Heiligen Jakob, komplett aus Stein erbaut und Teil des UNESCO-Welterbes.",
+  },
+  {
+    q: "Welche Naturhighlights gibt es rund um Šibenik?",
+    a: "Der Krka-Fluss mündet bei Šibenik – der Krka-Nationalpark mit seinen tosenden Wasserfällen und smaragdgrünen Becken ist teils per Beiboot erreichbar. Direkt vor der Küste laden zudem die autofreien Inseln Zlarin und Prvić mit ruhigen Häfen und Konobas zum authentischen Dalmatien ein.",
+  },
+];
+
 export default function RevierSibenikPage() {
   return (
     <>
@@ -51,6 +86,13 @@ export default function RevierSibenikPage() {
         imageAlt="Panorama von Šibenik mit roten Dächern, Kathedrale und der Adria"
         crumbs={[{ label: "Start", href: "/" }, { label: "Reviere", href: "/revier-sibenik" }, { label: "Šibenik" }]}
       />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Intro */}
       <section className="section">
@@ -155,6 +197,19 @@ export default function RevierSibenikPage() {
                 </div>
               </Link>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Revier Šibenik – kurz erklärt.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/revier-sibenik#faq`} />
           </div>
         </div>
       </section>

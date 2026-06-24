@@ -4,7 +4,10 @@ import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
 import CtaBand from "@/components/CtaBand";
+import FactBox from "@/components/FactBox";
+import FaqSection from "@/components/FaqSection";
 import { Icon } from "@/components/Icons";
+import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Packliste Segeln Kroatien – Was ihr speziell braucht | Miss Moneypenny",
@@ -50,6 +53,38 @@ const klima = [
   },
 ];
 
+const facts = [
+  "Für Kornaten und Telašćica wird eine Nationalpark-Vignette benötigt, die sich online vorbestellen lässt.",
+  "Pflichtdokumente an Bord sind unter anderem Reisepass oder Personalausweis, der Sportbootführerschein SBF See, das Funkzeugnis SRC oder UBI und der Chartervertrag – jeweils im Original.",
+  "Kroatien zahlt seit 2023 in Euro, sodass Euro-Bargeld und eine in allen Häfen akzeptierte Kreditkarte ausreichen.",
+  "An der dalmatinischen Küste scheint die Sonne von Mai bis September täglich und reflektiert auf dem Wasser, weshalb Sonnenschutz mit SPF 50 wichtig ist.",
+  "Weht die Bora, fällt die gefühlte Temperatur deutlich, sodass eine Fleeceschicht und Ölzeug griffbereit im Cockpit gehören.",
+  "Apps wie Windy, mySea und Navionics sollten samt Offline-Karten vor Abreise heruntergeladen werden, da Mobilfunk in entlegenen Buchten schwach ist.",
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Welche Dokumente brauche ich für einen Segeltörn in Kroatien?",
+    a: "Dabei sein müssen Reisepass oder Personalausweis, der Sportbootführerschein SBF See sowie das Funkzeugnis SRC oder UBI – jeweils im Original, nicht als Kopie. Hinzu kommen der Chartervertrag der Miss Moneypenny und die Europäische Krankenversicherungskarte (EHIC). Für EU-Bürger sind Reisepass und Personalausweis gleichermaßen gültig.",
+  },
+  {
+    q: "Brauche ich eine Nationalpark-Vignette für die Kornaten?",
+    a: "Ja, für den Besuch der Nationalparks Kornaten und Telašćica wird eine Vignette benötigt. Diese lässt sich online vorbestellen. Für Bojen-Reservierungen im Nationalpark ist zusätzlich die mySea-App hilfreich.",
+  },
+  {
+    q: "Mit welcher Währung zahle ich in Kroatien?",
+    a: "Kroatien zahlt seit 2023 in Euro, sodass kein Geldwechsel mehr nötig ist. Es empfiehlt sich, Euro-Bargeld dabeizuhaben und zusätzlich eine Kreditkarte (Visa oder Mastercard), die in allen Häfen akzeptiert wird.",
+  },
+  {
+    q: "Welche Kleidung und welcher Sonnenschutz gehören ins Gepäck?",
+    a: "Von Mai bis September scheint die Sonne täglich und reflektiert auf dem Wasser, weshalb SPF 50 für Gesicht, Nacken und Arme Pflicht ist. Auch bei frischem Maestral und kühl wirkenden Temperaturen verbrennt die Haut leicht. Für die Bora gehören eine Fleeceschicht und Ölzeug griffbereit ins Cockpit, da die gefühlte Temperatur dann stark fällt.",
+  },
+  {
+    q: "Welche Apps sollte ich vor dem Törn installieren?",
+    a: "Windy liefert stündliche Windvorhersagen für die gesamte Adria, mySea ermöglicht Bojen-Reservierungen im Nationalpark, und Navionics oder die Garmin ActiveCaptain-App bieten detaillierte Seekarten für Dalmatien. Alle Apps sollten vor der Abreise samt Offline-Karten heruntergeladen werden, weil der Mobilfunk in entlegenen Buchten schwach ist.",
+  },
+];
+
 export default function PacklisteSegelnKroatienPage() {
   return (
     <>
@@ -63,6 +98,13 @@ export default function PacklisteSegelnKroatienPage() {
       />
 
       <ArticleByline slug="packliste-segeln-kroatien" />
+
+      {/* Auf einen Blick */}
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="container container-narrow">
+          <Reveal as="div"><FactBox facts={facts} /></Reveal>
+        </div>
+      </section>
 
       {/* Pflichtdokumente */}
       <section className="section">
@@ -167,6 +209,19 @@ export default function PacklisteSegelnKroatienPage() {
               <Link href="/segeltorn-packliste" className="btn btn-outline">Allgemeine Packliste</Link>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section surface-sand">
+        <div className="container container-narrow">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
+            <span className="eyebrow centered">Häufige Fragen</span>
+            <h2 className="section-title" style={{ marginTop: "1rem" }}>Packen für den Segeltörn – häufige Fragen.</h2>
+          </Reveal>
+          <div style={{ marginTop: "2.5rem" }}>
+            <FaqSection items={faqs} id={`${siteUrl}/packliste-segeln-kroatien#faq`} />
+          </div>
         </div>
       </section>
 
