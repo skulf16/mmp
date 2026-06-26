@@ -90,6 +90,11 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
         text: "Endreinigung, Transitlog, Kurtaxe, Mooring und Kaution erklärt – was inklusive ist und was extra dazukommt.",
       },
       {
+        href: "/marina-liegeplatz-preise-kroatien",
+        title: "Marina-Liegeplätze & Preise",
+        text: "Alle Marinas ab Šibenik bis Split/Trogir mit Liegeplatz-Richtwerten für den Katamaran – inklusive Mehrrumpf-Aufschlag.",
+      },
+      {
         href: "/beste-reisezeit-segeln-kroatien",
         title: "Beste Reisezeit – Monat für Monat",
         text: "Mai bis Oktober im Detail: Wetter, Wassertemperatur, Wind und Betrieb – und warum Juni und September ideal sind.",

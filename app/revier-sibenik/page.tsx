@@ -105,7 +105,10 @@ export default function RevierSibenikPage() {
                 <p>
                   Šibenik liegt im Herzen Dalmatiens – und damit genau richtig. Von der
                   Marina Mandalina aus erreichen Sie sowohl die Kornaten im Norden als auch
-                  die mondänen Städte im Süden bequem innerhalb einer Woche.
+                  die mondänen Städte im Süden bequem innerhalb einer Woche. Welche Häfen dabei
+                  in Reichweite liegen und was ein Liegeplatz für den Katamaran kostet, zeigt die
+                  Übersicht der{" "}
+                  <Link href="/marina-liegeplatz-preise-kroatien">Marina-Liegeplätze &amp; Preise im Revier</Link>.
                 </p>
                 <p>
                   Die Stadt selbst ist ein Juwel: enge Gassen, vier Festungen und die

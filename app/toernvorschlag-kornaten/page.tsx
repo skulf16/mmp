@@ -250,6 +250,9 @@ export default function ToernvorschlagKornatenPage() {
                   Die Kornaten haben kaum Infrastruktur. Wasser gibt es nur an wenigen
                   ACI-Stegen, Strom selten. Boote ohne Wassermacher müssen regelmäßig
                   Marina-Stopps einplanen – und zahlen dafür mit Flexibilität und Geld.
+                  Was ein Liegeplatz für einen Katamaran in den Häfen des Reviers kostet,
+                  zeigt die Übersicht der{" "}
+                  <Link href="/marina-liegeplatz-preise-kroatien">Marina-Liegeplätze &amp; Preise</Link>.
                 </p>
                 <p>
                   Mit dem Wassermacher der Miss Moneypenny laufen 60 Liter Frischwasser

@@ -127,6 +127,14 @@ export const ratgeberArticles: Record<string, RatgeberArticle> = {
     published: "2026-06-25",
     updated: "2026-06-25",
   },
+  "marina-liegeplatz-preise-kroatien": {
+    headline: "Marina-Liegeplätze & Preise im Revier ab Šibenik",
+    description:
+      "Alle Marinas, die der Katamaran Miss Moneypenny ab Šibenik in einer Woche erreicht – von den Kornaten bis Split/Trogir, mit Liegeplatz-Preisen als Richtwert (Stand 2026) und dem Katamaran-Aufschlag.",
+    image: "/images/region-sibenik.png",
+    published: "2026-06-26",
+    updated: "2026-06-26",
+  },
   "bootsfuehrerschein-kroatien": {
     headline: "Welcher Bootsführerschein für Kroatien?",
     description:

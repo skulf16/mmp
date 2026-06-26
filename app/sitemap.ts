@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/segeltorn-kroatien-kosten",
     "/beste-reisezeit-segeln-kroatien",
     "/yachtcharter-nebenkosten-kroatien",
+    "/marina-liegeplatz-preise-kroatien",
     "/bootsfuehrerschein-kroatien",
     "/sportbootfuehrerschein-kroatien",
     "/yachtcharter-ohne-fuehrerschein-kroatien",
