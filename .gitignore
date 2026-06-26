@@ -22,6 +22,10 @@ yarn-error.log*
 # local env
 .env*.local
 
+# Google Search Console Service-Account-Key – NIEMALS committen
+/gsc-service-account.json
+*.gsc-key.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
