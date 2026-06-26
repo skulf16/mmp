@@ -45,6 +45,79 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
     ],
   },
   {
+    label: "Routen & Reviere",
+    slug: "routen-reviere",
+    artikel: [
+      {
+        href: "/segeltorn-routen-kroatien",
+        title: "Die 7 schönsten Segeltörn-Routen",
+        text: "Von den Kornaten über Mittel- und Süddalmatien bis Istrien – die schönsten Routen mit Dauer, Highlights und Eignung.",
+      },
+      {
+        href: "/segeltorn-ab-split",
+        title: "Segeltörn ab Split (7 Tage)",
+        text: "Eine 7-Tage-Route durch Mitteldalmatien Tag für Tag – Trogir, Šolta, Hvar, Vis und Brač mit Etappen und Tipps.",
+      },
+      {
+        href: "/dalmatien-segeln-route",
+        title: "Segeln in Dalmatien",
+        text: "Nord-, Mittel- und Süddalmatien im Überblick: wichtigste Häfen, Marinas, Inseln und Highlights fürs Revier.",
+      },
+      {
+        href: "/segelrevier-kroatien",
+        title: "Segelrevier Kroatien: Nord vs. Süd",
+        text: "Istrien, Kvarner und Dalmatien im Vergleich – wo es sich am besten startet und welches Revier zu euch passt.",
+      },
+      {
+        href: "/istrien-segeln",
+        title: "Segeln in Istrien",
+        text: "Das unterschätzte Revier der Nordadria: Pula, Rovinj, Brijuni und der Limski-Kanal – Häfen, Winde und Tipps.",
+      },
+    ],
+  },
+  {
+    label: "Planung & Kosten",
+    slug: "planung-kosten",
+    artikel: [
+      {
+        href: "/segeltorn-kroatien-kosten",
+        title: "Was kostet ein Segeltörn?",
+        text: "Echte Kalkulation: Charter, Skipper, Kaution, Sprit, Liegegebühren und Vignetten – mit Beispielrechnung pro Woche.",
+      },
+      {
+        href: "/yachtcharter-nebenkosten-kroatien",
+        title: "Nebenkosten beim Yachtcharter",
+        text: "Endreinigung, Transitlog, Kurtaxe, Mooring und Kaution erklärt – was inklusive ist und was extra dazukommt.",
+      },
+      {
+        href: "/beste-reisezeit-segeln-kroatien",
+        title: "Beste Reisezeit – Monat für Monat",
+        text: "Mai bis Oktober im Detail: Wetter, Wassertemperatur, Wind und Betrieb – und warum Juni und September ideal sind.",
+      },
+    ],
+  },
+  {
+    label: "Führerschein & Crew",
+    slug: "fuehrerschein-crew",
+    artikel: [
+      {
+        href: "/bootsfuehrerschein-kroatien",
+        title: "Welcher Bootsführerschein?",
+        text: "Welche Lizenz und welches Funkzeugnis ihr fürs Bareboat-Chartern braucht – und wie es ganz ohne Schein geht.",
+      },
+      {
+        href: "/sportbootfuehrerschein-kroatien",
+        title: "Sportbootführerschein (SBF See)",
+        text: "Warum der SBF See die Basis fürs Chartern ist und wie er mit SKS und Funkzeugnis SRC/UBI zusammenspielt.",
+      },
+      {
+        href: "/yachtcharter-ohne-fuehrerschein-kroatien",
+        title: "Chartern ohne Führerschein",
+        text: "Ohne eigenen Schein in Kroatien segeln? Mit Skipper kein Problem – Ablauf, Kosten und was ihr selbst übernehmt.",
+      },
+    ],
+  },
+  {
     label: "Wetter & Winde",
     slug: "wetter-und-winde",
     artikel: [
@@ -71,14 +144,25 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
     ],
   },
   {
-    label: "An Bord & Proviant",
-    slug: "an-bord",
+    label: "Buchten & Ankern",
+    slug: "buchten-ankern",
     artikel: [
+      {
+        href: "/ankerbuchten-kroatien",
+        title: "Die schönsten Ankerbuchten",
+        text: "Von Telašćica über die Kornaten bis zu den Inseln Mitteldalmatiens – die schönsten Buchten und was sie besonders macht.",
+      },
       {
         href: "/ankern-kroatien",
         title: "Ankern in Kroatien",
-        text: "Regeln, Nationalpark-Vignetten, Bojenpflicht und die schönsten Ankerbuchten ab Šibenik.",
+        text: "Regeln, Nationalpark-Vignetten, Gebühren, Bojenpflicht und die besten Ankerspots ab Šibenik.",
       },
+    ],
+  },
+  {
+    label: "An Bord & Proviant",
+    slug: "an-bord",
+    artikel: [
       {
         href: "/packliste-segeln-kroatien",
         title: "Packliste Segeln Kroatien",

@@ -9,9 +9,9 @@ import { Icon, ArrowRight, Wind } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Katamaran mieten Kroatien – Revier-Guide ab Šibenik",
+  title: "Katamaran mieten in Kroatien – Charter-Guide ab Šibenik",
   description:
-    "Katamaran chartern in Kroatien: Reviere, Wind (Maestral & Bora), beste Reisezeit, mit oder ohne Skipper und Preise – der Guide rund um die Miss Moneypenny.",
+    "Katamaran chartern in Kroatien – der große Charter-Guide: Reviere, Wind (Maestral & Bora), beste Reisezeit, mit oder ohne Skipper und Preise rund um die Miss Moneypenny.",
   openGraph: {
     title: "Katamaran mieten Kroatien – Revier-Guide ab Šibenik",
     description: "Reviere, Wind (Maestral & Bora), beste Reisezeit, mit oder ohne Skipper – der komplette Katamaran-Guide für Kroatien.",
@@ -41,6 +41,10 @@ const facts = [
 ];
 
 const faqs: { q: string; a: string }[] = [
+  {
+    q: "Wo kann ich einen Katamaran in Kroatien chartern?",
+    a: "Ein idealer Ausgangspunkt zum Katamaran-Chartern ist Šibenik in Mitteldalmatien: Von der Marina Mandalina aus erreicht ihr die Kornaten, den Krka-Nationalpark und die Städte Dalmatiens bequem innerhalb einer Woche. Genau dort liegt die Miss Moneypenny, eine Lagoon 400 S2 mit Wassermacher und Solaranlage für bis zu acht Gäste.",
+  },
   {
     q: "Warum einen Katamaran statt einer Einrumpfyacht mieten?",
     a: "Ein Katamaran liegt dank seiner zwei Rümpfe nahezu krängungsfrei und damit besonders stabil im Wasser – ein Segen gegen Seekrankheit. Dazu kommen ein großer Salon, ein breites Cockpit und getrennte Kabinen mit eigenem Bad, die viel Raum und Privatsphäre bieten. Der flache Tiefgang von gut einem Meter ermöglicht zudem das Ankern in flachen Buchten, die Einrumpfern verschlossen bleiben.",
@@ -193,7 +197,9 @@ export default function KatamaranMietenPage() {
                 <p>
                   Die Miss Moneypenny liegt im komfortablen Mittelfeld – mit einer
                   Ausstattung, die viele teurere Yachten nicht bieten. Die konkreten
-                  Richtwerte finden Sie auf unserer Charter-Seite.
+                  Richtwerte finden Sie auf unserer Charter-Seite, eine vollständige
+                  Aufstellung aller Posten im Ratgeber{" "}
+                  <Link href="/segeltorn-kroatien-kosten">Was kostet ein Segeltörn in Kroatien?</Link>
                 </p>
               </Reveal>
               <Reveal as="div" delay={3} style={{ marginTop: "2rem" }}>

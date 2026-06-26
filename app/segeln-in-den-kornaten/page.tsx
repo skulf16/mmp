@@ -9,9 +9,9 @@ import { Icon, Wind, ArrowRight } from "@/components/Icons";
 import { siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Segeltörn Kornaten – Katamaran-Törn ab Šibenik",
+  title: "Kornati segeln – Segeltörn durch den Nationalpark ab Šibenik",
   description:
-    "89 Inseln, einsame Buchten, Bojenfelder statt Marina-Trubel: Tipps für den Kornaten-Törn mit dem Katamaran ab Šibenik – inkl. Anlegen, Konobas und Windbedingungen.",
+    "Kornati segeln: 89 Inseln, einsame Buchten und Bojenfelder statt Marina-Trubel. Alles zum Kornaten-Törn mit dem Katamaran ab Šibenik – Genehmigung/Vignette, Anlegen, Konobas und Wind.",
   openGraph: {
     title: "Segeltörn Kornaten – Katamaran-Törn ab Šibenik",
     description: "89 Inseln, einsame Buchten, Bojenfelder statt Marina-Trubel – alles zum Kornaten-Törn mit der Miss Moneypenny.",
@@ -55,6 +55,10 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "Was macht die Kornaten als Segelrevier besonders?",
     a: "Die Kornaten sind ein Archipel aus 89 Inseln und Riffen – karg, schroff und größtenteils unbewohnt, ohne Straßen und mit kaum Häusern. Die berühmten „Kronen” stürzen senkrecht ins tiefblaue Meer, eine Kulisse, die man nur vom Wasser aus erlebt. Abseits der Routen finden sich Ankerplätze, an denen man abends ganz allein vor Anker liegt.",
+  },
+  {
+    q: "Braucht man eine Genehmigung oder Vignette, um in den Kornaten zu segeln?",
+    a: "Ja. Für die Einfahrt in den Kornati-Nationalpark und den angrenzenden Naturpark Telašćica wird eine nach Bootslänge gestaffelte Tagesvignette benötigt – online vorbestellt ist sie meist günstiger als vor Ort. In den Schutzgebieten gilt überwiegend Bojenpflicht statt freiem Ankern, um den Meeresboden zu schützen.",
   },
   {
     q: "Wo kann man in den Kornaten anlegen?",
@@ -165,7 +169,9 @@ export default function KornatenPage() {
                 <p>
                   Im Nationalpark ersetzen Bojenfelder und Ankerbuchten die großen Marinas.
                   Viele Plätze lassen sich vorab über das Portal <em>mySea</em> reservieren –
-                  so haben Sie Ihren Liegeplatz sicher.
+                  so haben Sie Ihren Liegeplatz sicher. Eine Auswahl der{" "}
+                  <Link href="/ankerbuchten-kroatien">schönsten Ankerbuchten Kroatiens</Link>{" "}
+                  haben wir separat zusammengestellt.
                 </p>
               </Reveal>
               <Reveal as="div" delay={2} style={{ marginTop: "0.5rem" }}>

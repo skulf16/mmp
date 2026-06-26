@@ -63,6 +63,102 @@ export type RatgeberArticle = {
 
 /* ---- Ratgeber-Registry: Single Source of Truth für Article-Schema & Byline ---- */
 export const ratgeberArticles: Record<string, RatgeberArticle> = {
+  "segeltorn-routen-kroatien": {
+    headline: "Die 7 schönsten Segeltörn-Routen in Kroatien",
+    description:
+      "Segeltörn Kroatien Route: Die 7 schönsten Segelrouten von den Kornaten über Dalmatien bis Istrien – Dauer, Highlights und für wen sich welche Route eignet.",
+    image: "/images/croatia-map.png",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "segeltorn-ab-split": {
+    headline: "Segeltörn ab Split – 7-Tage-Route durch Mitteldalmatien",
+    description:
+      "Segeln ab Split: Eine 7-Tage-Route durch Mitteldalmatien Tag für Tag – Trogir, Šolta, Hvar, Vis und Brač, mit Etappen, Distanzen und Tipps für den Kroatien-Törn.",
+    image: "/images/city-split.png",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "dalmatien-segeln-route": {
+    headline: "Segeln in Dalmatien – Route, Reviere, Häfen & Highlights",
+    description:
+      "Dalmatien segeln Route: Nord-, Mittel- und Süddalmatien im Überblick – wichtigste Häfen, Marinas, Inseln und Highlights für den perfekten Segeltörn.",
+    image: "/images/yacht-sailing-coast.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "istrien-segeln": {
+    headline: "Segeln in Istrien – das unterschätzte Revier der Nordadria",
+    description:
+      "Istrien segeln: Das unterschätzte Revier im Norden Kroatiens – Pula, Rovinj, die Brijuni-Inseln und der Limski-Kanal, mit Häfen, Winden und Törn-Tipps.",
+    image: "/images/yacht-sailing-side.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "segelrevier-kroatien": {
+    headline: "Segelrevier Kroatien – Nord vs. Süd & wo am besten starten",
+    description:
+      "Segelrevier Kroatien im Überblick: Istrien, Kvarner Bucht, Mittel- und Süddalmatien im Vergleich – wo es sich am besten startet und welches Revier zu dir passt.",
+    image: "/images/yacht-aerial-wide.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "segeltorn-kroatien-kosten": {
+    headline: "Was kostet ein Segeltörn in Kroatien? Echte Kalkulation",
+    description:
+      "Segeltörn Kroatien Kosten realistisch kalkuliert: Charter, Skipper, Kaution, Sprit, Liegegebühren, Vignetten und Verpflegung – mit Beispielrechnung pro Woche und Crew.",
+    image: "/images/yacht-nav-station.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "beste-reisezeit-segeln-kroatien": {
+    headline: "Beste Reisezeit zum Segeln in Kroatien – Monat für Monat",
+    description:
+      "Segeln Kroatien beste Zeit: Monat für Monat von Mai bis Oktober – Wetter, Wassertemperatur, Wind und Betrieb, plus warum Juni und September ideal sind.",
+    image: "/images/yacht-sailing-genoa.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "yachtcharter-nebenkosten-kroatien": {
+    headline: "Nebenkosten beim Yachtcharter in Kroatien",
+    description:
+      "Nebenkosten beim Yachtcharter in Kroatien: Endreinigung, Transitlog, Kurtaxe, Mooring/Liegegebühren, Kaution und Vignetten erklärt – was inklusive ist und was extra kommt.",
+    image: "/images/yacht-aerial-topdown.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "bootsfuehrerschein-kroatien": {
+    headline: "Welcher Bootsführerschein für Kroatien?",
+    description:
+      "Bootsführerschein Kroatien: Welche Lizenz und welches Funkzeugnis du fürs Bareboat-Chartern brauchst, welche Scheine anerkannt sind – und wie es ganz ohne Schein geht.",
+    image: "/images/yacht-helm.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "sportbootfuehrerschein-kroatien": {
+    headline: "Sportbootführerschein See für den Kroatien-Törn",
+    description:
+      "Sportbootführerschein Kroatien: Warum der SBF See die Basis fürs Chartern ist, wie er mit SKS und SRC/UBI zusammenspielt und was er für deinen Kroatien-Törn bedeutet.",
+    image: "/images/yacht-helm.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "yachtcharter-ohne-fuehrerschein-kroatien": {
+    headline: "Yacht chartern ohne Führerschein in Kroatien",
+    description:
+      "Yacht chartern ohne Führerschein in Kroatien: Mit einem erfahrenen Skipper an Bord geht es problemlos – so funktioniert es, das kostet es, das dürft ihr selbst übernehmen.",
+    image: "/images/yacht-cockpit-dining.jpg",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
+  "ankerbuchten-kroatien": {
+    headline: "Die schönsten Ankerbuchten Kroatiens",
+    description:
+      "Ankerbuchten Kroatien: Die schönsten Buchten von den Kornaten über Telašćica bis zu den Inseln Mitteldalmatiens – Charakter, Schutz und was sie besonders macht.",
+    image: "/images/region-kornati-cove.png",
+    published: "2026-06-25",
+    updated: "2026-06-25",
+  },
   "familien-segeltorn-kroatien": {
     headline: "Familien-Segeltörn Kroatien – Segeln mit Kindern auf dem Katamaran",
     description:
@@ -93,7 +189,7 @@ export const ratgeberArticles: Record<string, RatgeberArticle> = {
       "Mit erfahrenem Skipper an Bord der Miss Moneypenny: Kroatien segeln ohne Führerschein – entspannt, sicher, unvergesslich.",
     image: "/images/yacht-helm.jpg",
     published: "2026-06-20",
-    updated: "2026-06-23",
+    updated: "2026-06-25",
   },
   "winde-kroatien": {
     headline: "Winde Kroatien: Maestral, Bora & Jugo erklärt",
@@ -133,7 +229,7 @@ export const ratgeberArticles: Record<string, RatgeberArticle> = {
       "Ankern in Kroatien: Nationalpark-Regeln, Bojenpflicht und die schönsten Ankerbuchten ab Šibenik.",
     image: "/images/yacht-hero-anchored.jpg",
     published: "2026-06-20",
-    updated: "2026-06-23",
+    updated: "2026-06-25",
   },
   "packliste-segeln-kroatien": {
     headline: "Packliste Segeln Kroatien – was ihr speziell für das Revier braucht",
@@ -141,7 +237,7 @@ export const ratgeberArticles: Record<string, RatgeberArticle> = {
       "Packliste für einen Segeltörn in Kroatien: Nationalpark-Vignette, Dokumente, Währung, Sonnenschutz und alles, was für das Revier um Šibenik besonders wichtig ist.",
     image: "/images/region-sibenik.png",
     published: "2026-06-20",
-    updated: "2026-06-23",
+    updated: "2026-06-25",
   },
   "segeltorn-packliste": {
     headline: "Segeltörn Packliste – was wirklich an Bord gehört",

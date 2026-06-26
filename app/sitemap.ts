@@ -22,6 +22,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/maestral-wind",
     "/bora-kroatien",
     "/jugo-wind-kroatien",
+    "/segeltorn-routen-kroatien",
+    "/segeltorn-ab-split",
+    "/dalmatien-segeln-route",
+    "/istrien-segeln",
+    "/segelrevier-kroatien",
+    "/segeltorn-kroatien-kosten",
+    "/beste-reisezeit-segeln-kroatien",
+    "/yachtcharter-nebenkosten-kroatien",
+    "/bootsfuehrerschein-kroatien",
+    "/sportbootfuehrerschein-kroatien",
+    "/yachtcharter-ohne-fuehrerschein-kroatien",
+    "/ankerbuchten-kroatien",
   ];
 
   const low: string[] = [

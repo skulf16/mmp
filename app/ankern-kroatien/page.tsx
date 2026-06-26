@@ -89,6 +89,10 @@ const faqs: { q: string; a: string }[] = [
     a: "Ja. Für die Einfahrt in den Kornati-Nationalpark und den Naturpark Telašćica ist eine Vignette nötig. Ihr bekommt sie online oder an den Ranger-Stationen vor Ort.",
   },
   {
+    q: "Was kostet das Ankern in Kroatien?",
+    a: "Frei ankern außerhalb der Schutzgebiete ist kostenlos. Für Bojenfelder fällt eine Liegegebühr an – grob 25 bis 60 € pro Nacht für einen Katamaran dieser Größe, in einer Marina entsprechend mehr. Für den Kornati-Nationalpark und Telašćica kommt die nach Bootslänge gestaffelte Tagesvignette hinzu, die online meist günstiger ist als vor Ort. Das sind Richtwerte, Stand 2026 – sie variieren je nach Saison, Bootsgröße und Anbieter; verbindliche Zahlen gibt es auf Anfrage.",
+  },
+  {
     q: "Welche Ankerbuchten ab Šibenik lohnen sich am meisten?",
     a: "Zu den schönsten zählen die Bucht Lavsa und Telašćica in den Kornaten sowie – außerhalb des Nationalparks und frei beankerbar – die Bucht Hramina auf Murter und die ruhigen Buchten von Kaprije und Žirje.",
   },
@@ -188,7 +192,7 @@ export default function AnkernKroatienPage() {
           <Reveal as="div" className="head-block">
             <span className="eyebrow">Ab Šibenik</span>
             <h2 className="section-title">Die schönsten Ankerbuchten in Reichweite.</h2>
-            <p className="lede">Alle innerhalb einer Woche erreichbar – je nach Route und Windlage.</p>
+            <p className="lede">Alle innerhalb einer Woche erreichbar – je nach Route und Windlage. Den großen Überblick liefert unser Guide zu den <Link href="/ankerbuchten-kroatien">schönsten Ankerbuchten Kroatiens</Link>.</p>
           </Reveal>
           <div className="grid-2" style={{ marginTop: "3rem" }}>
             {buchten.map((b, i) => (

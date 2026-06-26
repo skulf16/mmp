@@ -12,7 +12,7 @@ import { siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Packliste Segeln Kroatien – Was ihr speziell braucht",
   description:
-    "Packliste für einen Segeltörn in Kroatien: Nationalpark-Vignette, Dokumente, Währung, Sonnenschutz und alles, was für das Revier um Šibenik besonders wichtig ist.",
+    "Kroatien Segeln Packliste: Was speziell fürs Revier ins Gepäck gehört – Nationalpark-Vignette, Dokumente, Sonnenschutz, Kleidung für Maestral & Bora und die wichtigsten Apps.",
 };
 
 const kroatienSpezifisch = [

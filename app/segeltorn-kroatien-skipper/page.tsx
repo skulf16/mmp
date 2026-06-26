@@ -11,7 +11,7 @@ import { siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Segeltörn Kroatien mit Skipper – 7 Tage ab Šibenik",
   description:
-    "Kroatien segeln ohne Segelschein: Mit einem erfahrenen Skipper an Bord der Miss Moneypenny entspannt die Adria genießen – Lagoon 400 S2, 7 Tage ab Šibenik.",
+    "Segeln in Kroatien mit Skipper – Bareboat oder Skipper mieten? Mit erfahrenem Skipper an Bord der Miss Moneypenny entspannt die Adria genießen: Kosten, Ablauf und Vergleich.",
   openGraph: {
     title: "Segeltörn Kroatien mit Skipper – ohne Segelschein ab Šibenik",
     description: "Mit erfahrenem Skipper an Bord der Miss Moneypenny: Kroatien segeln ohne Führerschein – entspannt, sicher, unvergesslich.",
@@ -49,6 +49,10 @@ const ablauf = [
 ];
 
 const faqs = [
+  {
+    q: "Bareboat oder mit Skipper – was passt zu mir?",
+    a: "Bareboat heißt: Ihr chartert ohne Crew und steuert selbst – Voraussetzung sind ein anerkannter Sportbootführerschein (mind. SBF See), ein Funkzeugnis und Törnerfahrung; dafür ist es etwas günstiger. Mit Skipper braucht ihr keinen Schein, gebt die Verantwortung ab und profitiert von Ortskenntnis – ideal für Einsteiger, Familien und Genießer. Ein erfahrener Skipper kostet rund 1.000–1.500 € pro Woche zuzüglich Tagegeld.",
+  },
   {
     q: "Was kostet ein Skipper?",
     a: "Ein erfahrener Skipper kostet typischerweise 1.000–1.500 € pro Woche zuzüglich Tagegeld (ca. 35–50 €/Tag für Verpflegung). Die Miss Moneypenny nennt euch auf Anfrage aktuelle Konditionen.",
@@ -186,6 +190,41 @@ export default function SegeltornKroatienSkipperPage() {
                 <span className="tag-pill">bis 8 Gäste</span>
               </Reveal>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bareboat vs. mit Skipper */}
+      <section className="section">
+        <div className="container container-narrow">
+          <Reveal as="div"><span className="eyebrow">Bareboat oder mit Skipper?</span></Reveal>
+          <Reveal as="h2" delay={1} className="section-title">Segeln in Kroatien mit Skipper – oder selbst ans Steuer?</Reveal>
+          <Reveal as="div" delay={2} className="prose" style={{ marginTop: "1.6rem" }}>
+            <p>
+              Es gibt zwei Wege zum Törn. <strong>Bareboat</strong> bedeutet, ihr chartert
+              die Yacht ohne Crew und steuert selbst – dafür braucht der Skipper an Bord
+              einen anerkannten{" "}
+              <Link href="/bootsfuehrerschein-kroatien">Bootsführerschein</Link> und ein
+              Funkzeugnis. Wer keinen Schein hat oder den Urlaub einfach genießen möchte,
+              mietet einen Skipper dazu – das geht{" "}
+              <Link href="/yachtcharter-ohne-fuehrerschein-kroatien">ganz ohne eigenen Führerschein</Link>.
+            </p>
+          </Reveal>
+          <div className="grid-2" style={{ marginTop: "2.5rem" }}>
+            <Reveal as="div" delay={1}>
+              <article className="feature">
+                <span className="ic"><Icon name="wheel" /></span>
+                <h3>Bareboat – ihr steuert selbst</h3>
+                <p>Maximale Freiheit und etwas günstiger, aber Voraussetzung sind Schein (mind. SBF See), Funkzeugnis und Törnerfahrung. Ideal für eingespielte Crews, die selbstständig unterwegs sein wollen.</p>
+              </article>
+            </Reveal>
+            <Reveal as="div" delay={2}>
+              <article className="feature">
+                <span className="ic"><Icon name="sparkle" /></span>
+                <h3>Mit Skipper – entspannt &amp; ohne Schein</h3>
+                <p>Ein erfahrener Skipper übernimmt Navigation, Manöver und Ortskenntnis. Kostenpunkt: rund 1.000–1.500 € pro Woche plus Tagegeld. Ideal für Einsteiger, Familien und Genießer.</p>
+              </article>
+            </Reveal>
           </div>
         </div>
       </section>
