@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 
   await transporter.sendMail({
     from: `"Miss Moneypenny Charter" <${process.env.SMTP_FROM}>`,
-    to: process.env.CONTACT_TO,
+    to: [process.env.CONTACT_TO, "agency@mare-yachting.com"].filter(Boolean) as string[],
     replyTo: email,
     subject: `Miss Moneypenny wurde angefragt von ${name}`,
     text,
