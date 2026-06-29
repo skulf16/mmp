@@ -148,7 +148,6 @@ export default function YachtPage() {
                 <span className="tag-pill">Komplette Persenning</span>
                 <span className="tag-pill">Standheizung</span>
                 <span className="tag-pill">Autopilot</span>
-                <span className="tag-pill">AIS</span>
               </Reveal>
             </div>
             <Reveal as="div" delay={2}>

@@ -382,7 +382,7 @@ export const specs: { label: string; value: string }[] = [
 
 /* ---- Ausstattung / Equipment ---- */
 export const equipment: { icon: IconName; title: string; text: string }[] = [
-  { icon: "wheel", title: "Navigation", text: "B&G Kartenplotter, GPS, AIS, Autopilot und elektrische Ankerwinsch." },
+  { icon: "wheel", title: "Navigation", text: "B&G Kartenplotter, GPS, Autopilot und elektrische Ankerwinsch." },
   { icon: "wind", title: "Segelgarderobe", text: "Voll durchgelattetes Großsegel, Rollgenua, Lazy Bag und Bimini." },
   { icon: "shower", title: "Außendusche", text: "Warm-/Kaltwasserdusche an der Badeplattform mit Badeleiter." },
   { icon: "wifi", title: "WLAN an Bord", text: "Unbegrenztes Internet zum Planen, Teilen und Verbundenbleiben." },

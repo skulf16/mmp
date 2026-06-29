@@ -235,8 +235,8 @@ export default function SportbootfuehrerscheinKroatienPage() {
                   unter realen Bedingungen.
                 </p>
                 <p>
-                  An Bord der Miss Moneypenny stehen ein B&amp;G-Kartenplotter, GPS,
-                  AIS und Autopilot bereit – Werkzeuge, deren Grundlagen genau der SBF
+                  An Bord der Miss Moneypenny stehen ein B&amp;G-Kartenplotter, GPS
+                  und Autopilot bereit – Werkzeuge, deren Grundlagen genau der SBF
                   See vermittelt. Wer den Maestral am Nachmittag und die Eigenheiten
                   eines Katamarans kennt, fährt entspannter. Wie eine Woche auf der
                   Adria mit eigenem Skipper an Bord abläuft, zeigt unser{" "}

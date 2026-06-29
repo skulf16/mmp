@@ -324,7 +324,7 @@ export default function YachtcharterOhneFuehrerscheinKroatienPage() {
               vier Doppelkabinen – jede mit eigenem Bad – plus zwei Bugkabinen und
               Platz für bis zu acht Übernachtungsgäste. Mit Wassermacher, starker
               Solaranlage und 300-Liter-Tank liegt sie tagelang autark vor Anker;
-              an Bord findet ihr B&G-Kartenplotter, AIS, Autopilot, elektrische
+              an Bord findet ihr B&G-Kartenplotter, Autopilot, elektrische
               Ankerwinsch, unbegrenztes WLAN, ein Beiboot mit Außenborder und
               Schnorchelausrüstung. Genau dieser Komfort macht sie zur idealen Yacht
               für eine entspannte Charter mit Skipper.

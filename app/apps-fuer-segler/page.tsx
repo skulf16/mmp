@@ -168,7 +168,7 @@ export default function AppsFuerSeglerPage() {
           <Reveal as="h2" delay={1} className="section-title">Smartphone als Co-Skipper.</Reveal>
           <Reveal as="div" delay={2} className="prose" style={{ marginTop: "1.6rem" }}>
             <p>
-              Ein moderner Katamaran wie die Miss Moneypenny ist mit Kartenplotter, AIS und
+              Ein moderner Katamaran wie die Miss Moneypenny ist mit Kartenplotter und
               Autopilot bestens ausgestattet. Ein paar gute Apps auf dem Smartphone oder
               Tablet ergänzen diese Bordelektronik aber ideal – für die Wettervorhersage am
               Morgen, die Bucht-Recherche am Nachmittag und die ruhige Nacht vor Anker.

@@ -41,7 +41,7 @@ const specs: { label: string; value: string }[] = [
 ];
 
 const equipment: { icon: IconName; title: string; text: string }[] = [
-  { icon: "wheel", title: "Navigation", text: "B&G chartplotter, GPS, AIS, autopilot and an electric anchor windlass." },
+  { icon: "wheel", title: "Navigation", text: "B&G chartplotter, GPS, autopilot and an electric anchor windlass." },
   { icon: "wind", title: "Sail wardrobe", text: "Fully battened mainsail, furling genoa, lazy bag and bimini." },
   { icon: "shower", title: "Deck shower", text: "Hot/cold shower on the swim platform with a boarding ladder." },
   { icon: "wifi", title: "Wi-Fi on board", text: "Unlimited internet for planning, sharing and staying connected." },
@@ -179,7 +179,6 @@ export default function YachtPageEn() {
                 <span className="tag-pill">Full enclosure</span>
                 <span className="tag-pill">Diesel heater</span>
                 <span className="tag-pill">Autopilot</span>
-                <span className="tag-pill">AIS</span>
               </Reveal>
             </div>
             <Reveal as="div" delay={2}>

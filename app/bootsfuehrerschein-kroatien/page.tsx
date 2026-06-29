@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const facts = [
   "Wer in Kroatien bareboat – also ohne professionellen Skipper – chartern will, braucht einen anerkannten Sportbootführerschein für den Seebereich (mindestens SBF See bzw. gleichwertig) und zusätzlich ein Funkzeugnis (SRC oder UBI).",
   "Als gleichwertige Lizenzen gelten unter anderem der deutsche Sportbootführerschein See, der weiterführende Sportküstenschifferschein (SKS) und das internationale ICC – die genaue Anerkennung prüft das Charterunternehmen vor der Übergabe.",
-  "Das Funkzeugnis ist Pflicht, weil moderne Charteryachten wie die Lagoon 400 S2 mit Seefunk und AIS ausgestattet sind und der Skipper im Notfall korrekt funken können muss.",
+  "Das Funkzeugnis ist Pflicht, weil moderne Charteryachten wie die Lagoon 400 S2 mit Seefunk ausgestattet sind und der Skipper im Notfall korrekt funken können muss.",
   "Vor jedem Törn muss eine vollständige Crew-Liste mit allen Mitseglern eingereicht werden – sie ist in Kroatien für die Anmeldung der Yacht erforderlich.",
   "Wer keinen passenden Schein, kein Funkzeugnis oder schlicht zu wenig Erfahrung hat, bucht einen erfahrenen Skipper dazu – bei der Miss Moneypenny rund 1.000 bis 1.500 € pro Woche.",
   "Die Miss Moneypenny liegt in der Marina Mandalina in Šibenik in Mitteldalmatien; von dort erreicht ihr die Kornaten, den Krka-Nationalpark und die Städte Dalmatiens.",
@@ -206,10 +206,9 @@ export default function BootsfuehrerscheinKroatienPage() {
                 <p>
                   Das Funkzeugnis ist kein bürokratisches Beiwerk, sondern hat
                   einen handfesten Grund: Die Miss Moneypenny ist mit B&amp;G
-                  Kartenplotter, GPS und AIS ausgestattet und verfügt über
-                  Seefunk. Wer ans Steuer geht, sollte im Notfall einen korrekten
-                  Funkspruch absetzen und AIS-Ziele deuten können – genau das
-                  trainiert das SRC.
+                  Kartenplotter und GPS ausgestattet und verfügt über Seefunk.
+                  Wer ans Steuer geht, sollte im Notfall einen korrekten
+                  Funkspruch absetzen können – genau das trainiert das SRC.
                 </p>
                 <p>
                   Vor Törnbeginn ist außerdem eine vollständige Crew-Liste nötig.
@@ -231,7 +230,7 @@ export default function BootsfuehrerscheinKroatienPage() {
                 <span className="tag-pill">SRC / UBI</span>
                 <span className="tag-pill">Crew-Liste</span>
                 <span className="tag-pill">Praxis zählt</span>
-                <span className="tag-pill">AIS &amp; Plotter</span>
+                <span className="tag-pill">Plotter &amp; GPS</span>
               </Reveal>
             </div>
             <Reveal as="div" delay={2}>
