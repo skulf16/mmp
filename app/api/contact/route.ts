@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     from: `"Miss Moneypenny Charter" <${process.env.SMTP_FROM}>`,
     to: process.env.CONTACT_TO,
     replyTo: email,
-    subject: `Charter-Anfrage von ${name}`,
+    subject: `Miss Moneypenny wurde angefragt von ${name}`,
     text,
   });
 
