@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   title: { absolute: "Katamaran mieten ab Šibenik | Miss Moneypenny (Lagoon 400)" },
   description:
     "Autarker Segelkatamaran ab Šibenik: Lagoon 400 S2 mit Wassermacher & Solaranlage. Tagelang frei vor Anker in den Kornaten. Jetzt Verfügbarkeit anfragen.",
+  alternates: {
+    canonical: "/",
+    languages: { "de-DE": "/", en: "/en", "x-default": "/" },
+  },
   openGraph: {
     title: "Katamaran mieten ab Šibenik | Miss Moneypenny (Lagoon 400)",
     description: "Autarker Segelkatamaran ab Šibenik: Lagoon 400 S2 mit Wassermacher & Solaranlage. Tagelang frei vor Anker in den Kornaten.",

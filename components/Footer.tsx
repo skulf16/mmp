@@ -1,41 +1,42 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { MapPin, Mail, Phone } from "./Icons";
+import { getLocale, t } from "@/lib/i18n";
 
 export default function Footer() {
+  const locale = getLocale(usePathname());
+  const dict = t[locale];
+  const homeHref = locale === "en" ? "/en" : "/";
+  const year = new Date().getFullYear();
+
   return (
     <footer className="site-footer">
       <div className="container container-wide">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="brand" aria-label={`${site.name} – Startseite`}>
+            <Link href={homeHref} className="brand" aria-label={`${site.name} – ${locale === "en" ? "Home" : "Startseite"}`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/logo-mark-light.png" alt={`${site.name} – ${site.brand}`} className="brand-logo footer-logo" />
             </Link>
-            <p className="footer-about">
-              Autarkes Segelabenteuer auf der kroatischen Adria. Die Lagoon 400 S2
-              „Miss Moneypenny“ – mit Wassermacher und Solaranlage für grenzenlose
-              Freiheit ab Šibenik.
-            </p>
+            <p className="footer-about">{dict.footerAbout}</p>
           </div>
 
-          <div className="footer-col">
-            <h4>Entdecken</h4>
-            <Link href="/die-yacht">Die Yacht</Link>
-            <Link href="/charter-infos">Charter-Infos</Link>
-            <Link href="/katamaran-mieten-kroatien">Katamaran mieten</Link>
-            <Link href="/kontakt">Anfragen</Link>
-          </div>
+          {dict.footerCols.map((col) => (
+            <div className="footer-col" key={col.heading}>
+              <h4>{col.heading}</h4>
+              {col.links.map((l) => (
+                <Link key={l.href + l.label} href={l.href}>
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          ))}
 
           <div className="footer-col">
-            <h4>Reviere</h4>
-            <Link href="/revier-sibenik">Revier Šibenik</Link>
-            <Link href="/segeln-in-den-kornaten">Kornaten</Link>
-            <Link href="/staedte-dalmatiens">Städte Dalmatiens</Link>
-          </div>
-
-          <div className="footer-col">
-            <h4>Kontakt</h4>
+            <h4>{locale === "en" ? "Contact" : "Kontakt"}</h4>
             <p style={{ display: "flex", gap: "0.6rem", alignItems: "flex-start", padding: "0.4rem 0" }}>
               <MapPin style={{ width: 18, color: "var(--brass-300)", flex: "none", marginTop: 3 }} />
               {site.base}
@@ -52,10 +53,13 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} {site.brand} · Miss Moneypenny. Alle Rechte vorbehalten.</span>
+          <span>© {year} {site.brand} · Miss Moneypenny. {dict.rights}</span>
           <span style={{ display: "flex", gap: "1.4rem" }}>
-            <Link href="/impressum">Impressum</Link>
-            <Link href="/datenschutz">Datenschutz</Link>
+            {dict.legal.map((l) => (
+              <Link key={l.href} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
           </span>
         </div>
       </div>

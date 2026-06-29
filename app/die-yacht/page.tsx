@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "Lagoon 400 S2 mieten – autarker Katamaran",
   description:
     "Die Miss Moneypenny: Lagoon 400 S2 mit 4+2 Kabinen, Wassermacher & Solar. Alle technischen Daten, Ausstattung und Bilder des autarken Katamarans im Überblick.",
+  alternates: {
+    canonical: "/die-yacht",
+    languages: { "de-DE": "/die-yacht", en: "/en/the-yacht", "x-default": "/die-yacht" },
+  },
   openGraph: {
     title: "Lagoon 400 S2 mieten – autarker Katamaran | Miss Moneypenny",
     description: "Lagoon 400 S2 mit 4+2 Kabinen, Wassermacher & Solar. Technische Daten, Ausstattung und Galerie der Miss Moneypenny.",
