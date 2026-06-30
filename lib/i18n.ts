@@ -71,6 +71,7 @@ export const t: Record<Locale, Dict> = {
           { label: "Die Yacht", href: "/die-yacht" },
           { label: "Charter-Infos", href: "/charter-infos" },
           { label: "Katamaran mieten", href: "/katamaran-mieten-kroatien" },
+          { label: "Skipper-Bordbuch", href: "/bordbuch" },
           { label: "Anfragen", href: "/kontakt" },
         ],
       },

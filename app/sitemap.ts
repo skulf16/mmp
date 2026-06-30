@@ -51,6 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/sicherheitseinweisung-yacht",
     "/kroatien-inselhopping",
     "/autor/dominik-theis",
+    "/bordbuch",
   ];
 
   return [

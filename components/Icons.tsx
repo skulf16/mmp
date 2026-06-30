@@ -189,6 +189,34 @@ export const Sailboat = (p: IconProps) => (
   </svg>
 );
 
+export const Plus = (p: IconProps) => (
+  <svg {...base} {...p}><path d="M12 5v14M5 12h14" /></svg>
+);
+
+export const Trash = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 7h16" />
+    <path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+    <path d="M6 7l1 12.5a1.5 1.5 0 0 0 1.5 1.5h7a1.5 1.5 0 0 0 1.5-1.5L18 7" />
+    <path d="M10 11v6M14 11v6" />
+  </svg>
+);
+
+export const Download = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M12 3v12" />
+    <path d="m7.5 10.5 4.5 4.5 4.5-4.5" />
+    <path d="M4 20h16" />
+  </svg>
+);
+
+export const BookOpen = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M12 6.5C10.5 5 8 4.5 4 4.5V18c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2V4.5c-4 0-6.5.5-8 2Z" />
+    <path d="M12 6.5V20" />
+  </svg>
+);
+
 export const Apple = (p: IconProps) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
     <path d="M16.37 1.43c0 1.13-.49 2.26-1.18 3.07-.74.9-1.99 1.58-2.98 1.58-.12 0-.24-.02-.31-.04-.01-.05-.03-.21-.03-.38 0-1.15.57-2.27 1.2-2.98C13.85 1.73 15.2 1.04 16.3 1c.03.13.06.28.06.43zM20.93 17.13c-.03.08-.46 1.58-1.52 3.13-.94 1.34-1.93 2.67-3.48 2.7-1.52.03-2.01-.9-3.75-.9-1.73 0-2.28.87-3.71.93-1.5.06-2.63-1.45-3.58-2.79-1.94-2.73-3.43-7.72-1.44-11.08C4.44 7.45 6.21 6.4 8.13 6.36c1.47-.03 2.85.99 3.75.99.9 0 2.58-1.22 4.35-1.04.74.03 2.82.3 4.16 2.25-.11.07-2.49 1.45-2.46 4.33.03 3.44 3.01 4.58 3.05 4.6z" />
@@ -226,6 +254,10 @@ export const iconMap = {
   shower: Shower,
   shield: Shield,
   sailboat: Sailboat,
+  plus: Plus,
+  trash: Trash,
+  download: Download,
+  book: BookOpen,
 };
 
 export type IconName = keyof typeof iconMap;
