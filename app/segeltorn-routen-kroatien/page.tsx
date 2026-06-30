@@ -243,6 +243,13 @@ export default function SegeltornRoutenKroatienPage() {
                   zum Revier rund um den Heimathafen findet ihr in unserer{" "}
                   <Link href="/segelrevier-kroatien">Revier-Übersicht</Link>.
                 </p>
+                <p>
+                  Eine Ausnahme: Wer zwei Wochen Zeit mitbringt, kann Süddalmatien
+                  sehr wohl als Rundtörn direkt ab Šibenik segeln – bis vor die Mauern
+                  von Dubrovnik und wieder zurück. Wie das Etappe für Etappe aussieht,
+                  zeigt unser{" "}
+                  <Link href="/toernvorschlag-sueddalmatien">Segeltörn von Šibenik nach Dubrovnik (2 Wochen)</Link>.
+                </p>
               </Reveal>
             </div>
             <Reveal as="div" delay={2}>

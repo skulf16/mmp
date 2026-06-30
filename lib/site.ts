@@ -63,6 +63,14 @@ export type RatgeberArticle = {
 
 /* ---- Ratgeber-Registry: Single Source of Truth für Article-Schema & Byline ---- */
 export const ratgeberArticles: Record<string, RatgeberArticle> = {
+  "toernvorschlag-sueddalmatien": {
+    headline: "Segeltörn Šibenik → Dubrovnik – 2-Wochen-Törn Tag für Tag",
+    description:
+      "Segeltörn von Šibenik nach Dubrovnik und zurück: die 2-Wochen-Route Tag für Tag – Ankerbuchten von Šćedro über Korčula und Mljet bis Dubrovnik, autark mit der Miss Moneypenny.",
+    image: "/images/toern-sueddalmatien/scedro-bucht.jpg",
+    published: "2026-06-30",
+    updated: "2026-06-30",
+  },
   "segeltorn-routen-kroatien": {
     headline: "Die 7 schönsten Segeltörn-Routen in Kroatien",
     description:
@@ -305,6 +313,7 @@ export const nav: NavItem[] = [
       { label: "Revier Šibenik", href: "/revier-sibenik", desc: "Heimathafen & Ausgangspunkt" },
       { label: "Segeln in den Kornaten", href: "/segeln-in-den-kornaten", desc: "89 Inseln im Nationalpark" },
       { label: "Törnvorschlag Kornaten", href: "/toernvorschlag-kornaten", desc: "1-Woche-Route Tag für Tag" },
+      { label: "2 Wochen Šibenik–Dubrovnik", href: "/toernvorschlag-sueddalmatien", desc: "Süddalmatien-Törn Tag für Tag" },
       { label: "Städte Dalmatiens", href: "/staedte-dalmatiens", desc: "Trogir · Split · Hvar · Korčula" },
       { label: "Katamaran mieten Kroatien", href: "/katamaran-mieten-kroatien", desc: "Der große Revier-Guide" },
     ],

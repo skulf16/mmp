@@ -59,6 +59,11 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
         text: "Eine 7-Tage-Route durch Mitteldalmatien Tag für Tag – Trogir, Šolta, Hvar, Vis und Brač mit Etappen und Tipps.",
       },
       {
+        href: "/toernvorschlag-sueddalmatien",
+        title: "Segeltörn Šibenik → Dubrovnik (2 Wochen)",
+        text: "Der Segeltörn von Šibenik nach Dubrovnik Tag für Tag – über Hvar, Korčula, Mljet und Dubrovnik, zurück über Lastovo und Vis.",
+      },
+      {
         href: "/dalmatien-segeln-route",
         title: "Segeln in Dalmatien",
         text: "Nord-, Mittel- und Süddalmatien im Überblick: wichtigste Häfen, Marinas, Inseln und Highlights fürs Revier.",

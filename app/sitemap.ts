@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/katamaran-mieten-kroatien",
     "/staedte-dalmatiens",
     "/toernvorschlag-kornaten",
+    "/toernvorschlag-sueddalmatien",
     "/segeltorn-kroatien-skipper",
     "/familien-segeltorn-kroatien",
     "/maestral-wind",
