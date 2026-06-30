@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Segeltörn Šibenik → Dubrovnik: 2 Wochen Törn | Miss Moneypenny",
     description:
-      "Segeltörn von Šibenik nach Dubrovnik: 14 Tage, rund 280 Seemeilen, einsame Ankerbuchten von Šćedro bis Vis – autark mit der Miss Moneypenny.",
+      "Segeltörn von Šibenik nach Dubrovnik: rund 2 Wochen, etwa 280 Seemeilen, einsame Ankerbuchten von Šćedro bis Vis – autark mit der Miss Moneypenny.",
     images: [
       {
         url: "/images/toern-sueddalmatien/scedro-bucht.jpg",
@@ -36,20 +36,19 @@ const ldTrip = {
   "@type": "TouristTrip",
   "name": "Segeltörn Šibenik – Dubrovnik & zurück: 2-Wochen-Törnvorschlag mit der Miss Moneypenny",
   "description":
-    "Segeltörn von Šibenik nach Dubrovnik und zurück, Tag für Tag: 14 Tage, rund 280 Seemeilen, einsame Ankerbuchten in Süddalmatien – autark unterwegs mit Wassermacher und Solaranlage.",
+    "Segeltörn von Šibenik nach Dubrovnik und zurück, Tag für Tag: rund zwei Wochen, etwa 280 Seemeilen, einsame Ankerbuchten in Süddalmatien – autark unterwegs mit Wassermacher und Solaranlage.",
   "url": `${siteUrl}/${slug}`,
   "touristType": "Segler",
   "itinerary": [
-    { "@type": "City", "name": "Šibenik – Zlarin / Kaprije" },
-    { "@type": "City", "name": "Drvenik Veli (Blaue Lagune) / Rogoznica" },
+    { "@type": "City", "name": "Šibenik – Marina Mandalina (Anreise)" },
+    { "@type": "City", "name": "Šibenik → Veli Drvenik (Mala Luka)" },
     { "@type": "City", "name": "Šolta – Šešula / Maslinica" },
     { "@type": "City", "name": "Pakleni-Inseln (Palmižana) & Hvar" },
     { "@type": "City", "name": "Šćedro – Bucht Lovišće" },
     { "@type": "City", "name": "Korčula – Lumbarda" },
-    { "@type": "City", "name": "Mljet-Nationalpark – Polače" },
-    { "@type": "City", "name": "Elaphiten – Dubrovnik" },
-    { "@type": "City", "name": "Dubrovnik (Hafentag)" },
-    { "@type": "City", "name": "Mljet – Saplunara / Okuklje" },
+    { "@type": "City", "name": "Mljet – Marijina Konoba" },
+    { "@type": "City", "name": "Mljet → Dubrovnik" },
+    { "@type": "City", "name": "Dubrovnik → Mljet (Saplunara)" },
     { "@type": "City", "name": "Lastovo – Skrivena Luka" },
     { "@type": "City", "name": "Vis – Komiža / Stiniva" },
     { "@type": "City", "name": "Hvar / Šolta" },
@@ -69,19 +68,19 @@ const days: {
 }[] = [
   {
     tag: "Tag 1 · Samstag",
-    title: "Šibenik → Zlarin / Kaprije",
-    distance: "ca. 12 sm",
-    highlight: "Einsegeln & Crew zusammenfinden",
-    text: "Check-in in der Marina Mandalina, Bordeinweisung mit Skipper Jo, Proviant für zwei Wochen verstauen. Am Nachmittag ablegen und durch den St.-Anthony-Kanal hinaus ins Šibeniker Archipel. Die erste Nacht vor der autofreien Insel Zlarin oder in der ruhigen Bucht von Kaprije – eine kurze Strecke, damit die Crew das Boot kennenlernt, bevor es nach Süden geht.",
+    title: "Šibenik – Anreise & Ankommen",
+    distance: "Hafentag",
+    highlight: "Tradition: Tag 1 bleibt im Hafen",
+    text: "Check-in in der Marina Mandalina, Bordeinweisung mit Skipper Jo, Proviant für zwei Wochen verstauen. Bei uns gilt die Tradition: Am ersten Tag laufen wir nicht mehr aus. Alle sind von der Anreise gestresst und müssen sich an Bord erst einrichten – und weil wir uns sonst nicht allzu oft sehen, gibt es viel zu besprechen und das eine oder andere Anlegerchen zu servieren.",
     image: "/images/toern-sueddalmatien/marina-sibenik-start.jpg",
     imageAlt: "Masten in der Marina Mandalina in Šibenik im Morgenlicht – der Start des Törns",
   },
   {
     tag: "Tag 2 · Sonntag",
-    title: "→ Drvenik Veli (Blaue Lagune)",
-    distance: "ca. 22 sm",
+    title: "Šibenik → Veli Drvenik (Mala Luka)",
+    distance: "ca. 28 sm",
     highlight: "Erste Ankernacht, glühender Sonnenuntergang",
-    text: "Südkurs ins Trogir-Revier. Highlight des Tages ist die Blaue Lagune bei Krknjaši an der Insel Drvenik Veli – türkises Flachwasser über hellem Sand, ein Klassiker zum Schwimmen und Schnorcheln. Wer mehr Infrastruktur möchte, läuft Rogoznica mit der Marina Frapa an. Abends das erste Mal frei vor Anker, während die Sonne den Himmel in Flammen setzt.",
+    text: "Endlich ablegen – durch den St.-Anthony-Kanal hinaus ins Šibeniker Archipel. Highlight des Tages ist die Bucht Mala Luka an der Insel Veli Drvenik: türkises Flachwasser über hellem Sand, ein Klassiker zum Schwimmen und Schnorcheln. Wer mehr Infrastruktur möchte, läuft Rogoznica mit der Marina Frapa an. Abends das erste Mal frei vor Anker, während die Sonne den Himmel in Flammen setzt. In der Bucht ist viel Platz für viele Schiffe, der Anker hält gut, und abends kehrt Ruhe ein.",
     image: "/images/toern-sueddalmatien/sonnenuntergang-anker.jpg",
     imageAlt: "Glühender Sonnenuntergang über der ersten Ankerbucht des Törns",
   },
@@ -117,67 +116,60 @@ const days: {
     title: "→ Korčula-Stadt / Lumbarda",
     distance: "ca. 16 sm",
     highlight: "Klein-Dubrovnik & Marco Polo",
-    text: "Hinüber zur Insel Korčula. Die ummauerte Altstadt – „Klein-Dubrovnik“ und angebliche Geburtsstadt Marco Polos – ist ein Fischgräten-Labyrinth aus Gassen, Kathedrale und Stadttürmen. Festmachen in der Stadtmarina oder ankern vor Lumbarda, dem Weinort mit Sandstränden. Abends die berühmten Sonnenuntergänge über dem Pelješac-Kanal.",
+    text: "Hinüber zur Insel Korčula. Die ummauerte Altstadt – „Klein-Dubrovnik“ und angebliche Geburtsstadt Marco Polos – ist ein Fischgräten-Labyrinth aus Gassen, Kathedrale und Stadttürmen. Die Marina ist allerdings happig teuer; wir sparen uns die Kosten und gehen an eine Boje direkt neben Lumbarda – ideal, um die Vorräte aufzufüllen. Die Boje kostet hier rund 5 € pro Meter (also etwa 60 € als Richtwert), was wirklich fair ist. Eine der schönsten Konobas liegt direkt in Sichtweite: Wer an der Boje liegt, isst dort vergünstigt zu Abend, direkt auf der Terrasse am Wasser.",
     image: "/images/toern-sueddalmatien/korcula-sonnenuntergang.jpg",
     imageAlt: "Sonnenuntergang vor der Inselstadt Korčula",
   },
   {
     tag: "Tag 7 · Freitag",
-    title: "→ Mljet-Nationalpark (Polače)",
+    title: "→ Mljet · Marijina Konoba",
     distance: "ca. 20 sm",
-    highlight: "Die grünste Insel der Adria",
-    text: "Im Nationalpark im Westen von Mljet liegt ihr geschützt in der Bucht von Polače an einer Park-Boje. Zu Fuß oder per Leihrad geht es zu den beiden Salzwasserseen, mit dem Boot weiter auf die Klosterinsel St. Marien mitten im Veliko jezero. Dichte Pinienwälder, kaum Autos – ein Naturhighlight kurz vor dem südlichsten Punkt der Reise.",
+    highlight: "Bojen-Konoba, Salzseen & bestes Steak",
+    text: "Nächster Stopp: der Nationalpark Mljet. Optional kehrt ihr oben in den Nationalpark ein (Tagesticket rund 20–30 €) und besichtigt die Salzseen – die Parkgrenze ist etwa auf halber Insel gut auf dem Plotter zu erkennen. Uns hat es wieder an eine Boje gezogen, diesmal an der wunderbaren Marijina Konoba. Die Boje ist kostenlos, dafür solltet ihr einen großzügigen Aufschlag fürs Essen einplanen: Wenn der Kellner schon mit dem Boot zur Boje kommt, um die Karte vorzustellen, weiß man, was die Stunde geschlagen hat. Bestes Rib-Eye-Steak seit Jahren!",
     image: "/images/toern-sueddalmatien/mljet-morgenbucht.jpg",
     imageAlt: "Stille Morgenbucht auf der grünen Insel Mljet",
   },
   {
     tag: "Tag 8 · Samstag",
-    title: "→ Elaphiten → Dubrovnik",
-    distance: "ca. 24 sm",
-    highlight: "Ankunft an den Stadtmauern",
-    text: "Letzte Etappe nach Süden: durch die Elaphiten-Inseln Šipan, Lopud und Koločep – grüne, weitgehend autofreie Inseln mit feinen Ankerbuchten direkt vor den Toren Dubrovniks. Am späten Nachmittag die Ansteuerung der Stadt, wenn die Sonne die Mauern golden färbt. Der Anblick der Festung vom Wasser aus ist der emotionale Höhepunkt des Törns.",
-    image: "/images/toern-sueddalmatien/elaphiten-beachclub.jpg",
-    imageAlt: "Beachclub-Terrasse auf den Elaphiten mit Blick über das Wasser",
-  },
-  {
-    tag: "Tag 9 · Sonntag",
-    title: "Dubrovnik – Hafentag",
-    distance: "Landgang",
-    highlight: "Wendepunkt der Reise",
-    text: "Ein ganzer Tag für die Perle der Adria. Liegeplatz in der ACI Marina Dubrovnik (Komolac) im Fjord der Rijeka Dubrovačka, von dort mit Bus oder Boot in die Altstadt. Die rund 2 km lange Stadtmauer umrunden, durch die Gassen treiben, abends ein Sundowner in der Klippenbar Buža mit Blick auf die offene See und die Insel Lokrum. Halbzeit – ab hier dreht der Bug nach Norden. Bei unserem Eigner-Törn übernahm hier die „Aloha Crew“ das Schiff für den Weg zurück.",
+    title: "Mljet → Dubrovnik",
+    distance: "ca. 28 sm",
+    highlight: "Ankunft an den Stadtmauern & Crew-Wechsel",
+    text: "Heute geht es direkt von Mljet nach Dubrovnik – vorbei an den Elaphiten-Inseln Šipan, Lopud und Koločep. Am späten Nachmittag die Ansteuerung der Stadt, wenn die Sonne die Mauern golden färbt: der emotionale Höhepunkt des Törns. Liegeplatz in der ACI Marina Dubrovnik (Komolac), von dort mit Bus oder Boot in die Altstadt – die rund 2 km lange Stadtmauer umrunden, durch die Gassen treiben, abends ein Sundowner in der Klippenbar Buža mit Blick auf die offene See und die Insel Lokrum. Für unser Himmelfahrtskommando endet hier die Etappe: Skipper Jo übernimmt in Dubrovnik die „Aloha Crew“ für den Weg zurück nach Norden.",
     image: "/images/toern-sueddalmatien/dubrovnik-stadtmauer.jpg",
     imageAlt: "Die Stadtmauern von Dubrovnik vom Wasser aus im Abendlicht",
   },
   {
-    tag: "Tag 10 · Montag",
+    tag: "Tag 9 · Sonntag",
     title: "Dubrovnik → Mljet (Saplunara)",
     distance: "ca. 22 sm",
     highlight: "Wieder allein vor Anker",
-    text: "Entspannter Auftakt der Heimreise. Wer den Trubel hinter sich lassen will, ankert an der Südspitze von Mljet in der Sandbucht Saplunara oder kehrt in die stille Ostbucht Okuklje ein. Die erste Nacht wieder ganz für euch – nach den Menschenmengen Dubrovniks die schönste Medizin.",
+    text: "Entspannter Auftakt der Heimreise – vorbei an den Elaphiten-Inseln Šipan, Lopud und Koločep. Wer den Trubel hinter sich lassen will, ankert an der Südspitze von Mljet in der Sandbucht Saplunara oder kehrt in die stille Ostbucht Okuklje ein. Die erste Nacht wieder ganz für euch – nach den Menschenmengen Dubrovniks die schönste Medizin.",
+    image: "/images/toern-sueddalmatien/elaphiten-beachclub.jpg",
+    imageAlt: "Beachclub-Terrasse auf den Elaphiten vor Dubrovnik mit Blick über das Wasser",
   },
   {
-    tag: "Tag 11 · Dienstag",
+    tag: "Tag 10 · Montag",
     title: "→ Lastovo (Skrivena Luka)",
     distance: "ca. 28 sm",
     highlight: "Entlegener Naturpark, Dunkelhimmel",
     text: "Abstecher auf die entlegene Insel Lastovo – einst militärisches Sperrgebiet, heute Naturpark mit einem der dunkelsten Sternenhimmel der Adria. Die „versteckte Bucht“ Skrivena Luka im Süden macht ihrem Namen alle Ehre: rundum geschützt, kaum bebaut. Lastovo hat fast keine Infrastruktur – genau hier spielt die Miss Moneypenny ihre Autarkie voll aus.",
   },
   {
-    tag: "Tag 12 · Mittwoch",
+    tag: "Tag 11 · Dienstag",
     title: "→ Vis (Komiža / Stiniva)",
     distance: "ca. 30 sm",
     highlight: "Die weiteste Insel Kroatiens",
     text: "Die am weitesten draußen liegende bewohnte Insel Kroatiens. Vom Fischerort Komiža lohnt der Tagesausflug zur Blauen Grotte auf der Nachbarinsel Biševo. Im Osten liegt die spektakuläre Felsbucht Stiniva, durch ein schmales Felsentor erreichbar – einer der schönsten Strände Europas. Der längste Schlag des Törns, oft unter verlässlichem Maestral.",
   },
   {
-    tag: "Tag 13 · Donnerstag",
+    tag: "Tag 12 · Mittwoch",
     title: "→ Hvar oder Šolta",
     distance: "ca. 28 sm",
     highlight: "Letzter Inselabend",
     text: "Zurück Richtung Festland. Je nach Wind und Laune ein letzter Inselstopp – noch einmal Hvar oder die ruhige Bucht Šešula auf Šolta. Vorräte auffüllen, ein letztes Konoba-Abendessen mit der Crew, während der Törn langsam ausklingt.",
   },
   {
-    tag: "Tag 14 · Freitag",
+    tag: "Tag 13 · Donnerstag",
     title: "→ Žirje → Šibenik",
     distance: "ca. 26 sm",
     highlight: "Heimkehr in den Ausgangshafen",
@@ -209,7 +201,7 @@ const tipps = [
 ];
 
 const facts = [
-  "Der Segeltörn von Šibenik nach Dubrovnik und wieder zurück führt in 14 Tagen mit 13 Nächten über rund 280 Seemeilen.",
+  "Der Segeltörn von Šibenik nach Dubrovnik und wieder zurück erstreckt sich über rund zwei Wochen und etwa 280 Seemeilen in 13 Etappen.",
   "Die Route verbindet lebendige Inselstädte wie Hvar, Korčula und Dubrovnik mit einsamen Ankerbuchten auf Šćedro, Mljet, Lastovo und Vis.",
   "Weil Dubrovnik rund 130 Seemeilen vom Heimathafen Šibenik entfernt liegt, ist dieser Süddalmatien-Törn bewusst auf zwei Wochen ausgelegt.",
   "Auf dem Rückweg führt die empfohlene Variante über die entlegenen Naturpark-Inseln Lastovo und Vis – Reviere mit kaum Infrastruktur.",
@@ -220,11 +212,11 @@ const facts = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "Wie lange dauert ein Segeltörn von Šibenik nach Dubrovnik und zurück?",
-    a: "Für die Strecke von Šibenik nach Dubrovnik und wieder zurück sollte man zwei Wochen einplanen – dieser Törnvorschlag umfasst 14 Tage mit 13 Nächten und rund 280 Seemeilen. Dubrovnik liegt etwa 130 Seemeilen südlich des Heimathafens Šibenik; für nur eine Woche ist die Strecke als Rundtörn zu weit. Wer weniger Zeit hat, ist mit dem einwöchigen Törn durch die Kornaten ab Šibenik besser beraten.",
+    a: "Für die Strecke von Šibenik nach Dubrovnik und wieder zurück sollte man rund zwei Wochen einplanen – dieser Törnvorschlag umfasst 13 Etappen und etwa 280 Seemeilen. Dubrovnik liegt etwa 130 Seemeilen südlich des Heimathafens Šibenik; für nur eine Woche ist die Strecke als Rundtörn zu weit. Wer weniger Zeit hat, ist mit dem einwöchigen Törn durch die Kornaten ab Šibenik besser beraten.",
   },
   {
     q: "Welche Ankerbuchten und Inseln liegen auf der Route?",
-    a: "Zu den Höhepunkten zählen die Blaue Lagune bei Drvenik Veli, die Bucht Šešula auf Šolta, die Pakleni-Inseln (Palmižana) vor Hvar, die Traumbucht Lovišće auf Šćedro, Lumbarda bei Korčula, der Mljet-Nationalpark (Polače), die Elaphiten vor Dubrovnik sowie auf dem Rückweg Lastovo (Skrivena Luka) und Vis (Komiža, Stiniva). Dazu kommen die Inselstädte Hvar, Korčula und Dubrovnik selbst.",
+    a: "Zu den Höhepunkten zählen die Bucht Mala Luka an Veli Drvenik, die Bucht Šešula auf Šolta, die Pakleni-Inseln (Palmižana) vor Hvar, die Traumbucht Lovišće auf Šćedro, Lumbarda bei Korčula, Mljet mit Nationalpark und der Marijina Konoba, die Elaphiten vor Dubrovnik sowie auf dem Rückweg Lastovo (Skrivena Luka) und Vis (Komiža, Stiniva). Dazu kommen die Inselstädte Hvar, Korčula und Dubrovnik selbst.",
   },
   {
     q: "Kann man die Strecke auch in einer Woche fahren?",
@@ -279,7 +271,7 @@ export default function ToernvorschlagSueddalmatienPage() {
           <div className="split align-start">
             <div>
               <Reveal as="div"><span className="eyebrow">Die Route auf einen Blick</span></Reveal>
-              <Reveal as="h2" delay={1} className="section-title">14 Tage Segeltörn – von Šibenik bis Dubrovnik.</Reveal>
+              <Reveal as="h2" delay={1} className="section-title">Zwei Wochen Segeltörn – von Šibenik bis Dubrovnik.</Reveal>
               <Reveal as="div" delay={2} className="prose" style={{ marginTop: "1.6rem" }}>
                 <p>
                   Das hier ist kein Charter-Prospekt, sondern ein echter Eigner-Törn.
@@ -290,18 +282,22 @@ export default function ToernvorschlagSueddalmatienPage() {
                   Süden, bis vor die Mauern von Dubrovnik.
                 </p>
                 <p>
-                  In Dubrovnik endete unsere Etappe – die der Miss Moneypenny aber
-                  noch lange nicht: Dort übernahm Skipper Jo gleich die nächste
-                  Mannschaft, die „Aloha Crew“, und brachte das Schiff wieder hinauf
-                  nach Šibenik. Genau das zeigt, dass die Strecke auch als Zwei-Wochen-Rundtörn
-                  aufgeht – ob mit Crew-Wechsel in Dubrovnik oder komplett hin und zurück.
+                  Die Miss Moneypenny war zwei Wochen lang in den Händen unseres
+                  Skippers Jo: In der ersten Woche haben wir unseren Vater-Sohn-und-Freunde-Trip
+                  genossen, in der zweiten Woche kam die „Aloha Crew“ an Bord und
+                  brachte das Schiff wieder zurück nach Šibenik. So geht die Strecke
+                  als Zwei-Wochen-Rundtörn auf – ob mit Crew-Wechsel in Dubrovnik oder
+                  komplett hin und zurück.
                 </p>
                 <p>
-                  Es ist ein Törn der Gegensätze: lebendige Inselstädte wie Hvar und
-                  Korčula auf der einen, glasklare, fast menschenleere Ankerbuchten auf
-                  der anderen Seite. Genau hier spielt ein autarker Katamaran seine
-                  Stärken aus – mit Wassermacher und Solaranlage bleibt ihr dort, wo es
-                  schön ist, statt jeden Abend eine Marina suchen zu müssen.
+                  Das Schöne an diesem Törn: Rund um Hvar, Korčula und Šolta habt ihr
+                  unzählige Optionen. Entweder lauft ihr Häfen an und schaut euch die
+                  Inselstädte an, oder ihr sucht euch eine der vielen malerischen
+                  Ankerbuchten. Dabei lässt sich jede Insel oben oder unten umrunden –
+                  legt die passende Route je nach Wind am besten jeden Morgen neu fest.
+                  Und genau hier spielt ein autarker Katamaran seine Stärken aus: Mit
+                  Wassermacher und Solaranlage bleibt ihr dort, wo es schön ist, statt
+                  jeden Abend eine Marina suchen zu müssen.
                 </p>
                 <p>
                   Ehrlich gesagt: Dubrovnik liegt weit im Süden. Wer nur eine Woche
@@ -312,7 +308,7 @@ export default function ToernvorschlagSueddalmatienPage() {
               </Reveal>
               <Reveal as="div" delay={3} className="pill-row" style={{ marginTop: "2rem" }}>
                 <span className="tag-pill"><Icon name="waves" style={{ width: 15 }} /> ca. 280 sm gesamt</span>
-                <span className="tag-pill">13 Nächte, 14 Tage</span>
+                <span className="tag-pill">13 Etappen · rund 2 Wochen</span>
                 <span className="tag-pill">ab Marina Mandalina</span>
               </Reveal>
             </div>
@@ -338,7 +334,7 @@ export default function ToernvorschlagSueddalmatienPage() {
           <Reveal as="div" className="head-block">
             <span className="eyebrow">Tag für Tag</span>
             <h2 className="section-title">Die Route im Detail.</h2>
-            <p className="lede">Acht Etappen nach Süden bis Dubrovnik, ein Hafentag – und sechs Etappen über Lastovo und Vis wieder zurück nach Šibenik. Die Fotos stammen von genau diesem Törn.</p>
+            <p className="lede">Ein Anreisetag und sieben Etappen nach Süden bis Dubrovnik – und fünf Etappen über Lastovo und Vis wieder zurück nach Šibenik. Die Fotos stammen von genau diesem Törn.</p>
           </Reveal>
           <div className="steps steps-grid" style={{ marginTop: "3rem" }}>
             {days.map((day) => (
