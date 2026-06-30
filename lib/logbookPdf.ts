@@ -10,11 +10,17 @@ type RGB = [number, number, number];
 const NAVY: RGB = [8, 37, 49];
 const BRASS: RGB = [197, 163, 106];
 const BRASS_300: RGB = [221, 197, 155];
+const BRASS_600: RGB = [168, 133, 76];
 const TEXT: RGB = [22, 38, 45];
 const SOFT: RGB = [76, 90, 96];
 const FAINT: RGB = [122, 134, 139];
 const PAPER2: RGB = [239, 230, 214];
 const SAND: RGB = [227, 216, 196];
+const ON_DARK_SOFT: RGB = [174, 190, 195];
+
+const TAGLINE = "Autarkes Segelabenteuer auf der Adria";
+const BRAND = "Bond Yachting";
+const HOME = "Marina Mandalina, Šibenik · Kroatien";
 
 const PAGE_W = 210;
 const PAGE_H = 297;
@@ -46,35 +52,88 @@ export async function generateLogbookPdf(trip: LogTrip, opts: { generatedLabel: 
       .replace(/Đ/g, "D");
   const split = (s: string, w: number) => doc.splitTextToSize(wa(s), w) as string[];
 
+  // Kompassrose – Bildmarke der Miss Moneypenny (Vektor, vgl. components/Brandmark.tsx).
+  const drawCompass = (cx: number, cy: number, r: number, opt: { faint?: boolean } = {}) => {
+    const sc = r / 46; // im 100er-Viewbox liegt der Außenkreis bei Radius 46
+    const P = (px: number, py: number): [number, number] => [cx + (px - 50) * sc, cy + (py - 50) * sc];
+    const diamond = (pts: Array<[number, number]>, color: RGB) => {
+      fill(color);
+      const rel = pts.slice(1).map((p, i) => [p[0] - pts[i][0], p[1] - pts[i][1]] as [number, number]);
+      doc.lines(rel, pts[0][0], pts[0][1], [1, 1], "F", true);
+    };
+    const tri = (a: [number, number], b: [number, number], c: [number, number], color: RGB) => {
+      fill(color);
+      doc.triangle(a[0], a[1], b[0], b[1], c[0], c[1], "F");
+    };
+    if (opt.faint) {
+      const F: RGB = [224, 213, 192];
+      draw(F);
+      doc.setLineWidth(0.5);
+      doc.circle(cx, cy, r, "S");
+      doc.circle(cx, cy, r * (36 / 46), "S");
+      diamond([P(50, 6), P(56, 50), P(50, 94), P(44, 50)], F);
+      diamond([P(6, 50), P(50, 44), P(94, 50), P(50, 56)], F);
+      fill(F);
+      doc.circle(cx, cy, r * (3.4 / 46), "F");
+      return;
+    }
+    draw(BRASS);
+    doc.setLineWidth(0.5);
+    doc.circle(cx, cy, r, "S");
+    draw(BRASS_600);
+    doc.setLineWidth(0.3);
+    doc.circle(cx, cy, r * (36 / 46), "S");
+    tri(P(50, 50), P(72, 28), P(55, 45), BRASS_600);
+    tri(P(50, 50), P(28, 72), P(45, 55), BRASS_600);
+    tri(P(50, 50), P(72, 72), P(55, 55), BRASS_600);
+    tri(P(50, 50), P(28, 28), P(45, 45), BRASS_600);
+    diamond([P(6, 50), P(50, 44), P(94, 50), P(50, 56)], BRASS); // O/W
+    diamond([P(50, 6), P(56, 50), P(50, 94), P(44, 50)], BRASS_300); // N/S
+    fill(BRASS_300);
+    doc.circle(cx, cy, r * (3.4 / 46), "F");
+  };
+
   // ---- Kopfband -----------------------------------------------------------
+  const BAND_H = 56;
   fill(NAVY);
-  doc.rect(0, 0, PAGE_W, 46, "F");
-  draw(BRASS);
-  doc.setLineWidth(0.5);
-  doc.line(M, 46, PAGE_W - M, 46);
+  doc.rect(0, 0, PAGE_W, BAND_H, "F");
 
   const [titleMain, ...restParts] = trip.yacht.split("·").map((s) => s.trim());
   const yachtSub = restParts.join(" · ");
+
+  drawCompass(PAGE_W - M - 13, 26, 13); // Bildmarke oben rechts
 
   set(BRASS_300);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);
   doc.setCharSpace(0.9);
-  doc.text("BORDBUCH · SHIP'S LOG", M, 17);
+  doc.text("BORDBUCH · SHIP'S LOG", M, 16);
   doc.setCharSpace(0);
 
   set([255, 255, 255]);
   doc.setFont("times", "normal");
-  doc.setFontSize(30);
+  doc.setFontSize(31);
   doc.text(wa(titleMain || "Bordbuch"), M, 31);
 
   set(BRASS_300);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  const subBits = [yachtSub, trip.region, formatRange(trip.start, trip.end)].filter(Boolean);
-  doc.text(wa(subBits.join("   ·   ")), M, 40);
+  doc.setFont("times", "italic");
+  doc.setFontSize(11.5);
+  doc.text(wa(TAGLINE), M, 40);
 
-  let y = 58;
+  set(ON_DARK_SOFT);
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.5);
+  const subBits = [yachtSub, trip.region, formatRange(trip.start, trip.end)].filter(Boolean);
+  doc.text(wa(subBits.join("   ·   ")), M, 48);
+
+  // Messing-Doppellinie unter dem Band
+  draw(BRASS);
+  doc.setLineWidth(0.6);
+  doc.line(M, BAND_H, PAGE_W - M, BAND_H);
+  doc.setLineWidth(0.3);
+  doc.line(M, BAND_H + 1.4, PAGE_W - M, BAND_H + 1.4);
+
+  let y = 66;
 
   // ---- Törn-Stammdaten ----------------------------------------------------
   const shortField = (x: number, w: number, label: string, value: string) => {
@@ -327,20 +386,51 @@ export async function generateLogbookPdf(trip: LogTrip, opts: { generatedLabel: 
     }
   });
 
-  // ---- Abschlussnotiz -----------------------------------------------------
-  ensure(14);
-  y += 4;
+  // ---- Andenken-Abschluss -------------------------------------------------
+  ensure(60);
+  y += 12;
+  const cxm = PAGE_W / 2;
+
+  // Kompass-Wasserzeichen als Hintergrund des Schlussblocks
+  drawCompass(cxm, y + 22, 24, { faint: true });
+
+  // Zierteiler mit Messing-Raute in der Mitte
   draw(BRASS);
-  doc.setLineWidth(0.3);
-  doc.line(M, y, M + 24, y);
-  y += 5;
+  doc.setLineWidth(0.4);
+  doc.line(cxm - 28, y, cxm - 7, y);
+  doc.line(cxm + 7, y, cxm + 28, y);
+  fill(BRASS);
+  doc.lines([[2.4, 2.4], [-2.4, 2.4], [-2.4, -2.4]], cxm, y - 2.4, [1, 1], "F", true);
+  y += 11;
+
+  set(NAVY);
+  doc.setFont("times", "normal");
+  doc.setFontSize(19);
+  doc.text("Bis zum nächsten Törn.", cxm, y, { align: "center" });
+  y += 8;
+
+  set(BRASS_600);
+  doc.setFont("times", "italic");
+  doc.setFontSize(11);
+  doc.text(wa(`${titleMain} · ${TAGLINE}`), cxm, y, { align: "center" });
+  y += 7;
+
+  set(FAINT);
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(7);
+  doc.setCharSpace(0.6);
+  doc.text(wa(`${BRAND} · ${HOME}`.toUpperCase()), cxm, y, { align: "center" });
+  doc.setCharSpace(0);
+  y += 9;
+
   set(FAINT);
   doc.setFont("helvetica", "italic");
   doc.setFontSize(8);
   doc.text(
-    "Persönliches Bordbuch zur Erinnerung und als Beleg – es ersetzt nicht das amtliche Schiffstagebuch an Bord.",
-    M,
-    y
+    wa("Persönliches Bordbuch zur Erinnerung und als Beleg – es ersetzt nicht das amtliche Schiffstagebuch an Bord."),
+    cxm,
+    y,
+    { align: "center" }
   );
 
   // ---- Fußzeilen auf allen Seiten ----------------------------------------
