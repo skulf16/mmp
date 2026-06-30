@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import CtaBand from "@/components/CtaBand";
-import Gallery, { type GalleryImage } from "@/components/Gallery";
 import FactBox from "@/components/FactBox";
 import FaqSection from "@/components/FaqSection";
-import { Icon, ArrowRight, Droplet, Sun, type IconName } from "@/components/Icons";
-import { siteUrl } from "@/lib/site";
+import Gallery, { type GalleryImage } from "@/components/Gallery";
+import { ArrowRight, Droplet, Sun } from "@/components/Icons";
+import { site, siteUrl } from "@/lib/site";
+import SmoothScroll from "@/components/cine/SmoothScroll";
+import ScrubHero from "@/components/cine/ScrubHero";
+import Parallax from "@/components/cine/Parallax";
+import PinnedTriptych from "@/components/cine/PinnedTriptych";
+import FilmFacade from "@/components/cine/FilmFacade";
+import CountUp from "@/components/cine/CountUp";
+
+const IMG = "/images/yacht";
 
 export const metadata: Metadata = {
   title: "Charter the Lagoon 400 S2 – a self-sufficient catamaran",
@@ -21,7 +27,7 @@ export const metadata: Metadata = {
     title: "Charter the Lagoon 400 S2 – a self-sufficient catamaran | Miss Moneypenny",
     description: "Lagoon 400 S2 with 4+2 cabins, watermaker & solar power. Specs, equipment and gallery of the Miss Moneypenny.",
     locale: "en_GB",
-    images: [{ url: "/images/yacht-sailing-coast.jpg", width: 1200, height: 630, alt: "Miss Moneypenny Lagoon 400 S2 under full sail off the Dalmatian coast" }],
+    images: [{ url: `${IMG}/hero-sailing.jpg`, width: 1200, height: 630, alt: "Miss Moneypenny Lagoon 400 S2 under full sail among the islands of Dalmatia" }],
   },
 };
 
@@ -40,22 +46,6 @@ const specs: { label: string; value: string }[] = [
   { label: "Home port", value: "Šibenik, Croatia" },
 ];
 
-const equipment: { icon: IconName; title: string; text: string }[] = [
-  { icon: "wheel", title: "Navigation", text: "B&G chartplotter, GPS, autopilot and an electric anchor windlass." },
-  { icon: "wind", title: "Sail wardrobe", text: "Fully battened mainsail, furling genoa, lazy bag and bimini." },
-  { icon: "shower", title: "Deck shower", text: "Hot/cold shower on the swim platform with a boarding ladder." },
-  { icon: "wifi", title: "Wi-Fi on board", text: "Unlimited internet for planning, sharing and staying connected." },
-  { icon: "snorkel", title: "Water sports", text: "Dinghy with outboard, snorkelling gear, optional SUP." },
-  { icon: "sun", title: "Comfort", text: "Diesel heater, cockpit enclosure, cushions and teak in the cockpit." },
-];
-
-const cabins: { title: string; text: string }[] = [
-  { title: "4 double cabins", text: "Generous guest cabins with an athwartship berth, en-suite bathroom and plenty of storage in both hulls." },
-  { title: "2 bow cabins", text: "Extra berths in the bows – ideal for a skipper, children or luggage." },
-  { title: "Saloon & galley", text: "A light-filled saloon on one level with a fully equipped galley and panoramic views." },
-  { title: "Cockpit & flybridge", text: "A sheltered cockpit for dining outdoors and a raised helm with the best all-round view." },
-];
-
 const ldProduct = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -68,7 +58,7 @@ const ldProduct = {
   "model": "Lagoon 400 S2",
   "productionDate": "2016",
   "inLanguage": "en",
-  "image": `${siteUrl}/images/yacht-sailing-coast.jpg`,
+  "image": `${siteUrl}${IMG}/hero-sailing.jpg`,
   "additionalProperty": specs.map((s) => ({
     "@type": "PropertyValue",
     "name": s.label,
@@ -83,6 +73,17 @@ const ldProduct = {
     "seller": { "@id": "https://chartern-in-kroatien.de/#organization" },
     "availability": "https://schema.org/InStock",
   },
+};
+
+// Breadcrumb schema – previously supplied by PageHero, now standalone since the
+// cinematic hero replaces PageHero.
+const ldBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/en` },
+    { "@type": "ListItem", "position": 2, "name": "The Yacht" },
+  ],
 };
 
 const yachtFacts = [
@@ -116,96 +117,243 @@ const yachtFaqs = [
   },
 ];
 
+// Gallery: a fresh, high-res discovery – deliberately none of the photos already
+// spent in the hero, the bay break, the film or the triptych.
 const gallery: GalleryImage[] = [
-  { src: "/images/yacht-sailing-coast.jpg", alt: "Miss Moneypenny under sail off the Dalmatian coast", span: "wide" },
-  { src: "/images/yacht-aerial-village.jpg", alt: "Aerial view of the catamaran off a coastal village", span: "tall" },
-  { src: "/images/yacht-salon.jpg", alt: "Bright saloon with galley and dining area" },
-  { src: "/images/yacht-galley.jpg", alt: "Fully equipped galley with sea view" },
-  { src: "/images/yacht-cockpit-dining.jpg", alt: "Cockpit with the breakfast table laid", span: "half" },
-  { src: "/images/yacht-cabin.jpg", alt: "Cosy double cabin with natural light", span: "half" },
-  { src: "/images/yacht-helm.jpg", alt: "Helm station with B&G chartplotter" },
-  { src: "/images/yacht-nav-station.jpg", alt: "Navigation corner with chart and binoculars" },
-  { src: "/images/yacht-bathroom.jpg", alt: "En-suite bathroom with washbasin" },
-  { src: "/images/yacht-swim-platform.jpg", alt: "Teak swim platform with snorkelling gear", span: "tall" },
-  { src: "/images/yacht-bow-front.jpg", alt: "Bow of the catamaran with trampoline nets", span: "wide" },
-  { src: "/images/yacht-deck-lagoon.jpg", alt: "Side deck of the Lagoon 400 S2", span: "half" },
-  { src: "/images/yacht-sailing-genoa.jpg", alt: "Catamaran under genoa against an island backdrop", span: "half" },
+  { src: `${IMG}/deck-bow.jpg`, alt: "Teak foredeck of the Lagoon 400 S2 over deep blue water", span: "wide" },
+  { src: `${IMG}/swim-platform.jpg`, alt: "Teak swim platform with a boarding ladder at the waterline", span: "tall" },
+  { src: `${IMG}/cockpit-dining.jpg`, alt: "Cockpit table laid with flowers – dining on deck" },
+  { src: `${IMG}/salon-dining.jpg`, alt: "Bright saloon bench with panoramic windows", span: "half" },
+  { src: `${IMG}/galley-stove.jpg`, alt: "Galley with a hob and a sea view", span: "half" },
+  { src: `${IMG}/helm-station.jpg`, alt: "Helm station with the B&G 12-inch chartplotter" },
+  { src: `${IMG}/bath.jpg`, alt: "En-suite bathroom with washbasin and mirror" },
+  { src: `${IMG}/cabin.jpg`, alt: "Double cabin with daylight through the deck hatch" },
+  { src: `${IMG}/salon-wide.jpg`, alt: "Light-filled saloon with a view into the cockpit", span: "half" },
+  { src: `${IMG}/aerial-anchored.jpg`, alt: "Catamaran at anchor off a Dalmatian coastal village", span: "tall" },
+  { src: `${IMG}/deck-foredeck.jpg`, alt: "Foredeck with the mast and stowed sails", span: "half" },
+  { src: `${IMG}/aerial-topdown.jpg`, alt: "Catamaran from above on turquoise water", span: "wide" },
 ];
 
 export default function YachtPageEn() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldProduct) }}
-      />
-      <PageHero
-        eyebrow="The Yacht"
-        title="Lagoon 400 S2 – Miss Moneypenny"
-        lede="A catamaran that unites comfort, stability and true self-sufficiency – in pristine condition, ready to sail in Šibenik."
-        image="/images/yacht-sailing-coast.jpg"
-        imageAlt="Miss Moneypenny under full sail on the Adriatic"
-        crumbs={[{ label: "Home", href: "/en" }, { label: "The Yacht" }]}
+    <div className="cine">
+      <SmoothScroll />
+      {/* preload the LCP image early */}
+      <link rel="preload" as="image" href={`${IMG}/hero-sailing.jpg`} fetchPriority="high" />
+      {/* Without JS, Reveal blocks would stay invisible – fallback forces visibility */}
+      <noscript>
+        <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+      </noscript>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldProduct) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }} />
+
+      {/* 1 · Hero — setting sail */}
+      <ScrubHero
+        image={`${IMG}/hero-sailing.jpg`}
+        imageAlt="Miss Moneypenny – Lagoon 400 S2 under full sail among the islands of Dalmatia"
+        eyebrow="Lagoon 400 S2 · Miss Moneypenny"
+        headline={<>Two hulls.<br />One <em>horizon</em>.</>}
+        sub="A self-sufficient sailing catamaran for eight guests – calm on the water, shallow in draft, ready to sail from her home port of Šibenik."
+        scrollLabel="Scroll"
+        coordinate="43°44′ N · Šibenik"
+        stats={[
+          { k: "12 m", l: "Length" },
+          { k: "4 + 2", l: "Cabins" },
+          { k: "8", l: "Guests" },
+          { k: "100 %", l: "self-sufficient" },
+        ]}
       />
 
-      {/* At a glance */}
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="container container-narrow">
-          <Reveal as="div"><FactBox title="At a glance" facts={yachtFacts} /></Reveal>
+      {/* 2 · Opening — the promise + fact box */}
+      <section className="cine-section">
+        <div className="container container-narrow center">
+          <Reveal as="div"><span className="eyebrow centered">The Yacht</span></Reveal>
+          <Reveal as="h2" delay={1} className="cine-statement" style={{ marginInline: "auto", marginTop: "1.3rem", maxWidth: "22ch" }}>
+            Steady as an island. Free as the open <em>sea</em>.
+          </Reveal>
+          <Reveal as="p" delay={2} className="cine-lede-lg" style={{ marginInline: "auto", marginTop: "1.5rem" }}>
+            The Miss Moneypenny is built for long, relaxed trips: barely any heeling, plenty of
+            light and enough systems on board to linger for days where others merely pass by.
+          </Reveal>
+          <Reveal as="div" delay={3} style={{ marginTop: "3.2rem", textAlign: "left" }}>
+            <FactBox title="At a glance" facts={yachtFacts} />
+          </Reveal>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section">
+      {/* 3 · At sea — stability & calm */}
+      <section className="cine-section surface-navy">
         <div className="container">
-          <div className="split align-start">
-            <div>
-              <Reveal as="div"><span className="eyebrow">Overview</span></Reveal>
-              <Reveal as="h2" delay={1} className="section-title">Spacious, stable, independent.</Reveal>
-              <Reveal as="div" delay={2} className="prose" style={{ marginTop: "1.6rem" }}>
-                <p>
-                  The Lagoon 400 S2 is one of the most popular cruising catamarans in the world –
-                  and for good reason. Two hulls deliver stability and space, while the shallow
-                  draft opens up bays that stay closed to others.
-                </p>
-                <p>
-                  Aboard the Miss Moneypenny, light wood, a sun-filled saloon and a sheltered
-                  cockpit meet well-thought-out systems. The watermaker and solar array make her
-                  the ideal yacht for long, relaxed trips.
-                </p>
+          <div className="cine-split">
+            <div className="cine-split-text">
+              <Reveal as="div"><span className="eyebrow on-dark">At sea</span></Reveal>
+              <Reveal as="h2" delay={1} className="cine-statement">
+                The sea moves. <em>You stay calm.</em>
               </Reveal>
-              <Reveal as="div" delay={3} className="pill-row" style={{ marginTop: "2rem" }}>
-                <span className="tag-pill">Teak deck</span>
-                <span className="tag-pill">Full enclosure</span>
-                <span className="tag-pill">Diesel heater</span>
-                <span className="tag-pill">Autopilot</span>
+              <Reveal as="div" delay={2} className="prose">
+                <p>
+                  Two hulls carry the yacht steadily through the swell – she barely heels and lies
+                  relaxed on the water even in a fresh Maestral. That noticeably lowers the risk of
+                  seasickness and makes the trip a pleasure for children and beginners too.
+                </p>
+                <p>If you like, an experienced skipper takes the helm – with no sailing licence of your own required.</p>
+              </Reveal>
+              <Reveal as="div" delay={3} className="pill-row" style={{ marginTop: "1.9rem" }}>
+                <span className="tag-pill">Barely heels</span>
+                <span className="tag-pill">Less seasickness</span>
+                <span className="tag-pill">Family-friendly</span>
+                <span className="tag-pill">Skipper optional</span>
               </Reveal>
             </div>
-            <Reveal as="div" delay={2}>
-              <div className="media-frame tall">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/yacht-aerial-village.jpg" alt="Miss Moneypenny at anchor, photographed from the air" />
+            <Reveal as="div" delay={1} className="cine-split-media">
+              <div className="cine-frame">
+                <Parallax
+                  src={`${IMG}/sailing-bow.jpg`}
+                  alt="Miss Moneypenny under sail off a Dalmatian island"
+                  strength={10}
+                />
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Specs */}
-      <section className="section surface-navy">
-        <div className="container">
-          <div className="head-flex" style={{ marginBottom: "2.5rem" }}>
-            <Reveal as="div" className="head-block">
-              <span className="eyebrow on-dark">Specifications</span>
-              <h2 className="section-title">Specs & facts</h2>
-            </Reveal>
-            <Reveal as="p" delay={1} className="lede" style={{ maxWidth: "34ch" }}>
-              All the key figures of the Miss Moneypenny at a glance.
+      {/* 4 · The bay — full-bleed pause */}
+      <section className="cine-bleed">
+        <Parallax
+          src={`${IMG}/aerial-bay.jpg`}
+          alt="Miss Moneypenny at anchor in turquoise water off a Dalmatian village"
+          strength={10}
+        />
+        <div className="cine-bleed-grade" />
+        <div className="cine-bleed-cap">
+          <div className="container container-wide">
+            <Reveal as="div"><span className="eyebrow on-dark">The shallow draft</span></Reveal>
+            <Reveal as="h2" delay={1} className="cine-statement" style={{ marginTop: "1.1rem", maxWidth: "20ch" }}>
+              Just 1.30 metres separate you from the <em>most secluded bay</em>.
             </Reveal>
           </div>
-          <Reveal as="dl" className="specs">
+        </div>
+      </section>
+
+      {/* 5 · The film — on board, in motion */}
+      <section className="cine-section surface-dark">
+        <div className="container">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center", marginBottom: "2.6rem" }}>
+            <span className="eyebrow on-dark centered">The film</span>
+            <h2 className="cine-statement" style={{ marginInline: "auto", marginTop: "1rem", maxWidth: "22ch" }}>
+              See for yourself what <em>freedom</em> feels like.
+            </h2>
+          </Reveal>
+          <Reveal as="div" delay={1} className="cine-filmwrap">
+            <div className="cine-film-hold">
+              <FilmFacade
+                id="K6rfIzMQOiM"
+                poster={`${IMG}/sailing-genoa.jpg`}
+                posterAlt="Miss Moneypenny under sail off the Dalmatian coast – film preview"
+                label="Watch the film"
+                meta="The Adriatic under sail"
+                title="Miss Moneypenny – sailing film on the Adriatic"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 6 · Space & light — pinned interior triptych */}
+      <PinnedTriptych
+        eyebrow="Space & light"
+        headline={<>One level, <em>so much light</em>.</>}
+        panels={[
+          { src: `${IMG}/cockpit-salon.jpg`, alt: "Cockpit with open glass doors to the bright saloon", caption: "The saloon – all-round views on one level." },
+          { src: `${IMG}/galley.jpg`, alt: "Fully equipped light-wood galley with a sea view", caption: "The galley – fully equipped, with a sea view." },
+          { src: `${IMG}/cabin-warm.jpg`, alt: "Bright double cabin with warm wood and daylight", caption: "The cabins – light wood, en-suite, ample storage." },
+        ]}
+      >
+        <p>
+          Saloon, galley and cockpit sit on one level – glass doors dissolve the line between
+          inside and out. Four double cabins with en-suite bathrooms and two bow cabins give eight
+          guests comfort and privacy at once; no guest has to share a bathroom.
+        </p>
+      </PinnedTriptych>
+
+      {/* 7 · Self-sufficiency — water & sun */}
+      <section className="cine-section surface-dark cine-autarkie">
+        <div className="cine-autarkie-bg">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${IMG}/aerial-village.jpg`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </div>
+        <div className="container">
+          <div className="cine-autarkie-grid">
+            <div>
+              <Reveal as="div"><span className="eyebrow on-dark no-rule">Self-sufficient</span></Reveal>
+              <Reveal as="h2" delay={1} className="cine-statement">
+                Fresh water from the sea. <em>Power from the sun.</em>
+              </Reveal>
+              <Reveal as="div" delay={2}><div className="cine-hairline" style={{ marginTop: "1.7rem", width: "84px" }} /></Reveal>
+              <Reveal as="p" delay={3} className="cine-lede-lg" style={{ marginTop: "1.7rem" }}>
+                A reverse-osmosis watermaker produces around 60 litres of fresh water per hour,
+                while a 700-watt solar array and a 2 kW inverter charge the batteries silently. So
+                you can lie at anchor in secluded bays for days – no marina, no generator, no
+                compromise.
+              </Reveal>
+            </div>
+            <div>
+              <Reveal as="div" className="cine-bignum">
+                <CountUp to={60} suffix=" l/h" />
+                <small>fresh water from seawater</small>
+              </Reveal>
+              <div style={{ marginTop: "2.6rem" }}>
+                <Reveal as="div" className="feature-min" style={{ borderTop: "none", padding: 0, marginBottom: "1.7rem" }}>
+                  <Droplet className="ic" style={{ width: 34, height: 34 }} />
+                  <div>
+                    <h3 style={{ fontSize: "1.3rem" }}>Watermaker</h3>
+                    <p>Fresh water straight from the sea – independence from any marina.</p>
+                  </div>
+                </Reveal>
+                <Reveal as="div" delay={1} className="feature-min" style={{ borderTop: "none", padding: 0 }}>
+                  <Sun className="ic" style={{ width: 34, height: 34 }} />
+                  <div>
+                    <h3 style={{ fontSize: "1.3rem" }}>Solar power</h3>
+                    <p>Silent energy for days at anchor, with no generator at all.</p>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8 · Gallery */}
+      <section className="cine-section">
+        <div className="container container-wide">
+          <Reveal as="div" className="head-flex" style={{ marginBottom: "2.6rem" }}>
+            <div className="head-block">
+              <span className="eyebrow">Gallery</span>
+              <h2 className="cine-statement" style={{ marginTop: "1rem" }}>Step aboard.</h2>
+            </div>
+            <Link href="/kontakt" className="link-arrow">Enquire now <ArrowRight /></Link>
+          </Reveal>
+          <Reveal as="div"><Gallery images={gallery} /></Reveal>
+        </div>
+      </section>
+
+      {/* 9 · Specs & facts */}
+      <section className="cine-section surface-navy">
+        <div className="container">
+          <div className="head-flex" style={{ marginBottom: "2.6rem" }}>
+            <Reveal as="div" className="head-block">
+              <span className="eyebrow on-dark">Specifications</span>
+              <h2 className="cine-statement" style={{ marginTop: "1rem" }}>Specs &amp; facts.</h2>
+            </Reveal>
+            <Reveal as="p" delay={1} className="cine-lede-lg" style={{ maxWidth: "34ch" }}>
+              All the key figures of the Miss Moneypenny at a glance – a Lagoon 400 S2 built in
+              2016, 12 m long with just 1.30 m of draft.
+            </Reveal>
+          </div>
+          <Reveal as="dl" className="cine-specs">
             {specs.map((s) => (
-              <div className="spec-row" key={s.label}>
+              <div className="cine-spec" key={s.label}>
                 <dt>{s.label}</dt>
                 <dd>{s.value}</dd>
               </div>
@@ -214,109 +362,40 @@ export default function YachtPageEn() {
         </div>
       </section>
 
-      {/* Layout / cabins */}
-      <section className="section">
-        <div className="container">
-          <Reveal as="div" className="head-block">
-            <span className="eyebrow">Layout</span>
-            <h2 className="section-title">Room for eight – with privacy for everyone.</h2>
-            <p className="lede">
-              Four double cabins with en-suite bathrooms, two additional bow cabins and an open
-              living area that lets inside and outside merge.
-            </p>
-          </Reveal>
-          <div className="grid-2" style={{ marginTop: "3rem" }}>
-            {cabins.map((c, i) => (
-              <Reveal key={c.title} delay={((i % 2) + 1) as 1 | 2}>
-                <article className="feature">
-                  <span className="ic"><Icon name={i === 0 ? "bed" : i === 1 ? "users" : i === 2 ? "ship" : "wheel"} /></span>
-                  <h3>{c.title}</h3>
-                  <p>{c.text}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Equipment */}
-      <section className="section surface-sand">
-        <div className="container">
-          <Reveal as="div" className="head-block">
-            <span className="eyebrow">Equipment</span>
-            <h2 className="section-title">Considered down to the last detail.</h2>
-          </Reveal>
-          <div className="grid-3" style={{ marginTop: "3rem" }}>
-            {equipment.map((e, i) => (
-              <Reveal key={e.title} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <article className="feature">
-                  <span className="ic"><Icon name={e.icon} /></span>
-                  <h3>{e.title}</h3>
-                  <p>{e.text}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Self-sufficiency strip */}
-      <section className="section surface-dark">
-        <div className="container">
-          <div className="grid-2" style={{ gap: "3rem", alignItems: "center" }}>
-            <Reveal as="div" className="feature-min" style={{ borderTop: "none", padding: 0 }}>
-              <Droplet className="ic" style={{ width: 40, height: 40 }} />
-              <div>
-                <h3 style={{ fontSize: "1.5rem" }}>Watermaker</h3>
-                <p>Fresh water straight from the sea – for independence from any marina.</p>
-              </div>
-            </Reveal>
-            <Reveal as="div" delay={1} className="feature-min" style={{ borderTop: "none", padding: 0 }}>
-              <Sun className="ic" style={{ width: 40, height: 40 }} />
-              <div>
-                <h3 style={{ fontSize: "1.5rem" }}>Solar power</h3>
-                <p>Silent energy for days at anchor, with no generator at all.</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="section">
-        <div className="container container-wide">
-          <Reveal as="div" className="head-flex" style={{ marginBottom: "2.5rem" }}>
-            <div className="head-block">
-              <span className="eyebrow">Gallery</span>
-              <h2 className="section-title">Step aboard.</h2>
-            </div>
-            <Link href="/kontakt" className="link-arrow">Enquire now <ArrowRight /></Link>
-          </Reveal>
-          <Reveal as="div">
-            <Gallery images={gallery} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section surface-sand">
+      {/* 10 · FAQ */}
+      <section className="cine-section surface-sand">
         <div className="container container-narrow">
           <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
             <span className="eyebrow centered">Frequently asked</span>
-            <h2 className="section-title" style={{ marginTop: "1rem" }}>Good to know before the trip.</h2>
+            <h2 className="cine-statement" style={{ marginInline: "auto", marginTop: "1rem", maxWidth: "22ch" }}>
+              Good to know before the trip.
+            </h2>
           </Reveal>
-          <div style={{ marginTop: "2.5rem" }}>
+          <div style={{ marginTop: "2.6rem" }}>
             <FaqSection items={yachtFaqs} id={`${siteUrl}/en/the-yacht#faq`} />
           </div>
         </div>
       </section>
 
-      <CtaBand
-        eyebrow="Ready for the Adriatic?"
-        title="Secure your weeks aboard the Miss Moneypenny."
-        text="Tell us your preferred dates – we'll check availability and reply within 24 hours with a personal offer."
-        image="/images/yacht-sailing-genoa.jpg"
-      />
-    </>
+      {/* 11 · Close — back to the horizon */}
+      <section className="section cta-band">
+        <div className="cta-media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${IMG}/sailing-side.jpg`} alt="" />
+        </div>
+        <div className="container center" style={{ maxWidth: 880 }}>
+          <Reveal as="div"><span className="eyebrow on-dark centered">Ready for the Adriatic?</span></Reveal>
+          <Reveal as="h2" delay={1} style={{ marginInline: "auto", marginTop: "1.1rem" }}>Your voyage begins in Šibenik.</Reveal>
+          <Reveal as="p" delay={2} className="lede" style={{ marginInline: "auto" }}>
+            Tell us your preferred dates and crew – we&apos;ll check the Miss Moneypenny&apos;s
+            availability and reply within 24 hours with a personal offer.
+          </Reveal>
+          <Reveal as="div" delay={3} className="hero-actions" style={{ justifyContent: "center" }}>
+            <Link href="/kontakt" className="btn btn-primary">Enquire now <ArrowRight /></Link>
+            <a href={`mailto:${site.email}`} className="btn btn-ghost">{site.email}</a>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
 }
