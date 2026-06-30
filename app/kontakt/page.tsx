@@ -43,7 +43,7 @@ export default function KontaktPage() {
 
       <section className="section">
         <div className="container">
-          <div className="split align-start" style={{ gridTemplateColumns: "1.6fr 1fr" }}>
+          <div className="split align-start" style={{ "--split-cols": "1.6fr 1fr" } as React.CSSProperties}>
             <Reveal as="div">
               <span className="eyebrow">Anfrage</span>
               <h2 className="section-title" style={{ marginTop: "1rem", marginBottom: "2rem" }}>

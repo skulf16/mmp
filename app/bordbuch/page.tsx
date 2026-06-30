@@ -32,7 +32,7 @@ export default function BordbuchPage() {
       {/* ---- Warum ein Bordbuch ---- */}
       <section className="section-tight">
         <div className="container">
-          <div className="split align-start" style={{ gridTemplateColumns: "1.3fr 1fr" }}>
+          <div className="split align-start" style={{ "--split-cols": "1.3fr 1fr" } as React.CSSProperties}>
             <Reveal as="div">
               <span className="eyebrow">Warum überhaupt?</span>
               <h2 className="section-title" style={{ marginTop: "1rem", marginBottom: "1.2rem" }}>

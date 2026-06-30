@@ -42,7 +42,6 @@ export default function Logbook() {
 
   const [installEvt, setInstallEvt] = useState<InstallPrompt | null>(null);
   const [standalone, setStandalone] = useState(false);
-  const [platform, setPlatform] = useState<"ios" | "android" | "other">("other");
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [uploading, setUploading] = useState(false);
   const [photoError, setPhotoError] = useState<string | null>(null);
@@ -94,11 +93,6 @@ export default function Logbook() {
       window.matchMedia?.("(display-mode: standalone)").matches ||
       (navigator as Navigator & { standalone?: boolean }).standalone === true;
     setStandalone(Boolean(standaloneNow));
-
-    // Plattform grob bestimmen (für die passende Anleitung).
-    const ua = navigator.userAgent || "";
-    const isIOS = /iphone|ipad|ipod/i.test(ua) || (/Macintosh/.test(ua) && "ontouchend" in document);
-    setPlatform(isIOS ? "ios" : /android/i.test(ua) ? "android" : "other");
 
     // Das Event wird im Layout früh abgefangen und auf window zwischengespeichert –
     // hier nur noch übernehmen bzw. auf spätere Verfügbarkeit reagieren.
@@ -353,26 +347,23 @@ export default function Logbook() {
               auch offline an Bord.
             </p>
           </div>
-          {installEvt ? (
-            <button type="button" className="btn btn-primary" onClick={install}>
-              App installieren <ArrowRight />
-            </button>
-          ) : platform === "ios" ? (
-            <p className="lb-install-hint">
-              In Safari: Tippe unten auf <strong>Teilen</strong> <span aria-hidden="true">⎙</span> und dann auf
-              {" "}<strong>„Zum Home-Bildschirm"</strong>.
-            </p>
-          ) : platform === "android" ? (
-            <p className="lb-install-hint">
-              In Chrome: Tippe oben rechts auf <strong>⋮</strong> und dann auf
-              {" "}<strong>„App installieren"</strong> bzw. <strong>„Zum Startbildschirm hinzufügen"</strong>.
-            </p>
-          ) : (
-            <p className="lb-install-hint">
-              Im Browser-Menü findest du <strong>„App installieren"</strong> bzw.
-              {" "}<strong>„Zum Startbildschirm hinzufügen"</strong>.
-            </p>
-          )}
+          <div className="lb-install-action">
+            {installEvt && (
+              <button type="button" className="btn btn-primary" onClick={install}>
+                App installieren <ArrowRight />
+              </button>
+            )}
+            <ul className="lb-install-steps">
+              <li>
+                <strong>iPhone &amp; iPad (Safari):</strong> Tippe unten auf das Teilen-Symbol
+                {" "}<span aria-hidden="true">⎙</span> und dann auf <em>„Zum Home-Bildschirm"</em>.
+              </li>
+              <li>
+                <strong>Android (Chrome):</strong> Tippe oben rechts auf das Menü <span aria-hidden="true">⋮</span>
+                {" "}und dann auf <em>„App installieren"</em> bzw. <em>„Zum Startbildschirm hinzufügen"</em>.
+              </li>
+            </ul>
+          </div>
         </div>
       )}
 
