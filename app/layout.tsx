@@ -129,6 +129,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${fraunces.variable} ${mulish.variable}`}>
       <body>
+        {/* PWA-Install-Prompt früh abfangen, bevor React hydriert –
+            sonst geht das beforeinstallprompt-Event verloren. */}
+        <Script id="pwa-install-capture" strategy="beforeInteractive">
+          {`
+            window.__bbInstallPrompt = null;
+            window.addEventListener('beforeinstallprompt', function (e) {
+              e.preventDefault();
+              window.__bbInstallPrompt = e;
+              window.dispatchEvent(new Event('bb-install-available'));
+            });
+            window.addEventListener('appinstalled', function () {
+              window.__bbInstallPrompt = null;
+              window.dispatchEvent(new Event('bb-app-installed'));
+            });
+          `}
+        </Script>
+
         {/* Google Analytics (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-D5PXZXJWTC"

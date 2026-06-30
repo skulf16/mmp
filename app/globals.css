@@ -1007,6 +1007,25 @@ p { color: var(--text-soft); }
 .lb-card-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.3rem; }
 .lb-card-head .eyebrow { margin-bottom: 0; }
 
+/* Als-App-installieren-Banner */
+.lb-install {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem 1.8rem;
+  flex-wrap: wrap;
+  background: linear-gradient(150deg, var(--navy-900), var(--ink));
+  color: var(--on-dark);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 3vw, 1.8rem) clamp(1.4rem, 3vw, 2.2rem);
+}
+.lb-install .eyebrow { color: var(--brass-300); margin-bottom: 0.55rem; }
+.lb-install-text { flex: 1 1 17rem; }
+.lb-install-text p { margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; line-height: 1.55; }
+.lb-install .btn { flex: none; }
+.lb-install-hint { flex: 1 1 14rem; margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 0.9rem; line-height: 1.6; }
+.lb-install-hint strong { color: #fff; }
+
 /* Kennzahlen-Leiste */
 .lb-summary {
   display: grid;

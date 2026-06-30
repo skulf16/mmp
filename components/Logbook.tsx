@@ -41,6 +41,8 @@ export default function Logbook() {
   const [downloading, setDownloading] = useState(false);
 
   const [installEvt, setInstallEvt] = useState<InstallPrompt | null>(null);
+  const [standalone, setStandalone] = useState(false);
+  const [platform, setPlatform] = useState<"ios" | "android" | "other">("other");
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [uploading, setUploading] = useState(false);
   const [photoError, setPhotoError] = useState<string | null>(null);
@@ -87,10 +89,32 @@ export default function Logbook() {
     window.addEventListener("online", on);
     window.addEventListener("offline", off);
 
+    // Bereits als App geöffnet? Dann brauchen wir keinen Install-Hinweis.
+    const standaloneNow =
+      window.matchMedia?.("(display-mode: standalone)").matches ||
+      (navigator as Navigator & { standalone?: boolean }).standalone === true;
+    setStandalone(Boolean(standaloneNow));
+
+    // Plattform grob bestimmen (für die passende Anleitung).
+    const ua = navigator.userAgent || "";
+    const isIOS = /iphone|ipad|ipod/i.test(ua) || (/Macintosh/.test(ua) && "ontouchend" in document);
+    setPlatform(isIOS ? "ios" : /android/i.test(ua) ? "android" : "other");
+
+    // Das Event wird im Layout früh abgefangen und auf window zwischengespeichert –
+    // hier nur noch übernehmen bzw. auf spätere Verfügbarkeit reagieren.
+    const w = window as Window & { __bbInstallPrompt?: InstallPrompt | null };
+    if (w.__bbInstallPrompt) setInstallEvt(w.__bbInstallPrompt);
+    const onAvailable = () => setInstallEvt(w.__bbInstallPrompt ?? null);
+    const onInstalled = () => {
+      setInstallEvt(null);
+      setStandalone(true);
+    };
     const onInstall = (e: Event) => {
       e.preventDefault();
       setInstallEvt(e as InstallPrompt);
     };
+    window.addEventListener("bb-install-available", onAvailable);
+    window.addEventListener("bb-app-installed", onInstalled);
     window.addEventListener("beforeinstallprompt", onInstall);
 
     if ("serviceWorker" in navigator) {
@@ -102,6 +126,8 @@ export default function Logbook() {
     return () => {
       window.removeEventListener("online", on);
       window.removeEventListener("offline", off);
+      window.removeEventListener("bb-install-available", onAvailable);
+      window.removeEventListener("bb-app-installed", onInstalled);
       window.removeEventListener("beforeinstallprompt", onInstall);
     };
   }, []);
@@ -304,6 +330,11 @@ export default function Logbook() {
   const install = async () => {
     if (!installEvt) return;
     await installEvt.prompt();
+    try {
+      await installEvt.userChoice;
+    } catch {
+      /* egal – Auswahl getroffen oder abgebrochen */
+    }
     setInstallEvt(null);
   };
 
@@ -312,6 +343,39 @@ export default function Logbook() {
 
   return (
     <div className="lb">
+      {/* ---- Als App installieren ---- */}
+      {!standalone && (
+        <div className="lb-install">
+          <div className="lb-install-text">
+            <span className="eyebrow"><Download style={{ width: 16, height: 16 }} /> Als App installieren</span>
+            <p>
+              Leg das Bordbuch wie eine App auf deinen Startbildschirm – dann öffnest du es mit einem Tippen,
+              auch offline an Bord.
+            </p>
+          </div>
+          {installEvt ? (
+            <button type="button" className="btn btn-primary" onClick={install}>
+              App installieren <ArrowRight />
+            </button>
+          ) : platform === "ios" ? (
+            <p className="lb-install-hint">
+              In Safari: Tippe unten auf <strong>Teilen</strong> <span aria-hidden="true">⎙</span> und dann auf
+              {" "}<strong>„Zum Home-Bildschirm"</strong>.
+            </p>
+          ) : platform === "android" ? (
+            <p className="lb-install-hint">
+              In Chrome: Tippe oben rechts auf <strong>⋮</strong> und dann auf
+              {" "}<strong>„App installieren"</strong> bzw. <strong>„Zum Startbildschirm hinzufügen"</strong>.
+            </p>
+          ) : (
+            <p className="lb-install-hint">
+              Im Browser-Menü findest du <strong>„App installieren"</strong> bzw.
+              {" "}<strong>„Zum Startbildschirm hinzufügen"</strong>.
+            </p>
+          )}
+        </div>
+      )}
+
       {/* ---- Törn-Stammdaten ---- */}
       <div className="lb-card">
         <div className="lb-card-head">
@@ -507,15 +571,10 @@ export default function Logbook() {
         )}
         {error && <p className="lb-msg err">{error}</p>}
 
-        <div className="lb-actions-row" style={{ marginTop: "1.6rem", justifyContent: "space-between" }}>
+        <div className="lb-actions-row" style={{ marginTop: "1.6rem" }}>
           <button type="button" onClick={reset} className="lb-save" style={{ background: "none", padding: 0 }}>
             Bordbuch zurücksetzen
           </button>
-          {installEvt && (
-            <button type="button" className="btn btn-outline" onClick={install} style={{ padding: "0.7rem 1.2rem" }}>
-              App installieren
-            </button>
-          )}
         </div>
       </div>
     </div>
