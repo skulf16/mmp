@@ -66,7 +66,10 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  /* clip statt hidden: verhindert horizontales Überlaufen, OHNE den <body> zu
+     einem Scroll-Container zu machen (hidden ⇒ overflow-y:auto ⇒ Wurzel
+     scrollt nicht mehr, was Lenis-Smoothscroll & position:sticky bricht). */
+  overflow-x: clip;
 }
 
 img,
@@ -1139,4 +1142,430 @@ p { color: var(--text-soft); }
 @media (max-width: 880px) {
   .lb-summary { grid-template-columns: repeat(2, 1fr); }
   .lb-actions-row .btn { flex: 1; justify-content: center; }
+}
+
+/* ============================================================
+   CINEMATIC YACHT PAGE  (/die-yacht)
+   Scroll-getriebene, editoriale Inszenierung – „Aether"-Spirit
+   in der Bond-Yachting-Marke (Fraunces · Messing · Ink · Ivory).
+   ============================================================ */
+
+/* ---- Lenis (weiches Momentum-Scrollen): empfohlene Basis ---- */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ---- Seiten-Canvas ---- */
+.cine { background: var(--paper); overflow: clip; }
+
+/* ============================================================
+   1 · Scrub-Hero
+   ============================================================ */
+.cine-hero { position: relative; height: 200vh; }
+.cine-hero[data-reduce="true"] { height: auto; }
+
+.cine-hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background: var(--ink);
+}
+.cine-hero[data-reduce="true"] .cine-hero-sticky { position: relative; }
+
+.cine-hero-media { position: absolute; inset: 0; z-index: 0; }
+.cine-hero-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform-origin: 50% 55%;
+}
+.cine-hero-grade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(6,24,33,0.88) 0%, rgba(6,24,33,0.12) 44%, rgba(6,24,33,0.32) 100%),
+    linear-gradient(to right, rgba(6,24,33,0.5), rgba(6,24,33,0) 58%);
+}
+.cine-hero-veil {
+  position: absolute; inset: 0; z-index: 2;
+  background: var(--ink); opacity: 0; pointer-events: none; will-change: opacity;
+}
+.cine-hero-content {
+  position: relative; z-index: 3; width: 100%;
+  padding-bottom: clamp(3.5rem, 9vh, 8rem);
+  will-change: transform, opacity;
+  animation: cineHeroIn 1.5s var(--ease) 0.2s both;
+}
+@keyframes cineHeroIn {
+  from { opacity: 0; transform: translate3d(0, 46px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+.cine-hero-content .eyebrow { margin-bottom: 1.5rem; }
+.cine-hero-title {
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 320;
+  line-height: 0.97;
+  letter-spacing: -0.022em;
+  font-size: clamp(3rem, 9.4vw, 8rem);
+  max-width: 16ch;
+}
+.cine-hero-title em { font-style: italic; color: var(--brass-300); }
+.cine-hero-sub {
+  color: var(--on-dark-soft);
+  margin-top: 1.7rem;
+  max-width: 46ch;
+  font-size: clamp(1.04rem, 1.5vw, 1.32rem);
+  line-height: 1.62;
+}
+.cine-scrollcue {
+  position: absolute; left: 50%; bottom: 1.7rem; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  font-size: 0.6rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--on-dark-soft);
+  will-change: opacity;
+}
+.cine-scrollcue::after {
+  content: ""; width: 1px; height: 46px;
+  background: linear-gradient(var(--brass), transparent);
+  animation: cue 2.4s var(--ease) infinite;
+}
+
+/* ============================================================
+   2 · Sektions-Grundrhythmus & Intro-Köpfe
+   ============================================================ */
+.cine-section { padding-block: clamp(5rem, 11vw, 11rem); position: relative; }
+.cine-intro { max-width: 60ch; }
+.cine-intro .eyebrow { margin-bottom: 1.4rem; }
+.cine-eyebrow-num { color: var(--brass); margin-right: 0.1em; }
+
+/* AA-Kontrast: Eyebrow-Label auf hellen Flächen abdunkeln.
+   Messing-600 (#a8854c) erreicht auf Paper/Sand nur ~3:1 (WCAG-AA-Fail bei
+   kleinem Text); dieses dunklere Messing-Bronze liegt >4.5:1. Auf dunklen
+   Flächen bleibt die hellere .on-dark-Variante unberührt. */
+.cine .eyebrow:not(.on-dark) { color: #6f5326; }
+
+/* Sichtbarer Fokusring für Tastatur-Navigation (WCAG 2.4.7) */
+.cine a:focus-visible,
+.cine button:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.cine-film-poster:focus-visible { outline: 3px solid var(--brass); outline-offset: 4px; }
+.cine-film-poster:focus-visible .cine-film-play {
+  background: var(--brass); border-color: var(--brass); color: var(--ink); transform: scale(1.06);
+}
+
+/* großformatige, ruhige Serif-Statements */
+.cine-statement {
+  font-family: var(--font-display);
+  font-weight: 320;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  font-size: clamp(1.9rem, 4.6vw, 4rem);
+  color: var(--navy-900);
+  max-width: 18ch;
+}
+.surface-dark .cine-statement,
+.surface-navy .cine-statement { color: #fff; }
+.cine-statement em { font-style: italic; color: var(--brass-600); }
+.surface-dark .cine-statement em,
+.surface-navy .cine-statement em { color: var(--brass-300); }
+.cine-lede-lg {
+  font-size: clamp(1.12rem, 1.7vw, 1.45rem);
+  line-height: 1.7;
+  color: var(--text-soft);
+  max-width: 54ch;
+}
+.surface-dark .cine-lede-lg, .surface-navy .cine-lede-lg { color: var(--on-dark-soft); }
+
+/* ============================================================
+   3 · Parallax-Bild & Vollbild-Bruch
+   ============================================================ */
+.cine-parallax { position: relative; overflow: hidden; }
+/* kein statisches will-change: translate3d() promotet die Ebene ohnehin nur
+   während der Animation – dauerhaftes Promoten vieler Bilder kostet Speicher. */
+.cine-parallax img { width: 100%; height: 100%; object-fit: cover; }
+.cine-parallax-cap {
+  position: absolute; left: clamp(1rem, 3vw, 2.2rem); bottom: clamp(1rem, 3vw, 2.2rem); z-index: 2;
+  color: #fff; font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase;
+  text-shadow: 0 1px 14px rgba(0,0,0,0.55);
+}
+
+/* Vollbild-Bruch (volle Fensterbreite, randlos) */
+.cine-bleed {
+  position: relative;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  height: 78vh;
+  overflow: hidden;
+  background: var(--ink);
+}
+.cine-bleed .cine-parallax { position: absolute; inset: 0; }
+.cine-bleed-grade {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to top, rgba(6,24,33,0.86), rgba(6,24,33,0.06) 52%, rgba(6,24,33,0.3));
+}
+.cine-bleed-cap {
+  position: absolute; z-index: 3; left: 0; right: 0; bottom: clamp(2rem, 6vw, 4.5rem);
+}
+.cine-bleed-cap .cine-statement { color: #fff; }
+.cine-bleed-cap .eyebrow { margin-bottom: 1.1rem; }
+
+/* ============================================================
+   4 · Editorialer Split mit klebrigem Text
+   ============================================================ */
+.cine-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.cine-split-text { position: sticky; top: calc(var(--header-h) + 4vh); }
+.cine-split-text .eyebrow { margin-bottom: 1.3rem; }
+.cine-split-text .cine-statement { margin-bottom: 1.6rem; max-width: 16ch; }
+.cine-split-media .cine-parallax { aspect-ratio: 4 / 5; border-radius: var(--radius); }
+.cine-split.reverse .cine-split-text { order: 2; }
+.cine-split-stack { display: grid; gap: clamp(1rem, 2.5vw, 1.5rem); }
+.cine-split-stack .cine-parallax { aspect-ratio: 3 / 2; border-radius: var(--radius); }
+
+/* kleine Merkmal-Liste (Häkchen / Linien) */
+.cine-marks { display: grid; gap: 0.1rem; margin-top: 2rem; }
+.cine-mark {
+  display: flex; gap: 1rem; align-items: baseline;
+  padding: 1rem 0; border-top: 1px solid var(--sand-line);
+}
+.cine-mark:last-child { border-bottom: 1px solid var(--sand-line); }
+.cine-mark b { font-family: var(--font-body); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-600); flex: none; width: 8.5rem; }
+.cine-mark span { color: var(--text-soft); font-size: 0.98rem; }
+.surface-dark .cine-mark, .surface-navy .cine-mark { border-color: rgba(255,255,255,0.13); }
+.surface-dark .cine-mark span, .surface-navy .cine-mark span { color: var(--on-dark-soft); }
+.surface-dark .cine-mark b, .surface-navy .cine-mark b { color: var(--brass-300); }
+
+/* ============================================================
+   5 · Daten & Fakten (editoriale Spec-Liste)
+   ============================================================ */
+.cine-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: clamp(2rem, 6vw, 5rem);
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+.cine-spec {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.13);
+}
+.cine-spec dt { color: var(--on-dark-soft); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.cine-spec dd { font-family: var(--font-display); font-weight: 340; color: var(--brass-300); font-size: clamp(1.3rem, 2vw, 1.9rem); text-align: right; line-height: 1; }
+
+/* große Kennzahlen-Reihe */
+.cine-figures { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.14); border-block: 1px solid rgba(255,255,255,0.14); }
+.cine-figure { background: var(--ink); padding: clamp(1.6rem, 3vw, 2.4rem) 1.2rem; text-align: center; }
+.cine-figure .k { font-family: var(--font-display); font-weight: 320; color: #fff; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1; }
+.cine-figure .l { margin-top: 0.7rem; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-soft); }
+
+/* ============================================================
+   6 · Film (YouTube-Fassade)
+   ============================================================ */
+.cine-film {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  background: var(--ink); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.cine-film iframe, .cine-film-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.cine-film-poster { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: pointer; }
+.cine-film-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.cine-film-poster:hover img { transform: scale(1.05); }
+.cine-film-veil { position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,24,33,0.62), rgba(6,24,33,0.12) 60%); }
+.cine-film-cta { position: absolute; left: clamp(1.4rem, 4vw, 3rem); bottom: clamp(1.4rem, 4vw, 3rem); display: flex; align-items: center; gap: 1.1rem; }
+.cine-film-play {
+  width: clamp(56px, 7vw, 80px); height: clamp(56px, 7vw, 80px); border-radius: 50%;
+  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.55); backdrop-filter: blur(6px);
+  display: grid; place-items: center; color: #fff; padding-left: 4px;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.cine-film-poster:hover .cine-film-play { background: var(--brass); border-color: var(--brass); color: var(--ink); transform: scale(1.06); }
+.cine-film-labels { display: flex; flex-direction: column; }
+.cine-film-label { color: #fff; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+.cine-film-meta { color: var(--on-dark-soft); font-size: 0.72rem; letter-spacing: 0.14em; margin-top: 0.3rem; }
+
+/* ============================================================
+   7 · Cinematic-Reveal (sanftes Aufsteigen, ruhiger als Standard)
+   ============================================================ */
+.cine .reveal { transform: translateY(34px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
+.cine .reveal.in { transform: none; }
+
+/* ============================================================
+   8 · Responsive
+   ============================================================ */
+@media (max-width: 880px) {
+  .cine-hero { height: 138vh; }
+  .cine-hero-title { font-size: clamp(2.6rem, 13vw, 4rem); max-width: 12ch; }
+  .cine-split { grid-template-columns: 1fr; gap: clamp(1.6rem, 6vw, 3rem); }
+  .cine-split-text { position: static; }
+  .cine-split.reverse .cine-split-text { order: 0; }
+  .cine-split.reverse .cine-split-media { order: -1; }
+  .cine-specs { grid-template-columns: 1fr; }
+  .cine-figures { grid-template-columns: repeat(2, 1fr); }
+  .cine-bleed { height: 62vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-hero-content { animation: none; }
+  .cine-film-poster img { transition: none; }
+}
+
+/* ============================================================
+   CINEMATIC — Bausteine (Teil 2)
+   ============================================================ */
+
+/* ---- Hero: Koordinaten-Marke + Kennzahlen-Leiste ---- */
+.cine-hero-coord {
+  display: inline-block; margin-bottom: 1.1rem;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brass-300);
+}
+.cine-hero-meta {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  display: grid; grid-template-columns: repeat(4, auto);
+  gap: clamp(1.4rem, 4vw, 3.2rem);
+  justify-content: start;
+}
+.cine-hero-meta .k {
+  display: block; font-family: var(--font-display); font-weight: 320;
+  color: var(--brass-300); font-size: clamp(1.4rem, 2.4vw, 2.1rem); line-height: 1;
+}
+.cine-hero-meta .l {
+  display: block; margin-top: 0.45rem;
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-dark-soft);
+}
+@media (max-width: 560px) {
+  .cine-hero-meta { grid-template-columns: repeat(2, 1fr); gap: 1.1rem 1.5rem; }
+}
+
+/* ---- Lebendiges Fenster: Parallax im festen Messing-Rahmen ---- */
+.cine-frame { position: relative; }
+.cine-frame > .cine-parallax { position: relative; z-index: 1; border-radius: var(--radius); }
+.cine-frame::before {
+  content: ""; position: absolute; inset: 18px -18px -18px 18px;
+  border: 1px solid var(--brass); border-radius: var(--radius); z-index: 0;
+}
+.cine-frame.frame-left::before { inset: 18px 18px -18px -18px; }
+@media (max-width: 880px) { .cine-frame::before { inset: 12px -12px -12px 12px; } }
+
+/* ---- Pinned Interieur-Triptychon ---- */
+.cine-triptych { position: relative; }
+.cine-triptych-sticky { padding-block: clamp(3.5rem, 9vw, 7rem); }
+.cine-triptych-text .eyebrow { margin-bottom: 1.3rem; }
+.cine-triptych-prose { margin-top: 1.4rem; max-width: 42ch; }
+.cine-triptych-caption { margin-top: 2.1rem; position: relative; min-height: 2.6em; }
+.cine-triptych-caption span {
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass-600);
+}
+.cine-triptych-ticks { display: flex; gap: 1.3rem; margin-top: 1.5rem; }
+.cine-triptych-ticks span {
+  font-family: var(--font-display); font-size: 0.95rem; color: var(--text-faint);
+  position: relative; padding-bottom: 0.45rem; transition: color 0.4s var(--ease);
+}
+.cine-triptych-ticks span.is-active { color: var(--brass-600); }
+.cine-triptych-ticks span.is-active::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--brass);
+}
+.cine-tri-panel { border-radius: var(--radius); overflow: hidden; }
+.cine-tri-panel img { width: 100%; height: 100%; object-fit: cover; }
+.cine-tri-panel figcaption {
+  margin-top: 0.6rem; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass-600);
+}
+
+@media (min-width: 1024px) {
+  .cine-triptych { height: 300vh; }
+  .cine-triptych-sticky {
+    position: sticky; top: 0; height: 100svh;
+    display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .cine-triptych-stage { position: relative; height: 76svh; }
+  .cine-tri-panel {
+    position: absolute; inset: 0; opacity: 0; transform: scale(1.06);
+    transition: opacity 0.9s var(--ease), transform 1.25s var(--ease);
+  }
+  .cine-tri-panel.is-active { opacity: 1; transform: none; }
+  .cine-tri-panel figcaption { display: none; }
+  /* nur die aktive Caption im Text-Block sichtbar (Crossfade) */
+  .cine-triptych-caption span {
+    position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .cine-triptych-caption span.is-active { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1023.98px) {
+  .cine-triptych-caption, .cine-triptych-ticks { display: none; }
+  .cine-triptych-stage { display: grid; gap: clamp(1.1rem, 4vw, 1.8rem); margin-top: 2.2rem; }
+  .cine-tri-panel { aspect-ratio: 3 / 2; }
+}
+
+/* ---- Film: Streifen-Haarlinien + Halterung ---- */
+.cine-filmwrap {
+  border-top: 1px solid rgba(197,163,106,0.4);
+  border-bottom: 1px solid rgba(197,163,106,0.4);
+  padding-block: clamp(1.4rem, 3.5vw, 2.4rem);
+}
+.cine-film-hold { max-width: 1180px; margin-inline: auto; }
+
+/* ---- Autarkie: Hintergrundbild, Kennzahl, Haarlinie ---- */
+.cine-autarkie { position: relative; overflow: hidden; }
+.cine-autarkie-bg { position: absolute; inset: 0; z-index: 0; }
+.cine-autarkie-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.16; }
+.cine-autarkie-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 80% 30%, rgba(197,163,106,0.10), transparent 60%);
+}
+.cine-autarkie > .container { position: relative; z-index: 1; }
+.cine-autarkie-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 6vw, 5rem); align-items: center;
+}
+.cine-bignum {
+  font-family: var(--font-display); font-weight: 320; color: var(--brass-300);
+  font-size: clamp(3.6rem, 9vw, 7rem); line-height: 0.9;
+}
+.cine-bignum small {
+  display: block; font-family: var(--font-body); font-weight: 700;
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-soft);
+  margin-top: 0.9rem;
+}
+.cine-hairline { height: 1px; background: var(--brass); transform: scaleX(0); transform-origin: left; }
+.reveal.in .cine-hairline { transform: scaleX(1); transition: transform 1.1s var(--ease) 0.15s; }
+@media (max-width: 880px) { .cine-autarkie-grid { grid-template-columns: 1fr; } }
+
+/* ---- Daten & Fakten: zeilenweises „Einlaufen" ---- */
+/* Der Container selbst soll NICHT mitfaden – nur die Zeilen laufen ein. */
+.cine-specs.reveal { opacity: 1; transform: none; transition: none; }
+.cine-specs .cine-spec {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.cine-specs.in .cine-spec { opacity: 1; transform: none; }
+.cine-specs.in .cine-spec:nth-child(1)  { transition-delay: 0.04s; }
+.cine-specs.in .cine-spec:nth-child(2)  { transition-delay: 0.10s; }
+.cine-specs.in .cine-spec:nth-child(3)  { transition-delay: 0.16s; }
+.cine-specs.in .cine-spec:nth-child(4)  { transition-delay: 0.22s; }
+.cine-specs.in .cine-spec:nth-child(5)  { transition-delay: 0.28s; }
+.cine-specs.in .cine-spec:nth-child(6)  { transition-delay: 0.34s; }
+.cine-specs.in .cine-spec:nth-child(7)  { transition-delay: 0.40s; }
+.cine-specs.in .cine-spec:nth-child(8)  { transition-delay: 0.46s; }
+.cine-specs.in .cine-spec:nth-child(9)  { transition-delay: 0.52s; }
+.cine-specs.in .cine-spec:nth-child(10) { transition-delay: 0.58s; }
+.cine-specs.in .cine-spec:nth-child(11) { transition-delay: 0.64s; }
+.cine-specs.in .cine-spec:nth-child(12) { transition-delay: 0.70s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-specs .cine-spec,
+  .cine-tri-panel,
+  .cine-hairline { opacity: 1; transform: none; transition: none; }
 }

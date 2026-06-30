@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import CtaBand from "@/components/CtaBand";
-import Gallery, { type GalleryImage } from "@/components/Gallery";
 import FactBox from "@/components/FactBox";
 import FaqSection from "@/components/FaqSection";
-import { Icon, ArrowRight, Droplet, Sun } from "@/components/Icons";
-import { cabins, equipment, specs, siteUrl } from "@/lib/site";
+import Gallery, { type GalleryImage } from "@/components/Gallery";
+import CtaBand from "@/components/CtaBand";
+import { ArrowRight, Droplet, Sun } from "@/components/Icons";
+import { specs, siteUrl } from "@/lib/site";
+import SmoothScroll from "@/components/cine/SmoothScroll";
+import ScrubHero from "@/components/cine/ScrubHero";
+import Parallax from "@/components/cine/Parallax";
+import PinnedTriptych from "@/components/cine/PinnedTriptych";
+import FilmFacade from "@/components/cine/FilmFacade";
+import CountUp from "@/components/cine/CountUp";
+
+const IMG = "/images/yacht";
 
 export const metadata: Metadata = {
   title: "Lagoon 400 S2 mieten – autarker Katamaran",
@@ -20,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lagoon 400 S2 mieten – autarker Katamaran | Miss Moneypenny",
     description: "Lagoon 400 S2 mit 4+2 Kabinen, Wassermacher & Solar. Technische Daten, Ausstattung und Galerie der Miss Moneypenny.",
-    images: [{ url: "/images/yacht-sailing-coast.jpg", width: 1200, height: 630, alt: "Miss Moneypenny Lagoon 400 S2 unter vollen Segeln an der dalmatinischen Küste" }],
+    images: [{ url: `${IMG}/hero-sailing.jpg`, width: 1200, height: 630, alt: "Miss Moneypenny Lagoon 400 S2 unter vollen Segeln zwischen den Inseln Dalmatiens" }],
   },
 };
 
@@ -35,7 +42,7 @@ const ldProduct = {
   "manufacturer": { "@type": "Organization", "name": "Lagoon Catamarans" },
   "model": "Lagoon 400 S2",
   "productionDate": "2016",
-  "image": `${siteUrl}/images/yacht-sailing-coast.jpg`,
+  "image": `${siteUrl}${IMG}/hero-sailing.jpg`,
   // Harte technische Daten als strukturierte Eigenschaften – genau das,
   // was KI-Modelle für "Welcher Katamaran …?"-Antworten extrahieren.
   "additionalProperty": specs.map((s) => ({
@@ -52,6 +59,17 @@ const ldProduct = {
     "seller": { "@id": "https://chartern-in-kroatien.de/#organization" },
     "availability": "https://schema.org/InStock",
   },
+};
+
+// Breadcrumb-Schema – sonst von PageHero geliefert, hier eigenständig, da der
+// Cinematic-Hero PageHero ersetzt.
+const ldBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Start", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Die Yacht" },
+  ],
 };
 
 const yachtFacts = [
@@ -85,96 +103,245 @@ const yachtFaqs = [
   },
 ];
 
+// Galerie: frische, hochauflösende Entdeckung – bewusst keine Fotos, die
+// schon im Hero, im Bucht-Bruch, im Film oder im Triptychon „verbraucht“ sind.
 const gallery: GalleryImage[] = [
-  { src: "/images/yacht-sailing-coast.jpg", alt: "Miss Moneypenny unter Segeln vor der dalmatinischen Küste", span: "wide" },
-  { src: "/images/yacht-aerial-village.jpg", alt: "Luftaufnahme des Katamarans vor einem Küstendorf", span: "tall" },
-  { src: "/images/yacht-salon.jpg", alt: "Heller Salon mit Pantry und Essbereich" },
-  { src: "/images/yacht-galley.jpg", alt: "Voll ausgestattete Pantry mit Meerblick" },
-  { src: "/images/yacht-cockpit-dining.jpg", alt: "Cockpit mit gedecktem Frühstückstisch", span: "half" },
-  { src: "/images/yacht-cabin.jpg", alt: "Gemütliche Doppelkabine mit Tageslicht", span: "half" },
-  { src: "/images/yacht-helm.jpg", alt: "Steuerstand mit B&G-Kartenplotter" },
-  { src: "/images/yacht-nav-station.jpg", alt: "Navigationsecke mit Seekarte und Fernglas" },
-  { src: "/images/yacht-bathroom.jpg", alt: "Eigenes Bad mit Waschbecken" },
-  { src: "/images/yacht-swim-platform.jpg", alt: "Teak-Badeplattform mit Schnorchelausrüstung", span: "tall" },
-  { src: "/images/yacht-bow-front.jpg", alt: "Bug des Katamarans mit Trampolinnetzen", span: "wide" },
-  { src: "/images/yacht-deck-lagoon.jpg", alt: "Seitendeck der Lagoon 400 S2", span: "half" },
-  { src: "/images/yacht-sailing-genoa.jpg", alt: "Katamaran unter Genua vor Inselkulisse", span: "half" },
+  { src: `${IMG}/deck-bow.jpg`, alt: "Teak-Vordeck der Lagoon 400 S2 über tiefblauem Wasser", span: "wide" },
+  { src: `${IMG}/swim-platform.jpg`, alt: "Teak-Badeplattform mit Badeleiter an der Wasserlinie", span: "tall" },
+  { src: `${IMG}/cockpit-dining.jpg`, alt: "Gedeckter Cockpit-Tisch mit Blumen – Dinner an Deck" },
+  { src: `${IMG}/salon-dining.jpg`, alt: "Helle Salon-Sitzbank mit Panoramafenstern", span: "half" },
+  { src: `${IMG}/galley-stove.jpg`, alt: "Pantry mit Kochfeld und Meerblick", span: "half" },
+  { src: `${IMG}/helm-station.jpg`, alt: "Steuerstand mit B&G 12-Zoll-Kartenplotter" },
+  { src: `${IMG}/bath.jpg`, alt: "Eigenes Bad mit Waschbecken und Spiegel" },
+  { src: `${IMG}/cabin.jpg`, alt: "Doppelkabine mit Tageslicht durch die Decksluke" },
+  { src: `${IMG}/salon-wide.jpg`, alt: "Lichtdurchfluteter Salon mit Cockpitblick", span: "half" },
+  { src: `${IMG}/aerial-anchored.jpg`, alt: "Katamaran vor Anker bei einem dalmatinischen Küstendorf", span: "tall" },
+  { src: `${IMG}/deck-foredeck.jpg`, alt: "Vordeck mit Mast und gepackten Segeln", span: "half" },
+  { src: `${IMG}/aerial-topdown.jpg`, alt: "Katamaran von oben auf türkisem Wasser", span: "wide" },
 ];
 
 export default function YachtPage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldProduct) }}
-      />
-      <PageHero
-        eyebrow="Die Yacht"
-        title="Lagoon 400 S2 – Miss Moneypenny"
-        lede="Ein Katamaran, der Komfort, Stabilität und echte Autarkie vereint – in gepflegtem Top-Zustand, startklar in Šibenik."
-        image="/images/yacht-sailing-coast.jpg"
-        imageAlt="Miss Moneypenny unter vollen Segeln auf der Adria"
-        crumbs={[{ label: "Start", href: "/" }, { label: "Die Yacht" }]}
+    <div className="cine">
+      <SmoothScroll />
+      {/* LCP-Bild früh anfordern */}
+      <link rel="preload" as="image" href={`${IMG}/hero-sailing.jpg`} fetchPriority="high" />
+      {/* Ohne JS bleiben Reveal-Blöcke sonst unsichtbar – Fallback erzwingt Sichtbarkeit */}
+      <noscript>
+        <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
+      </noscript>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldProduct) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }} />
+
+      {/* 1 · Hero — Aufbruch */}
+      <ScrubHero
+        image={`${IMG}/hero-sailing.jpg`}
+        imageAlt="Miss Moneypenny – Lagoon 400 S2 unter vollen Segeln zwischen den Inseln Dalmatiens"
+        eyebrow="Lagoon 400 S2 · Miss Moneypenny"
+        headline={<>Zwei Rümpfe.<br />Ein <em>Horizont</em>.</>}
+        sub="Ein autarker Segelkatamaran für acht Gäste – ruhig im Wasser, flach im Tiefgang, startklar im Heimathafen Šibenik."
+        scrollLabel="Scroll"
+        coordinate="43°44′ N · Šibenik"
+        stats={[
+          { k: "12 m", l: "Länge" },
+          { k: "4 + 2", l: "Kabinen" },
+          { k: "8", l: "Gäste" },
+          { k: "100 %", l: "autark" },
+        ]}
       />
 
-      {/* Auf einen Blick */}
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="container container-narrow">
-          <Reveal as="div"><FactBox facts={yachtFacts} /></Reveal>
+      {/* 2 · Auftakt — das Versprechen + Faktenbox */}
+      <section className="cine-section">
+        <div className="container container-narrow center">
+          <Reveal as="div"><span className="eyebrow centered">Die Yacht</span></Reveal>
+          <Reveal as="h2" delay={1} className="cine-statement" style={{ marginInline: "auto", marginTop: "1.3rem", maxWidth: "22ch" }}>
+            Stabil wie eine Insel. Frei wie das offene <em>Meer</em>.
+          </Reveal>
+          <Reveal as="p" delay={2} className="cine-lede-lg" style={{ marginInline: "auto", marginTop: "1.5rem" }}>
+            Die Miss Moneypenny ist gemacht für lange, entspannte Törns: kaum Krängung, viel
+            Licht und genug Technik an Bord, um tagelang dort zu bleiben, wo andere nur
+            vorbeisegeln.
+          </Reveal>
+          <Reveal as="div" delay={3} style={{ marginTop: "3.2rem", textAlign: "left" }}>
+            <FactBox facts={yachtFacts} />
+          </Reveal>
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section">
+      {/* 3 · Auf See — Stabilität & Stille */}
+      <section className="cine-section surface-navy">
         <div className="container">
-          <div className="split align-start">
-            <div>
-              <Reveal as="div"><span className="eyebrow">Im Überblick</span></Reveal>
-              <Reveal as="h2" delay={1} className="section-title">Großzügig, stabil, unabhängig.</Reveal>
-              <Reveal as="div" delay={2} className="prose" style={{ marginTop: "1.6rem" }}>
-                <p>
-                  Die Lagoon 400 S2 zählt zu den beliebtesten Fahrtenkatamaranen der Welt –
-                  und das aus gutem Grund. Zwei Rümpfe sorgen für Stabilität und Raum,
-                  der flache Tiefgang öffnet Buchten, die anderen verschlossen bleiben.
-                </p>
-                <p>
-                  An Bord der Miss Moneypenny treffen helles Holz, ein lichtdurchfluteter
-                  Salon und ein geschütztes Cockpit auf durchdachte Technik. Wassermacher
-                  und Solaranlage machen sie zur idealen Yacht für lange, entspannte Törns.
-                </p>
+          <div className="cine-split">
+            <div className="cine-split-text">
+              <Reveal as="div"><span className="eyebrow on-dark">Auf See</span></Reveal>
+              <Reveal as="h2" delay={1} className="cine-statement">
+                Das Meer bewegt sich. <em>Sie bleiben ruhig.</em>
               </Reveal>
-              <Reveal as="div" delay={3} className="pill-row" style={{ marginTop: "2rem" }}>
-                <span className="tag-pill">Teakdeck</span>
-                <span className="tag-pill">Komplette Persenning</span>
-                <span className="tag-pill">Standheizung</span>
-                <span className="tag-pill">Autopilot</span>
+              <Reveal as="div" delay={2} className="prose">
+                <p>
+                  Zwei Rümpfe tragen die Yacht stabil durch die Welle – sie krängt kaum und
+                  liegt selbst bei frischem Maestral entspannt im Wasser. Das senkt das Risiko
+                  von Seekrankheit spürbar und macht den Törn auch für Kinder und Einsteiger
+                  zum Genuss.
+                </p>
+                <p>Wer mag, lässt sich von einem erfahrenen Skipper führen – ganz ohne eigenen Segelschein.</p>
+              </Reveal>
+              <Reveal as="div" delay={3} className="pill-row" style={{ marginTop: "1.9rem" }}>
+                <span className="tag-pill">Kaum Krängung</span>
+                <span className="tag-pill">Wenig Seekrankheit</span>
+                <span className="tag-pill">Familienfreundlich</span>
+                <span className="tag-pill">Skipper optional</span>
               </Reveal>
             </div>
-            <Reveal as="div" delay={2}>
-              <div className="media-frame tall">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/yacht-aerial-village.jpg" alt="Miss Moneypenny vor Anker, aus der Luft fotografiert" />
+            <Reveal as="div" delay={1} className="cine-split-media">
+              <div className="cine-frame">
+                <Parallax
+                  src={`${IMG}/sailing-bow.jpg`}
+                  alt="Miss Moneypenny unter Segeln vor einer dalmatinischen Insel"
+                  strength={10}
+                />
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Technische Daten */}
-      <section className="section surface-navy">
-        <div className="container">
-          <div className="head-flex" style={{ marginBottom: "2.5rem" }}>
-            <Reveal as="div" className="head-block">
-              <span className="eyebrow on-dark">Technische Daten</span>
-              <h2 className="section-title">Daten & Fakten</h2>
-            </Reveal>
-            <Reveal as="p" delay={1} className="lede" style={{ maxWidth: "34ch" }}>
-              Alle wichtigen Eckdaten der Miss Moneypenny auf einen Blick.
+      {/* 4 · Die Bucht — Vollbild-Atempause */}
+      <section className="cine-bleed">
+        <Parallax
+          src={`${IMG}/aerial-bay.jpg`}
+          alt="Miss Moneypenny vor Anker im türkisen Wasser vor einem dalmatinischen Dorf"
+          strength={12}
+        />
+        <div className="cine-bleed-grade" />
+        <div className="cine-bleed-cap">
+          <div className="container container-wide">
+            <Reveal as="div"><span className="eyebrow on-dark">Der flache Tiefgang</span></Reveal>
+            <Reveal as="h2" delay={1} className="cine-statement" style={{ marginTop: "1.1rem", maxWidth: "20ch" }}>
+              Nur 1,30 Meter trennen Sie von der <em>einsamsten Bucht</em>.
             </Reveal>
           </div>
-          <Reveal as="dl" className="specs">
+        </div>
+      </section>
+
+      {/* 5 · Der Film — An Bord, in Bewegung */}
+      <section className="cine-section surface-dark">
+        <div className="container">
+          <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center", marginBottom: "2.6rem" }}>
+            <span className="eyebrow on-dark centered">Der Film</span>
+            <h2 className="cine-statement" style={{ marginInline: "auto", marginTop: "1rem", maxWidth: "22ch" }}>
+              Sehen Sie selbst, wie sich <em>Freiheit</em> anfühlt.
+            </h2>
+          </Reveal>
+          <Reveal as="div" delay={1} className="cine-filmwrap">
+            <div className="cine-film-hold">
+              <FilmFacade
+                id="K6rfIzMQOiM"
+                poster={`${IMG}/sailing-genoa.jpg`}
+                posterAlt="Miss Moneypenny unter Segeln vor der dalmatinischen Küste – Filmvorschau"
+                label="Film ansehen"
+                meta="Adria unter Segeln"
+                title="Miss Moneypenny – Segelfilm auf der Adria"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 6 · Raum & Licht — pinned Interieur-Triptychon */}
+      <PinnedTriptych
+        eyebrow="Raum & Licht"
+        headline={<>Eine Ebene, <em>viel Licht</em>.</>}
+        panels={[
+          { src: `${IMG}/cockpit-salon.jpg`, alt: "Cockpit mit offenen Glastüren zum hellen Salon", caption: "Der Salon – Rundumblick auf einer Ebene." },
+          { src: `${IMG}/galley.jpg`, alt: "Voll ausgestattete Pantry aus hellem Holz mit Meerblick", caption: "Die Pantry – voll ausgestattet, mit Meerblick." },
+          { src: `${IMG}/cabin-warm.jpg`, alt: "Helle Doppelkabine mit warmem Holz und Tageslicht", caption: "Die Kabinen – helles Holz, eigenes Bad, viel Stauraum." },
+        ]}
+      >
+        <p>
+          Salon, Pantry und Cockpit liegen auf einer Höhe – Glastüren lösen die Grenze zwischen
+          innen und außen auf. Vier Doppelkabinen mit eigenem Bad und zwei Bugkabinen geben acht
+          Gästen Komfort und Privatsphäre zugleich; kein Gast muss sich ein Bad teilen.
+        </p>
+      </PinnedTriptych>
+
+      {/* 7 · Autarkie — Wasser & Sonne */}
+      <section className="cine-section surface-dark cine-autarkie">
+        <div className="cine-autarkie-bg">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`${IMG}/aerial-village.jpg`} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        </div>
+        <div className="container">
+          <div className="cine-autarkie-grid">
+            <div>
+              <Reveal as="div"><span className="eyebrow on-dark no-rule">Autark unterwegs</span></Reveal>
+              <Reveal as="h2" delay={1} className="cine-statement">
+                Süßwasser aus dem Meer. <em>Strom aus der Sonne.</em>
+              </Reveal>
+              <Reveal as="div" delay={2}><div className="cine-hairline" style={{ marginTop: "1.7rem", width: "84px" }} /></Reveal>
+              <Reveal as="p" delay={3} className="cine-lede-lg" style={{ marginTop: "1.7rem" }}>
+                Ein Wassermacher per Umkehrosmose erzeugt rund 60 Liter Frischwasser pro Stunde,
+                eine 700-Watt-Solaranlage und ein 2-kW-Wechselrichter laden die Batterien
+                lautlos. So liegt man tagelang in einsamen Buchten vor Anker – ohne Marina, ohne
+                Generator, ohne Kompromiss.
+              </Reveal>
+            </div>
+            <div>
+              <Reveal as="div" className="cine-bignum">
+                <CountUp to={60} suffix=" l/h" />
+                <small>Frischwasser aus Meerwasser</small>
+              </Reveal>
+              <div style={{ marginTop: "2.6rem" }}>
+                <Reveal as="div" className="feature-min" style={{ borderTop: "none", padding: 0, marginBottom: "1.7rem" }}>
+                  <Droplet className="ic" style={{ width: 34, height: 34 }} />
+                  <div>
+                    <h3 style={{ fontSize: "1.3rem" }}>Wassermacher</h3>
+                    <p>Frisches Süßwasser aus dem Meer – Unabhängigkeit von jeder Marina.</p>
+                  </div>
+                </Reveal>
+                <Reveal as="div" delay={1} className="feature-min" style={{ borderTop: "none", padding: 0 }}>
+                  <Sun className="ic" style={{ width: 34, height: 34 }} />
+                  <div>
+                    <h3 style={{ fontSize: "1.3rem" }}>Solaranlage</h3>
+                    <p>Lautlose Energie für Tage vor Anker, ganz ohne Generator.</p>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8 · Galerie */}
+      <section className="cine-section">
+        <div className="container container-wide">
+          <Reveal as="div" className="head-flex" style={{ marginBottom: "2.6rem" }}>
+            <div className="head-block">
+              <span className="eyebrow">Galerie</span>
+              <h2 className="cine-statement" style={{ marginTop: "1rem" }}>Einmal an Bord, bitte.</h2>
+            </div>
+            <Link href="/kontakt" className="link-arrow">Jetzt anfragen <ArrowRight /></Link>
+          </Reveal>
+          <Reveal as="div"><Gallery images={gallery} /></Reveal>
+        </div>
+      </section>
+
+      {/* 9 · Daten & Fakten */}
+      <section className="cine-section surface-navy">
+        <div className="container">
+          <div className="head-flex" style={{ marginBottom: "2.6rem" }}>
+            <Reveal as="div" className="head-block">
+              <span className="eyebrow on-dark">Technische Daten</span>
+              <h2 className="cine-statement" style={{ marginTop: "1rem" }}>Daten &amp; Fakten.</h2>
+            </Reveal>
+            <Reveal as="p" delay={1} className="cine-lede-lg" style={{ maxWidth: "34ch" }}>
+              Alle Eckdaten der Miss Moneypenny auf einen Blick – Lagoon 400 S2, Baujahr 2016,
+              12 m Länge bei nur 1,30 m Tiefgang.
+            </Reveal>
+          </div>
+          <Reveal as="dl" className="cine-specs">
             {specs.map((s) => (
-              <div className="spec-row" key={s.label}>
+              <div className="cine-spec" key={s.label}>
                 <dt>{s.label}</dt>
                 <dd>{s.value}</dd>
               </div>
@@ -183,104 +350,28 @@ export default function YachtPage() {
         </div>
       </section>
 
-      {/* Layout / Kabinen */}
-      <section className="section">
-        <div className="container">
-          <Reveal as="div" className="head-block">
-            <span className="eyebrow">Raumaufteilung</span>
-            <h2 className="section-title">Platz für acht – mit Privatsphäre für alle.</h2>
-            <p className="lede">
-              Vier Doppelkabinen mit eigenem Bad, zwei zusätzliche Bugkabinen und ein
-              offener Wohnbereich, der Innen und Außen verschmelzen lässt.
-            </p>
-          </Reveal>
-          <div className="grid-2" style={{ marginTop: "3rem" }}>
-            {cabins.map((c, i) => (
-              <Reveal key={c.title} delay={((i % 2) + 1) as 1 | 2}>
-                <article className="feature">
-                  <span className="ic"><Icon name={i === 0 ? "bed" : i === 1 ? "users" : i === 2 ? "ship" : "wheel"} /></span>
-                  <h3>{c.title}</h3>
-                  <p>{c.text}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ausstattung */}
-      <section className="section surface-sand">
-        <div className="container">
-          <Reveal as="div" className="head-block">
-            <span className="eyebrow">Ausstattung</span>
-            <h2 className="section-title">Durchdacht bis ins Detail.</h2>
-          </Reveal>
-          <div className="grid-3" style={{ marginTop: "3rem" }}>
-            {equipment.map((e, i) => (
-              <Reveal key={e.title} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                <article className="feature">
-                  <span className="ic"><Icon name={e.icon} /></span>
-                  <h3>{e.title}</h3>
-                  <p>{e.text}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Autarkie Streifen */}
-      <section className="section surface-dark">
-        <div className="container">
-          <div className="grid-2" style={{ gap: "3rem", alignItems: "center" }}>
-            <Reveal as="div" className="feature-min" style={{ borderTop: "none", padding: 0 }}>
-              <Droplet className="ic" style={{ width: 40, height: 40 }} />
-              <div>
-                <h3 style={{ fontSize: "1.5rem" }}>Wassermacher</h3>
-                <p>Frisches Süßwasser aus dem Meer – für Unabhängigkeit von jeder Marina.</p>
-              </div>
-            </Reveal>
-            <Reveal as="div" delay={1} className="feature-min" style={{ borderTop: "none", padding: 0 }}>
-              <Sun className="ic" style={{ width: 40, height: 40 }} />
-              <div>
-                <h3 style={{ fontSize: "1.5rem" }}>Solaranlage</h3>
-                <p>Lautlose Energie für Tage vor Anker, ganz ohne Generator.</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Galerie */}
-      <section className="section">
-        <div className="container container-wide">
-          <Reveal as="div" className="head-flex" style={{ marginBottom: "2.5rem" }}>
-            <div className="head-block">
-              <span className="eyebrow">Galerie</span>
-              <h2 className="section-title">Einmal an Bord, bitte.</h2>
-            </div>
-            <Link href="/kontakt" className="link-arrow">Jetzt anfragen <ArrowRight /></Link>
-          </Reveal>
-          <Reveal as="div">
-            <Gallery images={gallery} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section surface-sand">
+      {/* 10 · FAQ */}
+      <section className="cine-section surface-sand">
         <div className="container container-narrow">
           <Reveal as="div" className="head-block" style={{ marginInline: "auto", textAlign: "center" }}>
             <span className="eyebrow centered">Häufige Fragen</span>
-            <h2 className="section-title" style={{ marginTop: "1rem" }}>Gut zu wissen vor dem Törn.</h2>
+            <h2 className="cine-statement" style={{ marginInline: "auto", marginTop: "1rem", maxWidth: "22ch" }}>
+              Gut zu wissen vor dem Törn.
+            </h2>
           </Reveal>
-          <div style={{ marginTop: "2.5rem" }}>
+          <div style={{ marginTop: "2.6rem" }}>
             <FaqSection items={yachtFaqs} id={`${siteUrl}/die-yacht#faq`} />
           </div>
         </div>
       </section>
 
-      <CtaBand image="/images/yacht-sailing-genoa.jpg" />
-    </>
+      {/* 11 · Abschluss — zurück zum Horizont */}
+      <CtaBand
+        image={`${IMG}/sailing-side.jpg`}
+        eyebrow="Bereit für die Adria?"
+        title="Ihr Törn beginnt in Šibenik."
+        text="Nennen Sie uns Wunschtermin und Crew – wir prüfen die Verfügbarkeit der Miss Moneypenny und melden uns innerhalb von 24 Stunden mit einem persönlichen Angebot."
+      />
+    </div>
   );
 }

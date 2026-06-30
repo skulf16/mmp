@@ -6,6 +6,12 @@
       "runtimeExecutable": "/Users/dominiktheis/.local/node-v24.17.0-darwin-arm64/bin/node",
       "runtimeArgs": ["node_modules/next/dist/bin/next", "start", "-p", "4318"],
       "port": 4318
+    },
+    {
+      "name": "miss-moneypenny-preview",
+      "runtimeExecutable": "/Users/dominiktheis/.local/node-v24.17.0-darwin-arm64/bin/node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
+      "autoPort": true
     }
   ]
 }
