@@ -17,6 +17,25 @@ function GlobeIcon() {
   );
 }
 
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={{ transition: "transform 0.3s var(--ease)", transform: open ? "rotate(180deg)" : "none", flex: "none" }}
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
 const switchStyle: React.CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
@@ -35,6 +54,7 @@ const switchStyle: React.CSSProperties = {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const pathname = usePathname();
   const locale = getLocale(pathname);
   const alt = alternatePath(pathname);
@@ -51,6 +71,7 @@ export default function Header() {
   // close drawer on route change
   useEffect(() => {
     setOpen(false);
+    setOpenGroup(null);
   }, [pathname]);
 
   // lock scroll when drawer open
@@ -64,15 +85,13 @@ export default function Header() {
   const isActive = (href: string) =>
     href === "/" || href === "/en" ? pathname === href : pathname.startsWith(href);
 
-  const mobileLinks =
+  // Mobil: oberste Navigationsebene erhalten – Gruppen mit Submenü werden
+  // zu aufklappbaren Akkordeons statt zu flachen Einzel-Links (siehe Desktop).
+  type MobileItem = { label: string; href: string; sub?: { label: string; href: string }[] };
+  const mobileItems: MobileItem[] =
     locale === "en"
       ? [{ label: "Home", href: "/en" }, ...dict.nav]
-      : [
-          { label: "Start", href: "/" },
-          ...nav.flatMap((item) =>
-            item.sub ? item.sub.map((s) => ({ label: s.label, href: s.href })) : [{ label: item.label, href: item.href }]
-          ),
-        ];
+      : [{ label: "Start", href: "/" }, ...nav];
 
   const langSwitch = (
     <Link href={alt.href} hrefLang={alt.locale} aria-label={dict.switchAria} style={switchStyle}>
@@ -132,7 +151,7 @@ export default function Header() {
               )}
         </nav>
 
-        <div className="nav-cta" style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
+        <div className="nav-cta">
           {langSwitch}
           <Link href="/kontakt" className="btn btn-primary">
             {dict.cta} <ArrowRight />
@@ -159,11 +178,43 @@ export default function Header() {
 
       <div className={`mobile-nav ${open ? "open" : ""}`}>
         <nav aria-label={locale === "en" ? "Mobile navigation" : "Mobile Navigation"}>
-          {mobileLinks.map((l, i) => (
-            <Link key={l.href} href={l.href}>
-              {l.label} <small>{String(i + 1).padStart(2, "0")}</small>
-            </Link>
-          ))}
+          {mobileItems.map((item, i) => {
+            const num = String(i + 1).padStart(2, "0");
+            const sub = item.sub;
+
+            if (sub && sub.length) {
+              const isOpen = openGroup === item.label;
+              return (
+                <div key={item.label} className={`m-group ${isOpen ? "open" : ""}`}>
+                  <button
+                    type="button"
+                    className="m-group-toggle"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenGroup((g) => (g === item.label ? null : item.label))}
+                  >
+                    {item.label}
+                    <span className="m-group-meta">
+                      <small>{num}</small>
+                      <Chevron open={isOpen} />
+                    </span>
+                  </button>
+                  <div className="m-sub" hidden={!isOpen}>
+                    {sub.map((s) => (
+                      <Link key={s.href} href={s.href}>
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <Link key={item.href} href={item.href}>
+                {item.label} <small>{num}</small>
+              </Link>
+            );
+          })}
           <div style={{ marginTop: "1.2rem", display: "flex", gap: "0.9rem", alignItems: "center", flexWrap: "wrap" }}>
             {langSwitch}
             <Link href="/kontakt" className="btn btn-primary">

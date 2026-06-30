@@ -248,6 +248,7 @@ p { color: var(--text-soft); }
   justify-content: space-between;
   gap: 1.5rem;
   width: 100%;
+  padding-inline: var(--gutter);
 }
 /* subtle top scrim keeps the white logo & nav legible over light hero tops */
 .site-header::before {
@@ -316,7 +317,7 @@ p { color: var(--text-soft); }
 .nav-link:hover::after,
 .nav-link[aria-current="page"]::after { width: 100%; }
 
-.nav-cta { margin-left: 0.5rem; }
+.nav-cta { margin-left: 0.5rem; display: flex; align-items: center; gap: 0.9rem; }
 .nav-cta .btn { padding: 0.72rem 1.35rem; }
 
 /* dropdown for "Reviere" */
@@ -379,16 +380,19 @@ p { color: var(--text-soft); }
   background: linear-gradient(160deg, var(--navy-900), var(--ink));
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 5rem var(--gutter) 3rem;
+  justify-content: flex-start;
+  padding: calc(var(--header-h) + 1.5rem) var(--gutter) 3rem;
   transform: translateY(-100%);
   transition: transform 0.6s var(--ease);
   overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .mobile-nav.open { transform: translateY(0); }
-.mobile-nav a {
+.mobile-nav a,
+.m-group-toggle {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 7vw, 2.4rem);
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   color: var(--on-dark);
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -397,9 +401,37 @@ p { color: var(--text-soft); }
   align-items: center;
   transition: color 0.3s, padding-left 0.3s;
 }
-.mobile-nav a:hover { color: var(--brass-300); padding-left: 0.6rem; }
-.mobile-nav a small { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; }
+.mobile-nav a:hover,
+.m-group-toggle:hover { color: var(--brass-300); padding-left: 0.6rem; }
+.mobile-nav a small,
+.m-group-meta small { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; }
 .mobile-nav .btn { margin-top: 2rem; justify-content: center; }
+
+/* Aufklappbare Gruppen im Mobil-Menü */
+.m-group-toggle {
+  width: 100%;
+  background: none;
+  border-top: none;
+  border-inline: none;
+  text-align: left;
+  cursor: pointer;
+  gap: 1rem;
+}
+.m-group-meta { display: inline-flex; align-items: center; gap: 0.8rem; color: var(--brass); }
+.m-group.open > .m-group-toggle { color: var(--brass-300); }
+.m-sub { display: none; flex-direction: column; padding: 0.2rem 0 0.4rem 0.9rem; }
+.m-group.open .m-sub { display: flex; }
+.m-sub a {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.78);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.m-sub a:last-child { border-bottom: none; }
+.m-sub a:hover { color: var(--brass-300); padding-left: 0.6rem; }
 
 /* ---------------- Hero ------------------------------------- */
 .hero {
