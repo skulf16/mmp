@@ -32,6 +32,21 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error("Versand fehlgeschlagen");
+      // Conversion an GTM → serverseitigen Container → Google Ads / GA4.
+      // user_data speist Enhanced Conversions (GTM hasht E-Mail/Telefon).
+      // Übertragung greift nur bei erteilter Marketing-Einwilligung (Consent Mode).
+      const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: "generate_lead",
+        form_id: "contact",
+        lead_type: form.skipper,
+        guests: form.guests,
+        user_data: {
+          email: form.email.trim().toLowerCase(),
+          phone_number: form.phone.replace(/[^+\d]/g, ""),
+        },
+      });
       setSent(true);
     } catch {
       setError("Die Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.");

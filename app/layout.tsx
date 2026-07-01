@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Analytics from "@/components/Analytics";
+import ConsentBanner from "@/components/ConsentBanner";
 import { author } from "@/lib/site";
 
 const ldOrganization = {
@@ -146,19 +148,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        {/* Google Analytics (GA4) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-D5PXZXJWTC"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-D5PXZXJWTC');
-          `}
-        </Script>
+        {/* Consent Mode v2 + GTM/GA4 – siehe components/Analytics.tsx */}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ldOrganization) }}
@@ -166,6 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <ConsentBanner />
       </body>
     </html>
   );

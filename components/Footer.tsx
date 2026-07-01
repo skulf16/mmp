@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { MapPin, Mail, Phone } from "./Icons";
 import { getLocale, t } from "@/lib/i18n";
+import { CONSENT_REOPEN_EVENT } from "@/lib/analytics";
 
 export default function Footer() {
   const locale = getLocale(usePathname());
@@ -60,6 +61,20 @@ export default function Footer() {
                 {l.label}
               </Link>
             ))}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(CONSENT_REOPEN_EVENT))}
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                font: "inherit",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              {locale === "en" ? "Cookie settings" : "Cookie-Einstellungen"}
+            </button>
           </span>
         </div>
       </div>
