@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ArticleByline from "@/components/ArticleByline";
 import Reveal from "@/components/Reveal";
+import Gallery, { type GalleryImage } from "@/components/Gallery";
 import CtaBand from "@/components/CtaBand";
 import FactBox from "@/components/FactBox";
 import FaqSection from "@/components/FaqSection";
@@ -174,6 +175,24 @@ const days: {
     distance: "ca. 26 sm",
     highlight: "Heimkehr in den Ausgangshafen",
     text: "Heimkurs ins Šibeniker Revier. Wer mag, hängt eine letzte einsame Nacht bei Žirje oder im Šibenik-Archipel an, bevor es am nächsten Morgen zum Check-out in die Marina Mandalina geht. Auf dem letzten Schlag durch den Šibeniker Kanal grüßt die Festung St. Michael – Ankunft im Heimathafen.",
+  },
+];
+
+const dubrovnikGallery: GalleryImage[] = [
+  {
+    src: "/images/toern-sueddalmatien/dubrovnik-stadtmauer-sonnenuntergang.jpg",
+    alt: "Dubrovniks mächtige Stadtmauer über der Adria im Sonnenuntergang, mit schmaler Mondsichel am Himmel",
+    span: "tall",
+  },
+  {
+    src: "/images/toern-sueddalmatien/dubrovnik-festung-laterne.jpg",
+    alt: "Steinerner Innenhof an der Festungsmauer von Dubrovnik mit leuchtender Laterne in der Abenddämmerung",
+    span: "tall",
+  },
+  {
+    src: "/images/toern-sueddalmatien/dubrovnik-altstadtgasse-abend.jpg",
+    alt: "Abendliche Altstadtgasse in Dubrovnik mit Treppe hinunter zum Stradun, Restaurants und Lichterketten",
+    span: "tall",
   },
 ];
 
@@ -367,6 +386,20 @@ export default function ToernvorschlagSueddalmatienPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Dubrovnik-Galerie */}
+      <section className="section">
+        <div className="container container-wide">
+          <Reveal as="div" className="head-block">
+            <span className="eyebrow">Impressionen</span>
+            <h2 className="section-title">Dubrovnik am Abend.</h2>
+            <p className="lede">Der südlichste Punkt des Törns – die Stadtmauern über der Adria, ein stiller Innenhof an der Festung und die abendliche Altstadtgasse zum Stradun. Aufnahmen vom letzten Abend des Himmelfahrtskommandos, bevor die Aloha-Crew übernahm.</p>
+          </Reveal>
+          <Reveal as="div" style={{ marginTop: "3rem" }}>
+            <Gallery images={dubrovnikGallery} />
+          </Reveal>
         </div>
       </section>
 
