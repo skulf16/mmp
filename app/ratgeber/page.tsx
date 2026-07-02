@@ -196,7 +196,7 @@ const kategorien: { label: string; slug: string; artikel: Artikel[] }[] = [
       {
         href: "/apps-fuer-segler",
         title: "Apps für Segler",
-        text: "Navigation, Wetter, Ankerwache und Bojenreservierung – die besten Apps für den Kroatien-Törn.",
+        text: "Navigation, Wetter, Ankerwache, Bojenreservierung und Bordkasse – die besten Apps für den Kroatien-Törn.",
       },
       {
         href: "/sicherheitseinweisung-yacht",

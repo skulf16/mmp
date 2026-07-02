@@ -282,10 +282,10 @@ export const ratgeberArticles: Record<string, RatgeberArticle> = {
   "apps-fuer-segler": {
     headline: "Apps für Segler – die wichtigsten Törn-Apps für Kroatien",
     description:
-      "Navigation, Wetter, Ankerwache und Bojenreservierung – die besten Apps für den Kroatien-Törn.",
+      "Navigation, Wetter, Ankerwache, Bojenreservierung und Bordkasse – die besten Apps für den Kroatien-Törn.",
     image: "/images/yacht-nav-station.jpg",
     published: "2026-06-22",
-    updated: "2026-06-23",
+    updated: "2026-07-02",
   },
   "sicherheitseinweisung-yacht": {
     headline: "Sicherheitseinweisung Yacht – Checkliste für die Crew",

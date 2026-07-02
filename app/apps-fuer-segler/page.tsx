@@ -12,11 +12,11 @@ import { siteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Apps für Segler: Navigation, Wetter & Ankerwache",
   description:
-    "Die wichtigsten Apps für den Segeltörn in Kroatien: Navionics, Windy.com, MySea, Anchor Alarm und Navily – mit direkten Download-Links für iOS und Android.",
+    "Die wichtigsten Apps für den Segeltörn in Kroatien: Navionics, Windy.com, MySea, Anchor Alarm, Navily und Tricount – mit direkten Download-Links für iOS und Android.",
   openGraph: {
     title: "Apps für Segler – die wichtigsten Törn-Apps für Kroatien",
     description:
-      "Navigation, Wetter, Reviere und Ankerwache: Die 5 nützlichsten Apps für deinen Katamaran-Törn in der Adria – mit Download-Links für iOS & Android.",
+      "Navigation, Wetter, Reviere, Ankerwache und Bordkasse: Die 6 nützlichsten Apps für deinen Katamaran-Törn in der Adria – mit Download-Links für iOS & Android.",
     images: [{ url: "/images/yacht-nav-station.jpg", width: 1200, height: 630, alt: "Navigationsstation an Bord der Miss Moneypenny" }],
   },
 };
@@ -71,6 +71,14 @@ const apps: App[] = [
     ios: "https://apps.apple.com/de/app/navily/id881103205",
     android: "https://play.google.com/store/apps/details?id=com.ckcnet.android.navily&hl=de",
   },
+  {
+    name: "Tricount",
+    cat: "Bordkasse & Ausgaben",
+    icon: "users",
+    text: "Perfekt, um Ausgaben zwischen Crew-Mitgliedern aufzuteilen: Marina-Gebühren, Einkäufe, Diesel oder das Konoba-Essen einfach eintragen – am Ende des Törns rechnet die App aus, wer wem wie viel schuldet. Funktioniert auch offline in der Bucht ohne Empfang.",
+    ios: "https://apps.apple.com/de/app/tricount-ausgaben-teilen/id349866256",
+    android: "https://play.google.com/store/apps/details?id=com.tribab.tricount.android&hl=de",
+  },
 ];
 
 const ldApps = {
@@ -105,18 +113,19 @@ function StoreButtons({ app }: { app: App }) {
 }
 
 const facts = [
-  "Die Seite stellt fünf Apps für den Segeltörn in Kroatien vor: Navionics, Windy.com, MySea, Anchor Alarm und Navily.",
+  "Die Seite stellt sechs Apps für den Segeltörn in Kroatien vor: Navionics, Windy.com, MySea, Anchor Alarm, Navily und Tricount.",
   "Navionics liefert detaillierte Seekarten für die gesamte Adria mit Tiefenlinien, Hafenplänen, Ankerplätzen und Routenplanung – als Ergänzung zum festen Kartenplotter an Bord.",
   "Windy.com zeigt animierte Wind-, Wellen- und Böen-Vorhersagen aus mehreren Modellen (ECMWF, GFS), um Maestral, Bora und Jugo rechtzeitig einzuschätzen.",
   "MySea ist ein Cruising-Guide für Kroatien, Griechenland und die Türkei mit Buchten, Marinas und Community-Tipps; Navily ist ein Community-Guide für Ankerplätze und Häfen inklusive Liegeplatz-Reservierung.",
   "Anchor Alarm dient als digitale Ankerwache und schlägt Alarm, sobald die Yacht ihren Schwojkreis verlässt.",
+  "Tricount verwaltet die Bordkasse: Ausgaben wie Marina-Gebühren, Einkäufe oder Diesel werden eingetragen und automatisch fair zwischen den Crew-Mitgliedern aufgeteilt – auch offline nutzbar.",
   "Alle genannten Apps sind in einer kostenlosen Version nutzbar und für iOS wie Android verfügbar.",
 ];
 
 const faqs: { q: string; a: string }[] = [
   {
     q: "Welche Apps werden für den Segeltörn in Kroatien empfohlen?",
-    a: "Die Seite stellt fünf Apps vor: Navionics für Seekarten und Navigation, Windy.com für Wetter und Wind, MySea für Reviere und Buchten, Anchor Alarm als digitale Ankerwache und Navily für Ankerplätze und Marinas. Sie decken zusammen Navigation, Wetter, Tagesplanung und die Nacht vor Anker ab.",
+    a: "Die Seite stellt sechs Apps vor: Navionics für Seekarten und Navigation, Windy.com für Wetter und Wind, MySea für Reviere und Buchten, Anchor Alarm als digitale Ankerwache, Navily für Ankerplätze und Marinas sowie Tricount für die Bordkasse. Sie decken zusammen Navigation, Wetter, Tagesplanung, die Nacht vor Anker und die Crew-Abrechnung ab.",
   },
   {
     q: "Sind die vorgestellten Apps kostenlos?",
@@ -134,6 +143,10 @@ const faqs: { q: string; a: string }[] = [
     q: "Wozu dient eine Ankerwache-App wie Anchor Alarm?",
     a: "Anchor Alarm ist eine digitale Ankerwache, die Alarm schlägt, sobald die Yacht ihren Schwojkreis verlässt. So kann die Crew auch in einer einsamen Bucht entspannt schlafen, ohne ständig die Position kontrollieren zu müssen. Sie ergänzt die Bordelektronik des Katamarans für die ruhige Nacht vor Anker.",
   },
+  {
+    q: "Wie lassen sich Ausgaben an Bord fair zwischen der Crew aufteilen?",
+    a: "Dafür empfiehlt die Seite Tricount. Alle Ausgaben des Törns – Marina-Gebühren, Einkäufe, Diesel oder das Essen in der Konoba – werden einfach in der App eingetragen. Am Ende rechnet Tricount automatisch aus, wer wem wie viel schuldet. Die App funktioniert auch offline, also ebenso in der Bucht ohne Empfang.",
+  },
 ];
 
 export default function AppsFuerSeglerPage() {
@@ -146,7 +159,7 @@ export default function AppsFuerSeglerPage() {
       <PageHero
         eyebrow="Ratgeber"
         title="Apps für Segler"
-        lede="Navigation, Wetter, Reviere und Ankerwache: Diese fünf Apps gehören auf jedes Smartphone an Bord – kostenlos bzw. mit kostenloser Basisversion und direkt zum Download."
+        lede="Navigation, Wetter, Reviere, Ankerwache und Bordkasse: Diese sechs Apps gehören auf jedes Smartphone an Bord – kostenlos bzw. mit kostenloser Basisversion und direkt zum Download."
         image="/images/yacht-nav-station.jpg"
         imageAlt="Navigationsstation mit Kartenplotter an Bord der Miss Moneypenny"
         crumbs={[{ label: "Start", href: "/" }, { label: "Ratgeber", href: "/ratgeber" }, { label: "Apps für Segler" }]}
@@ -174,7 +187,7 @@ export default function AppsFuerSeglerPage() {
               Morgen, die Bucht-Recherche am Nachmittag und die ruhige Nacht vor Anker.
             </p>
             <p>
-              Wir haben die fünf Apps zusammengestellt, die sich auf unseren Törns in den
+              Wir haben die sechs Apps zusammengestellt, die sich auf unseren Törns in den
               Kornaten und rund um Šibenik bewährt haben. Alle sind in einer kostenlosen
               Version nutzbar und für iOS wie Android verfügbar.
             </p>
@@ -187,8 +200,8 @@ export default function AppsFuerSeglerPage() {
         <div className="container">
           <Reveal as="div" className="head-block">
             <span className="eyebrow">Unsere Empfehlungen</span>
-            <h2 className="section-title">Fünf Apps, die wir an Bord nutzen.</h2>
-            <p className="lede">Von der Seekarte bis zur Ankerwache – pro App ein Direkt-Download für iOS und Android.</p>
+            <h2 className="section-title">Sechs Apps, die wir an Bord nutzen.</h2>
+            <p className="lede">Von der Seekarte bis zur Bordkasse – pro App ein Direkt-Download für iOS und Android.</p>
           </Reveal>
           <div className="grid-2" style={{ marginTop: "3.5rem" }}>
             {apps.map((app, i) => (
